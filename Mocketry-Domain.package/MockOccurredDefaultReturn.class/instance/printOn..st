@@ -1,4 +1,4 @@
 printing
 printOn: aStream
 	
-	aStream << self stringForSpecTitle
+	aStream << 'returned ' << self stringForSpecTitle
