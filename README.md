@@ -2,7 +2,13 @@
 
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
 
-
+## Installation
+```Smalltalk
+Metacello new
+  baseline: 'Seamless';
+  repository: 'github://dionisiydk/Mocketry';
+  load
+```
 ## Create mocks easily
 To create mock just use **\#new**
 ```Smalltalk
