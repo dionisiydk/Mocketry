@@ -6,11 +6,12 @@ baseline: spec
 		spec 
 			baseline: 'StateSpecs' with: [
 		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.x'];
-			baseline: 'GhostCore' with: [
+			baseline: 'Ghost' with: [
 		 	    spec
-					repository: 'github://dionisiydk/Ghost:v3.0.x';
-					loads: #('ObjectGhost' 'GTSupport' 'StateSpecsSupport' 'ObjectMutation')];
-			project: 'GhostTests' copyFrom: 'GhostCore' with: [
+					repository: 'github://dionisiydk/Ghost:v3.0.x'];
+			project: 'GhostCore' copyFrom: 'Ghost' with: [
+		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'StateSpecsSupport' 'ObjectMutation')];
+			project: 'GhostTests' copyFrom: 'Ghost' with: [
 		 	    spec	loads: #('ObjectGhostTests' 'StateSpecsSupport' 'ClassGhostTests' 'ObjectMutationTests')];
 			package: 'Mocketry-Specs' with: [ spec requires: #('StateSpecs')];
 			package: 'Mocketry-Domain' with: [ spec requires: #('Mocketry-Specs' 'GhostCore')];
