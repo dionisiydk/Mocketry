@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 14:38",
+	"super" : "SpecOfObjectState",
+	"category" : "Mocketry-Specs",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"originalProcess"
+	],
+	"name" : "SpecOfAsynchMessage",
+	"type" : "normal"
+}

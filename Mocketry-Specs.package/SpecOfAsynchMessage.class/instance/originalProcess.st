@@ -1,0 +1,3 @@
+accessing
+originalProcess
+	^ originalProcess

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 15:00",
+	"super" : "SpecOfObjectState",
+	"category" : "Mocketry-Specs",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"requiredValue"
+	],
+	"name" : "SpecOfMessagePart",
+	"type" : "normal"
+}

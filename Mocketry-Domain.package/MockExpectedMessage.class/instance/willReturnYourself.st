@@ -1,0 +1,3 @@
+actions
+willReturnYourself
+	self will: MockExpectedReceiverReturn new

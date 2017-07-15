@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 14:13",
+	"super" : "Object",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [
+		"default"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MockRole",
+	"type" : "normal"
+}

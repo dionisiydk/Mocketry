@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "BaselineOf",
+	"category" : "BaselineOfMocketry",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BaselineOfMocketry",
+	"type" : "normal"
+}

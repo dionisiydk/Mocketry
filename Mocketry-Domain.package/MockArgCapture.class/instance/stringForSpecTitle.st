@@ -1,0 +1,4 @@
+printing
+stringForSpecTitle 
+
+	^'Arg ', name

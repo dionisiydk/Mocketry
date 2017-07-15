@@ -1,0 +1,4 @@
+capturing arguments
+captureArgumentsFrom: aMessageSend
+
+	messageSend captureArgumentsFrom: aMessageSend

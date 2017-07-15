@@ -1,0 +1,3 @@
+copy
+shallowCopy
+	self disableDefaultMethod

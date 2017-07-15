@@ -1,0 +1,16 @@
+{
+	"classtraitcomposition" : "GHTNotNilGhost classTrait + GHTIdentifiedGhost classTrait",
+	"classvars" : [ ],
+	"instvars" : [
+		"behaviour",
+		"name"
+	],
+	"name" : "Mock",
+	"commentStamp" : "DenisKudryashov 3/21/2016 10:59",
+	"super" : "GHObjectGhost",
+	"traitcomposition" : "GHTNotNilGhost + GHTIdentifiedGhost",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Mocketry-Domain"
+}

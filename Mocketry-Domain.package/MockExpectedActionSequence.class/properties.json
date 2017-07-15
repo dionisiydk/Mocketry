@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 13:19",
+	"super" : "MockExpectedAction",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"actions"
+	],
+	"name" : "MockExpectedActionSequence",
+	"type" : "normal"
+}

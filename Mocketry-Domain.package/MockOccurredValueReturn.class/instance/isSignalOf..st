@@ -1,0 +1,4 @@
+testing
+isSignalOf: anExceptionOrSpec
+
+	^false

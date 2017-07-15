@@ -1,0 +1,3 @@
+accessing
+currentMetaLevel
+	^CurrentExecutionEnvironment value currentMetaLevelForMocks

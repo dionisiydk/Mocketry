@@ -1,0 +1,4 @@
+accessing
+populateObjectsInteractionSpec: anObjectsInteractionSpec
+
+	anObjectsInteractionSpec addExpectedMessage: self

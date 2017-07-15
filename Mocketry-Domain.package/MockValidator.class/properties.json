@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 14:32",
+	"super" : "MockHelperRole",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"withNegation"
+	],
+	"name" : "MockValidator",
+	"type" : "normal"
+}

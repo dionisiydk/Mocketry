@@ -1,0 +1,3 @@
+printing
+stringForSpecValidation
+	^'"', value stringForSpecValidation , '"'

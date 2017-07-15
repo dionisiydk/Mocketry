@@ -1,0 +1,3 @@
+*Mocketry-Domain
+isAllowAutoStub
+	^false

@@ -1,0 +1,3 @@
+actions
+willCallOriginalMethod
+	self will: MockExpectedOriginalMethodCall new

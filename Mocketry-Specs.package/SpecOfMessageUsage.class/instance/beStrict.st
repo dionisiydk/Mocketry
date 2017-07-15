@@ -1,0 +1,4 @@
+accessing
+beStrict
+
+	maxCount := minCount

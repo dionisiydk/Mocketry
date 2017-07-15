@@ -1,0 +1,3 @@
+evaluating
+executeFor: anOccurredMessage 
+	^value

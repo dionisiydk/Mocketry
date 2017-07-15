@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Mocketry-Specs-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"usage"
+	],
+	"name" : "SpecOfMessageUsageTests",
+	"type" : "normal"
+}

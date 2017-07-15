@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 15:01",
+	"super" : "SpecOfMessagePart",
+	"category" : "Mocketry-Specs",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"argumentNumber"
+	],
+	"name" : "SpecOfMessageArgument",
+	"type" : "normal"
+}

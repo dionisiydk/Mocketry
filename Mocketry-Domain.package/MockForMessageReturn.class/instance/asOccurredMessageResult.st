@@ -1,0 +1,3 @@
+converting
+asOccurredMessageResult
+	^MockOccurredDefaultReturn with: self

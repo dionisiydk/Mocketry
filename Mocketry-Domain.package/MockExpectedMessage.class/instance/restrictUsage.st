@@ -1,0 +1,4 @@
+accessing
+restrictUsage
+	
+	spec restrictUsage

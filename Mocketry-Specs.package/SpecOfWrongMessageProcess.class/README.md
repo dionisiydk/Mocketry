@@ -1,0 +1,1 @@
+I represent failure of SpecOfAsynchMessage when actual message was occurred on wrong process

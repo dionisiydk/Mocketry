@@ -1,0 +1,2 @@
+I am a special hook to TestExecutionEnvironment to clean current mock behaviour and recover all global stubs.
+I play role of forked process during test. So TestExecutionEnvironment terminats me at the end of tests and I perform all required cleaning

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "dik 4/4/2016 17:45",
+	"super" : "Mock",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MockHelper",
+	"type" : "normal"
+}

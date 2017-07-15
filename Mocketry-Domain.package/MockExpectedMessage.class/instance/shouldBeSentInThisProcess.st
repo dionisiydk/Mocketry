@@ -1,0 +1,3 @@
+conditions
+shouldBeSentInThisProcess
+	conditionsSpec addSpec: SpecOfAsynchMessage forActiveProcess not

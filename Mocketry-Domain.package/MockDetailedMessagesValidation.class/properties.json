@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 14:05",
+	"super" : "MockOperationWithMessageSpec",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MockDetailedMessagesValidation",
+	"type" : "normal"
+}

@@ -1,0 +1,1 @@
+I represent expected message result which will execute original method of stubbed real object

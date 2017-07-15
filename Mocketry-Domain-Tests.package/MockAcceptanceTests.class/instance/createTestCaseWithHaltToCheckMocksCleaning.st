@@ -1,0 +1,4 @@
+running
+createTestCaseWithHaltToCheckMocksCleaning
+
+	^self class selector: #methodForTestWithHaltWhichCheckThatMockCleaningWorks 

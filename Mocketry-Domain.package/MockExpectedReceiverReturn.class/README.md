@@ -1,0 +1,1 @@
+I represent expected message result which will return receiver of intercepted message

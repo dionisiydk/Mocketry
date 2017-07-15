@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Mocketry-Domain-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"mockFromSuperclass"
+	],
+	"name" : "MockTestCaseSuperclass",
+	"type" : "normal"
+}

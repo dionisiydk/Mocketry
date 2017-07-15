@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "CustomHelp",
+	"category" : "Mocketry-Help",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MocketryHelp",
+	"type" : "normal"
+}

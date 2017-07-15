@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 15:23",
+	"super" : "SpecOfWrongMessageSend",
+	"category" : "Mocketry-Specs",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"wrongMessage",
+		"validMessages"
+	],
+	"name" : "SpecOfWrongMessagesOrder",
+	"type" : "normal"
+}

@@ -1,0 +1,4 @@
+*Mocketry-Domain
+allowsForkedProcessInheritMocks
+
+	^true

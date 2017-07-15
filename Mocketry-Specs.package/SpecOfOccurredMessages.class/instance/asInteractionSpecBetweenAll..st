@@ -1,0 +1,3 @@
+converting
+asInteractionSpecBetweenAll: expectedReceivers
+	self subclassResponsibility 

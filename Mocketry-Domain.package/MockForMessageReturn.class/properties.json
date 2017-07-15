@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 3/21/2016 11:03",
+	"super" : "MockHelper",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"message"
+	],
+	"name" : "MockForMessageReturn",
+	"type" : "normal"
+}

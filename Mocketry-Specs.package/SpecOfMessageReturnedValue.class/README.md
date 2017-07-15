@@ -1,0 +1,1 @@
+I specify required returned value from occurred message send. 

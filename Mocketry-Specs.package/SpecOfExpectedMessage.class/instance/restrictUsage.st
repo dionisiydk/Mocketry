@@ -1,0 +1,4 @@
+accessing
+restrictUsage
+
+	usage beStrict

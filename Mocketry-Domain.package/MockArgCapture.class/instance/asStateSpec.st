@@ -1,0 +1,3 @@
+specs
+asStateSpec
+	^self

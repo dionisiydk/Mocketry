@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "DenisKudryashov 2/6/2017 15:19",
+	"super" : "Object",
+	"category" : "Mocketry-Domain",
+	"classinstvars" : [
+		"instance"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MockCleaningProcessHook",
+	"type" : "normal"
+}
