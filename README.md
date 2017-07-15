@@ -5,7 +5,7 @@ Mocketry is mock objects framework\. It provides simplest way to stub any messag
 ## Installation
 ```Smalltalk
 Metacello new
-  baseline: 'Seamless';
+  baseline: 'Mocketry';
   repository: 'github://dionisiydk/Mocketry';
   load
 ```
