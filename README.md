@@ -1,8 +1,15 @@
+[![Build Status](https://travis-ci.org/dionisiydk/Mocketry.svg?branch=master)](https://travis-ci.org/dionisiydk/Mocketry)
 # Mocketry
 
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
 
-
+## Installation
+```Smalltalk
+Metacello new
+  baseline: 'Mocketry';
+  repository: 'github://dionisiydk/Mocketry';
+  load
+```
 ## Create mocks easily
 To create mock just use **\#new**
 ```Smalltalk
