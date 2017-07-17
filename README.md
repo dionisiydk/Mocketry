@@ -10,6 +10,13 @@ Metacello new
   repository: 'github://dionisiydk/Mocketry';
   load
 ```
+Use following snippet for stable dependency in your project baseline:
+```Smalltalk
+spec
+    baseline: 'Mocketry'
+    with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
+```
+
 ## Create mocks easily
 To create mock just use **\#new**
 ```Smalltalk
