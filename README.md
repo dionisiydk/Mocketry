@@ -4,19 +4,27 @@
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
 
 ## Installation
+Use following script for Pharo version >= 6:
 ```Smalltalk
 Metacello new
   baseline: 'Mocketry';
   repository: 'github://dionisiydk/Mocketry';
   load
 ```
-Use following snippet for stable dependency in your project baseline:
+To add dependency in your project baseline:
 ```Smalltalk
 spec
     baseline: 'Mocketry'
     with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
 ```
-
+For old Pharo versions project should be loaded from smalltalkhub:
+```Smalltalk
+Metacello new
+      smalltalkhubUser: 'dionisiy' project: 'Mocketry';
+      configuration: 'Mocketry';
+      version: #stable;
+      load.
+```
 ## Create mocks easily
 To create mock just use **\#new**
 ```Smalltalk
