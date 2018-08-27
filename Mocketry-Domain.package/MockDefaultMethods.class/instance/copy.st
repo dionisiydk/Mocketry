@@ -1,3 +1,3 @@
-copy
+copying
 copy
 	self disableDefaultMethod

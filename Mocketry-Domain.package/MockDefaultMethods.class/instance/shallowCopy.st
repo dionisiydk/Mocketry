@@ -1,3 +1,3 @@
-copy
+copying
 shallowCopy
 	self disableDefaultMethod

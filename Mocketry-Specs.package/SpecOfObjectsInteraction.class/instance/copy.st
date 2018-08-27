@@ -1,4 +1,4 @@
-accessing
+copying
 copy
 	| copy |
 	copy := super copy.
