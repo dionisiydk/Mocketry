@@ -6,4 +6,7 @@ testStubbingRealObjectShouldReturnRealClass
 	object stub.
 
 	actual := object class.
-	actual should be: Point
+	actual should be: Point.
+	self assert: (object isKindOf: Point).
+	object should beInstanceOf: Point.
+	object should beKindOf: Point.
