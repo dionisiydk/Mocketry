@@ -171,7 +171,7 @@ mock someMessage should be: #result2
 It is possible to verify arbitrary condition when expected message is going to be executed\. For example:
 ```Smalltalk
 mock := Mock new.
-mock someMessage stub
+mock stub someMessage
     when: [flag] is: (Kind of: Boolean);
     when: [flag] is: true;
     when: [ flag ] satisfy: [ :object | true or: [ false ] ].
