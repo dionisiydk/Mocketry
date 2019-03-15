@@ -482,8 +482,8 @@ mock1 := Mock new.
 mock2 := Mock new.
     
 [mock1 someMessage. mock2 someMessage2]
-    should strict satisfy:
+    should strictly satisfy:
 [ mock1 someMessage willReturn: 'some'.
 mock2 someMessage2].
 ```
-**\#strict** means that we want expected messages were happened in same order in which they were defined\.
+**\#strictly** means that we want expected messages were happened in same order in which they were defined\.
