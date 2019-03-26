@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "DenisKudryashov 4/18/2016 14:35",
+	"commentStamp" : "DenisKudriashov 3/26/2019 00:32",
 	"super" : "MockOccurredMessageProperty",
 	"category" : "Mocketry-Domain",
 	"classinstvars" : [ ],
