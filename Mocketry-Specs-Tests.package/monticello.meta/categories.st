@@ -1,1 +1,1 @@
-SystemOrganization addCategory: #'Mocketry-Specs-Tests'!
+SystemOrganization addCategory: 'Mocketry-Specs-Tests'!
