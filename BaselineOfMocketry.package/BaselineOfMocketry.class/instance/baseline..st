@@ -7,8 +7,7 @@ baseline: spec
 			baseline: 'StateSpecs' with: [
 		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.x'];
 			baseline: 'Ghost' with: [
-		 	    spec
-					repository: 'github://dionisiydk/Ghost:v3.1.x'];
+		 	    spec repository: 'github://pharo-ide/Ghost:v3.1.x'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
 		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'StateSpecsSupport' 'ObjectMutation')];
 			project: 'GhostTests' copyFrom: 'Ghost' with: [
