@@ -5,10 +5,10 @@ baseline: spec
 	spec for: #common do: [
 		spec 
 			baseline: 'StateSpecs' with: [
-		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.x'];
+		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.10'];
 			baseline: 'Ghost' with: [
 		 	    spec
-					repository: 'github://dionisiydk/Ghost:v3.1.x'];
+					repository: 'github://dionisiydk/Ghost:v3.1.2'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
 		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'StateSpecsSupport' 'ObjectMutation')];
 			project: 'GhostTests' copyFrom: 'Ghost' with: [
