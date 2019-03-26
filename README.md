@@ -445,6 +445,30 @@ result := mock someMessage.
     
 result should beReturnedFrom: [ mock someMessage ].
 ```
+### Verify the process where message was sent
+There are several validation messages which can be used to check the process where message was sent.
+
+You can validate that call was synchronous using **#inThisProcess** message:
+```Smalltalk
+mock := Mock new.
+
+mock someMessage.
+
+mock should receive someMessage inThisProcess.
+```
+You can validate that it was an asynchronous using **#inAnotherProcess**:
+```Smalltalk
+mock := Mock new.
+    
+[mock someMessage] forkAt: Processor activePriority + 1.
+    
+mock should receive someMessage inAnotherProcess.
+```
+And you can validate deeply the process where message was sent:
+```Smalltalk
+mock should receive someMessage inProcessWhich priority should equal: Processor activePriority + 1.
+```
+As usual any message chain is allowed after **#inProcessWhich** to validate specific process state
 ### Verify group of message sends
 There is way to verify group of message sends at once:
 ```Smalltalk
