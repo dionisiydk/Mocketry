@@ -1,7 +1,7 @@
 tests
 testCurrentBehaviourWhenDefaultEnvironment
 
-	| behaviour2 defaultEnv |
+	| behaviour2 |
 	[DefaultExecutionEnvironment beActive.	
 	behaviour := MockCurrentBehaviour value.
 	behaviour should not be: nil.

@@ -1,3 +1,3 @@
 printing
 stringForSpecTitle 
-	^message printWithoutResult 
+	^message printWithoutResult

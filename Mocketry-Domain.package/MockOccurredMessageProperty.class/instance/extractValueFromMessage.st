@@ -1,0 +1,3 @@
+initialization
+extractValueFromMessage
+	self subclassResponsibility 

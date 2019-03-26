@@ -1,7 +1,7 @@
 tests
 testCurrentMetaLevelWhenThereIsTestForCurrentEnvironment
 
-	| metaLevel env |
+	| metaLevel |
 	metaLevel := behaviour currentMetaLevel.
 	
 	metaLevel should be: GHMetaLevel empty

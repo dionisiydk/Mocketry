@@ -1,9 +1,9 @@
 extra validation
-which
+inProcessWhich
 
 	| result lastMessage |
 	result := self execute.
 	lastMessage := result occurredMessages last.
 	
 	^SpecOfObjectPropertyBuilder new 
-		property: (MockOccurredResultProperty of: lastMessage)
+		property: (MockOccurredMessageProcessProperty of: lastMessage)

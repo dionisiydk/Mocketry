@@ -2,7 +2,7 @@ I represent message send result as root parent of SpecOfObjectProperty.
 
 My instances can be created by 
 	
-	SpecOfOccurredResultProperty message: aMockOccurredMessage
+	SpecOfOccurredResultProperty of: aMockOccurredMessage
 
 Internal Representation and Key Implementation Points.
 
