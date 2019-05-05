@@ -5,7 +5,7 @@ baseline: spec
 	spec for: #common do: [
 		spec 
 			baseline: 'StateSpecs' with: [
-		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.10'];
+		 	    spec repository: 'github://dionisiydk/StateSpecs:v2.4.11'];
 			baseline: 'Ghost' with: [
 		 	    spec repository: 'github://pharo-ide/Ghost:v3.1.3'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
