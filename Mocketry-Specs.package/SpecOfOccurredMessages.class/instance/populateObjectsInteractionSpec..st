@@ -1,3 +1,0 @@
-accessing
-populateObjectsInteractionSpec: anObjectsInteractionSpec
-	self subclassResponsibility 

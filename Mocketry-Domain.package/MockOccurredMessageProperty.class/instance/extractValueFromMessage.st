@@ -1,3 +1,0 @@
-initialization
-extractValueFromMessage
-	self subclassResponsibility 

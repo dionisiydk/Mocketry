@@ -1,4 +1,0 @@
-running
-createTestCaseToCheckMocksCleaning
-
-	^self class selector: #methodForTestWhichCheckThatMockCleaningAfterEachTestIsWorking 

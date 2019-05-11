@@ -1,1 +1,0 @@
-I represent failure of SpecOfMessageSelector when actual message selector was wrong

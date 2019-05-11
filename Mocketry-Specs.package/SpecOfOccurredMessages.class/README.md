@@ -1,1 +1,0 @@
-I am base class for different kind of specifications for occurred message sends
