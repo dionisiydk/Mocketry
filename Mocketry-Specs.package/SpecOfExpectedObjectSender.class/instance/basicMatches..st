@@ -1,9 +1,7 @@
 testing
 basicMatches: occurredMessages
 
-	| actualSender |
-	actualSender := occurredMessages 
-		detect: [:each | each hasReturnedValueLike: object]
-		ifNone: [^false].
+	| actualSenders |
+	actualSenders := occurredMessages select: [:each | each hasReturnedValueLike: object].
 	
-	^requiredSender basicMatches: { actualSender }
+	^requiredSender basicMatches: actualSenders
