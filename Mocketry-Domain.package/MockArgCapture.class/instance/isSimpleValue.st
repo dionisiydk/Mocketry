@@ -1,3 +1,0 @@
-specs
-isSimpleValue
-	^true

@@ -1,3 +1,0 @@
-actions
-willStubRealResult
-	self will: MockExpectedMethodResultStub new

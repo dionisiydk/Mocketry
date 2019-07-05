@@ -1,4 +1,0 @@
-processing
-processTransformedMessageSend: anOccurredMessage by: aMockBehaviour
-
-	self subclassResponsibility 

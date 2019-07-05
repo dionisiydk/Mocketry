@@ -1,4 +1,0 @@
-accessing
-restrictUsage
-	
-	spec restrictUsage

@@ -1,3 +1,0 @@
-printing
-receiverDescription
-	^requiredValue description
