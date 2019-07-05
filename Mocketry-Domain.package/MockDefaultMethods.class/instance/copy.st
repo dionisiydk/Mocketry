@@ -1,3 +1,0 @@
-copy
-copy
-	self disableDefaultMethod

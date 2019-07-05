@@ -1,3 +1,0 @@
-accessing
-minCount
-	^ minCount

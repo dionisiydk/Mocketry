@@ -1,1 +1,0 @@
-I represent failure of SpecOfMessageResult when actual message result was wrong

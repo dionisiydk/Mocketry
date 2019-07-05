@@ -1,1 +1,0 @@
-I represent failure of SpecOfMessageReceiver when actual message receiver was wrong

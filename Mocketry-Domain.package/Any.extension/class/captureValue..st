@@ -1,2 +1,0 @@
-*Mocketry-Domain
-captureValue: anObject

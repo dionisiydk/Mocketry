@@ -1,3 +1,0 @@
-printing
-stringForSpecTitle 
-	^message printWithoutResult 

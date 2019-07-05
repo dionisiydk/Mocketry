@@ -1,3 +1,0 @@
-evaluating
-executeFor: anOccurredMessage 
-	^value
