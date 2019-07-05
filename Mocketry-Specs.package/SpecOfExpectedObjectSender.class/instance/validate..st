@@ -1,11 +1,10 @@
 validation
 validate: occurredMessages
-	| actualSender success |
-	actualSender := occurredMessages
-		detect: [ :each | each hasReturnedValueLike: object ]
-		ifNone: [ ^ self validateRequiredSenderFor: occurredMessages ].
-		
-	success := requiredSender matches: {actualSender}.
+	| actualSenders success |
+	actualSenders := occurredMessages	select: [ :each | each hasReturnedValueLike: object ].
+	actualSenders ifEmpty: [ ^ self validateRequiredSenderFor: occurredMessages ].
+	
+	success := requiredSender matches: actualSenders.
 	success ifTrue: [ ^ SpecOfValidationResult success ].
 	
-	^ SpecOfWrongObjectSender spec: self for: occurredMessages wrongSender: actualSender
+	^ SpecOfWrongObjectSender spec: self for: occurredMessages wrongSender: actualSenders last
