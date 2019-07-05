@@ -1,3 +1,0 @@
-validation
-basicMatches: anObject
-	^true

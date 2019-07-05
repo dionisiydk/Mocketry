@@ -1,4 +1,0 @@
-testing
-isInheritableByFork
-
-	^ownerEnvironment allowsForkedProcessInheritMocks

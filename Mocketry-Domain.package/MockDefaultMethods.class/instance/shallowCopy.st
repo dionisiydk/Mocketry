@@ -1,3 +1,0 @@
-copying
-shallowCopy
-	self disableDefaultMethod

@@ -1,4 +1,0 @@
-testing
-isReturnOf: anObjectOrSpec
-
-	^false

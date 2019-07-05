@@ -1,4 +1,0 @@
-accessing
-populateObjectsInteractionSpec: anObjectsInteractionSpec
-
-	anObjectsInteractionSpec addExpectedMessages: expectedMessages
