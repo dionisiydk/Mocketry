@@ -1,3 +1,0 @@
-printing
-printObject
-	^object printSimpleValue 

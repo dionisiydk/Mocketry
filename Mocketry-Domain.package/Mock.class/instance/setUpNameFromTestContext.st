@@ -1,4 +1,0 @@
-private
-setUpNameFromTestContext
-
-	self ghostBehaviour setUpContextNameFor: self

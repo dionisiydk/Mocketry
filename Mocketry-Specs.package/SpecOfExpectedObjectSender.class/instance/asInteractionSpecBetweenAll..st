@@ -1,4 +1,0 @@
-converting
-asInteractionSpecBetweenAll: expectedReceivers 
-
-	^self

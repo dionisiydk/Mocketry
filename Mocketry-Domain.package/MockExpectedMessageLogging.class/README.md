@@ -1,1 +1,0 @@
-I represent expected message action which will log received message send into transcript

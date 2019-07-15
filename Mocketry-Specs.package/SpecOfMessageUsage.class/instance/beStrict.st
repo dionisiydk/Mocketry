@@ -1,4 +1,0 @@
-accessing
-beStrict
-
-	maxCount := minCount

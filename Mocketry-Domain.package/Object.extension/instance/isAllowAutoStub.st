@@ -1,3 +1,0 @@
-*Mocketry-Domain
-isAllowAutoStub
-	^true

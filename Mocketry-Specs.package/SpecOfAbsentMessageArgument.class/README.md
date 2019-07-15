@@ -1,1 +1,0 @@
-I represent failure of SpecOfMessageArgument when given message had no particular argument number
