@@ -13,11 +13,11 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #MockOccurredMessageProperty,
-	#superclass : #SpecOfObjectItselfProperty,
+	#superclass : #SpecOfShouldExpressionObjectReceiver,
 	#instVars : [
 		'message'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }

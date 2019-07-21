@@ -15,7 +15,7 @@ SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenDenialApplied [
 	result := spec validate: message.
 		
 	result should be isFailure.
-	result where description should equal: 'Got raised #requiredExc from #receiver selector but it should not equal "#requiredExc"'
+	result where description should equal: 'Got raised #requiredExc from #receiver selector but it should not equal #requiredExc'
 ]
 
 { #category : #tests }
@@ -29,7 +29,7 @@ SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenRaisedErrorIsWrong 
 	result := spec validate: message.
 		
 	result should be isFailure.
-	result where description should equal: 'Got raised #wrongExc from #receiver selector but it should equal "#requiredExc"'
+	result where description should equal: 'Got raised #wrongExc from #receiver selector but it should equal #requiredExc'
 ]
 
 { #category : #tests }

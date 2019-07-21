@@ -13,7 +13,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenSenderWasWrong [
 	result := spec validate: (MockOccurredMessage receiver: 1 selector: #someMessage:with:with: arguments: {5. 6. 7}).
 	
 	result should be isFailure.
-	result where description should equal: '1 received someMessage: 5 with: 6 with: 7 but arg 2 should equal "10"'
+	result where description should equal: '1 received someMessage: 5 with: 6 with: 7 but arg 2 should equal 10'
 ]
 
 { #category : #tests }
@@ -25,7 +25,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenSpecWithDenial [
 	result := spec validate: (MockOccurredMessage receiver: 1 selector: #someMessage:with:with: arguments: {5. 10. 7}).
 	
 	result should be isFailure.
-	result where description should equal: '1 received someMessage: 5 with: 10 with: 7 but arg 2 should not equal "10"'
+	result where description should equal: '1 received someMessage: 5 with: 10 with: 7 but arg 2 should not equal 10'
 ]
 
 { #category : #tests }
@@ -37,7 +37,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgument 
 	result := spec validate: (MockOccurredMessage receiver: 1 selector: #someMessage: arguments: {5}).
 	
 	result should be isFailure.
-	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should equal "10"'
+	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should equal 10'
 ]
 
 { #category : #tests }
@@ -49,7 +49,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgumentA
 	result := spec validate: (MockOccurredMessage receiver: 1 selector: #someMessage: arguments: {5}).
 	
 	result should be isFailure.
-	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should not equal "10"'
+	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should not equal 10'
 ]
 
 { #category : #tests }

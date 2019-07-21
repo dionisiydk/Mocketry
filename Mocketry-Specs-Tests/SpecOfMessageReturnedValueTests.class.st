@@ -15,7 +15,7 @@ SpecOfMessageReturnedValueTests >> testFailedValidationWhenDenialApplied [
 	result := spec validate: message.
 		
 	result should be isFailure.
-	result where description should equal: 'Got "#requiredValue" from #receiver selector but it should not equal "#requiredValue"'
+	result where description should equal: 'Got #requiredValue from #receiver selector but it should not equal #requiredValue'
 ]
 
 { #category : #tests }
@@ -29,7 +29,7 @@ SpecOfMessageReturnedValueTests >> testFailedValidationWhenReturnedValueIsWrong 
 	result := spec validate: message.
 		
 	result should be isFailure.
-	result where description should equal: 'Got "#actualValue" from #receiver selector but it should equal "#requiredValue"'
+	result where description should equal: 'Got #actualValue from #receiver selector but it should equal #requiredValue'
 ]
 
 { #category : #tests }

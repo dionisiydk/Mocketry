@@ -6,7 +6,9 @@ SpecOfShouldExpression >> beDone [
 	| interactionSpec |
 	interactionSpec := SpecOfObjectsInteraction new.
 	
-	MockCurrentBehaviour useMockRole: (MockInteractionSpecBuilder for: interactionSpec) while: receiver.
+	MockCurrentBehaviour 
+		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
+		while: self validationSubject.
 	
 	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec.
 	
@@ -19,7 +21,9 @@ SpecOfShouldExpression >> beDoneInOrder [
 	| interactionSpec |
 	interactionSpec := SpecOfOrderedObjectsInteraction new.
 	
-	MockCurrentBehaviour useMockRole: (MockInteractionSpecBuilder for: interactionSpec) while: receiver.
+	MockCurrentBehaviour 
+		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
+		while: self validationSubject.
 	
 	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec
 ]
@@ -35,7 +39,7 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 		while: aBlockWithMessageSpec.
 		
 	expectedSender := interactionSpec expectedMessages last.
-	senderSpec := SpecOfExpectedObjectSender for: receiver returnedFrom: expectedSender.
+	senderSpec := SpecOfExpectedObjectSender for: self validationSubject returnedFrom: expectedSender.
 	senderSpec denial: withNegation.
 	
 	MockCurrentBehaviour validateOccurredMessagesBy: senderSpec
@@ -46,7 +50,7 @@ SpecOfShouldExpression >> expect [
 	
 	| teacher |
 	teacher := MockTeacher default.
-	MockCurrentBehaviour useMockRole: teacher while: receiver.
+	MockCurrentBehaviour useMockRole: teacher while: self validationSubject.
 	^teacher
 ]
 
@@ -60,17 +64,18 @@ SpecOfShouldExpression >> got [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
-	^MockExpectationsValidator for: receiver by: SpecOfObjectsInteraction new
+	^MockExpectationsValidator for: self validationSubject by: SpecOfObjectsInteraction new
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> receive [
 
-	^receiver currentMockBehaviour createMockToValidate: receiver withNegation: withNegation 
+	^self validationSubject currentMockBehaviour 
+		createMockToValidate: self validationSubject withNegation: withNegation 
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> strictly [
 	
-	^MockExpectationsValidator for: receiver by: SpecOfOrderedObjectsInteraction new
+	^MockExpectationsValidator for: self validationSubject by: SpecOfOrderedObjectsInteraction new
 ]
