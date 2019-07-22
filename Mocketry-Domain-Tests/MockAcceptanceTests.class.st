@@ -829,6 +829,14 @@ MockAcceptanceTests >> testValidationAutomockReceivedMessage [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationFutureMessageSend [
+
+	[mock someMessage] fork.
+	
+	mock should takeAWhile to receive someMessage
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess [
 
 	[mock someMessage] fork.

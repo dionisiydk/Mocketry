@@ -111,12 +111,6 @@ MockBehaviour >> createHelperMockAs: aMockRole [
 	^mock
 ]
 
-{ #category : #operations }
-MockBehaviour >> createMockToValidate: anObject withNegation: aBoolean [
-	
-	^self createHelperMockAs: (MockValidator for: anObject withNegation: aBoolean)
-]
-
 { #category : #accessing }
 MockBehaviour >> currentMetaLevel [
 	^CurrentExecutionEnvironment value currentMetaLevelForMocks

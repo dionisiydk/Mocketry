@@ -14,15 +14,15 @@ Class {
 	#name : #MockValidator,
 	#superclass : #MockHelperRole,
 	#instVars : [
-		'withNegation'
+		'shouldExpression'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
-MockValidator class >> for: anObject withNegation: aBoolean [
-	^(self for: anObject)
-		withNegation: aBoolean
+MockValidator class >> forExpression: aShouldExpression [
+	^(self for: aShouldExpression validationSubject)
+		shouldExpression: aShouldExpression
 ]
 
 { #category : #processing }
@@ -38,7 +38,7 @@ MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehav
 
 	| spec |	
 	spec := SpecOfExpectedMessage from: anOccurredMessage.
-	spec denial: withNegation.
+	spec denial: shouldExpression withNegation.
 	
 	aMockBehaviour validateOccurredMessagesBy: spec.
 	
@@ -46,11 +46,11 @@ MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehav
 ]
 
 { #category : #accessing }
-MockValidator >> withNegation [
-	^ withNegation
+MockValidator >> shouldExpression [
+	^ shouldExpression
 ]
 
 { #category : #accessing }
-MockValidator >> withNegation: anObject [
-	withNegation := anObject
+MockValidator >> shouldExpression: anObject [
+	shouldExpression := anObject
 ]
