@@ -41,7 +41,7 @@ MockOccurredValueReturn >> printOn: aStream [
 
 { #category : #printing }
 MockOccurredValueReturn >> stringForSpecValidation [
-	^'"', value stringForSpecValidation , '"'
+	^value stringForSpecValidation
 ]
 
 { #category : #accessing }

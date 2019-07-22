@@ -27,8 +27,8 @@ MockDetailedMessagesValidation >> inProcessWhich [
 	result := self execute.
 	lastMessage := result occurredMessages last.
 	
-	^SpecOfShouldExpressionReceiverBuilder new 
-		property: (MockOccurredMessageProcessProperty of: lastMessage)
+	^SpecOfShouldExpressionReceiverBuilder 
+		startingWith: (MockOccurredMessageProcessProperty of: lastMessage)
 ]
 
 { #category : #'extra validation' }
@@ -38,6 +38,6 @@ MockDetailedMessagesValidation >> which [
 	result := self execute.
 	lastMessage := result occurredMessages last.
 	
-	^SpecOfShouldExpressionReceiverBuilder new 
-		property: (MockOccurredResultProperty of: lastMessage)
+	^SpecOfShouldExpressionReceiverBuilder 
+		startingWith: (MockOccurredResultProperty of: lastMessage)
 ]

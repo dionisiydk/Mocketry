@@ -9,6 +9,6 @@ Class {
 
 { #category : #printing }
 SpecOfWrongMessageReceiver >> description [
-	^subject printMessage, ' is sent to "', subject receiver stringForSpecValidation
-			, '" but it ', spec receiverDescription
+	^subject printMessage, ' is sent to ', subject receiver stringForSpecValidation
+			, ' but it ', spec receiverDescription
 ]
