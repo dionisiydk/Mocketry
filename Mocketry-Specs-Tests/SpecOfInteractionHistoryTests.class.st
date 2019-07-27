@@ -5,6 +5,24 @@ Class {
 }
 
 { #category : #tests }
+SpecOfInteractionHistoryTests >> testFailedValidation [
+	
+	|  result spec history |
+	
+	spec := SpecOfInteractionHistory with: ( 
+		SpecOfExpectedMessage from: (MockOccurredMessage 
+			receiver: (Kind of: Symbol) selector: #selector3)).
+			
+	history := MockInteractionHistory withAll: {
+		MockOccurredMessage receiver: #receiver selector: #selector}.
+	
+	result := spec validate: history.
+	
+	result should not be isSuccess.
+	result where description should equal: '#receiver never received selector3'
+]
+
+{ #category : #tests }
 SpecOfInteractionHistoryTests >> testMatches [
 	
 	| spec history |
