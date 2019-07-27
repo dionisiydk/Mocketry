@@ -32,5 +32,5 @@ SpecOfInteractionHistory >> validate: anInteractionHistory [
 	concreteObjectInteraction := expectedBehaviourSpec 
 		asInteractionSpecBetweenAll: anInteractionHistory involvedObjects.
 	
-	^concreteObjectInteraction validate: anInteractionHistory occuredMessages
+	^concreteObjectInteraction validate: anInteractionHistory occurredMessages
 ]

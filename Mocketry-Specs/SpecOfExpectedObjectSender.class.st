@@ -64,6 +64,11 @@ SpecOfExpectedObjectSender >> object: anObjectOrSpec [
 	object := anObjectOrSpec asStateSpec
 ]
 
+{ #category : #accessing }
+SpecOfExpectedObjectSender >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
+	self shouldNotImplement 
+]
+
 { #category : #printing }
 SpecOfExpectedObjectSender >> printObject [
 	^object printSimpleValue 

@@ -23,5 +23,5 @@ SpecOfInteractionHistoryTests >> testSucceedValidation [
 	
 	result should be isSuccess.
 	result should beInstanceOf: SpecOfMessagesValidationSuccess.
-	result where occurredMessages should equal: {history firstMessage. history lastMessage}
+	result where occurredMessages should equal: {history lastMessage}
 ]

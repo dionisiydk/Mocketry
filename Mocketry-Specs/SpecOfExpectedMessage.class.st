@@ -58,7 +58,7 @@ SpecOfExpectedMessage >> asInteractionSpecBetweenAll: expectedReceivers [
 	| result copy |
 	self isAboutConcreteReceiver ifTrue: [ ^ self ].
 	
-	result := SpecOfObjectsInteraction new.
+	result := SpecOfMultipleMessages new.
 	expectedReceivers	do: [ :eachReceiver | 
 			(messageSend receiver matches: eachReceiver) ifTrue: [ 
 				copy := self copy.
@@ -154,9 +154,9 @@ SpecOfExpectedMessage >> messageSend: anObject [
 ]
 
 { #category : #accessing }
-SpecOfExpectedMessage >> populateObjectsInteractionSpec: anObjectsInteractionSpec [
+SpecOfExpectedMessage >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 
-	anObjectsInteractionSpec addExpectedMessage: self
+	aMultipleMessagesSpec addExpectedMessage: self
 ]
 
 { #category : #printing }

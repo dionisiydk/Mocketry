@@ -1,14 +1,14 @@
 Class {
-	#name : #SpecOfOrderedObjectsInteractionTests,
+	#name : #SpecOfExpectedMessageSequenceTests,
 	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#category : #'Mocketry-Specs-Tests'
 }
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testFailedValidationWhenMessageWasNotOccured [
+SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenMessageWasNotOccured [
 	
 	| spec messages result |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector3).
@@ -26,10 +26,10 @@ SpecOfOrderedObjectsInteractionTests >> testFailedValidationWhenMessageWasNotOcc
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testFailedValidationWhenWrongOrder [
+SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenWrongOrder [
 	
 	| spec messages result |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector2).
@@ -49,10 +49,10 @@ SpecOfOrderedObjectsInteractionTests >> testFailedValidationWhenWrongOrder [
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testMatches [
+SpecOfExpectedMessageSequenceTests >> testMatches [
 	
 	| spec messages |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
@@ -68,10 +68,10 @@ SpecOfOrderedObjectsInteractionTests >> testMatches [
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testMatchesWhenSomeMessageExpectedTwice [
+SpecOfExpectedMessageSequenceTests >> testMatchesWhenSomeMessageExpectedTwice [
 	
 	| spec messages |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
@@ -89,10 +89,10 @@ SpecOfOrderedObjectsInteractionTests >> testMatchesWhenSomeMessageExpectedTwice 
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testNotMatchesWhenMessagesAreOccuredInWrongOrder [
+SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenMessagesAreOccuredInWrongOrder [
 	
 	| spec messages |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).		
@@ -108,10 +108,10 @@ SpecOfOrderedObjectsInteractionTests >> testNotMatchesWhenMessagesAreOccuredInWr
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testNotMatchesWhenSomeMessageWasNotOccured [
+SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenSomeMessageWasNotOccured [
 	
 	| spec messages |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
@@ -125,10 +125,10 @@ SpecOfOrderedObjectsInteractionTests >> testNotMatchesWhenSomeMessageWasNotOccur
 ]
 
 { #category : #tests }
-SpecOfOrderedObjectsInteractionTests >> testSucceedValidation [
+SpecOfExpectedMessageSequenceTests >> testSucceedValidation [
 	
 	| spec messages result |
-	spec := SpecOfOrderedObjectsInteraction new.
+	spec := SpecOfExpectedMessageSequence new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).

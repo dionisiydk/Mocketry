@@ -4,7 +4,7 @@ Extension { #name : #SpecOfShouldExpression }
 SpecOfShouldExpression >> beDone [
 
 	| interactionSpec |
-	interactionSpec := SpecOfObjectsInteraction new.
+	interactionSpec := SpecOfMultipleMessages new.
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
@@ -19,7 +19,7 @@ SpecOfShouldExpression >> beDone [
 SpecOfShouldExpression >> beDoneInOrder [
 
 	| interactionSpec |
-	interactionSpec := SpecOfOrderedObjectsInteraction new.
+	interactionSpec := SpecOfExpectedMessageSequence new.
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
@@ -32,7 +32,7 @@ SpecOfShouldExpression >> beDoneInOrder [
 SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 
 	| interactionSpec expectedSender senderSpec |
-	interactionSpec := SpecOfObjectsInteraction new.
+	interactionSpec := SpecOfMultipleMessages new.
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
@@ -64,7 +64,7 @@ SpecOfShouldExpression >> got [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
-	^MockExpectationsValidator for: self validationSubject by: SpecOfObjectsInteraction new
+	^MockExpectationsValidator for: self validationSubject by: SpecOfMultipleMessages new
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -77,5 +77,5 @@ SpecOfShouldExpression >> receive [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> strictly [
 	
-	^MockExpectationsValidator for: self validationSubject by: SpecOfOrderedObjectsInteraction new
+	^MockExpectationsValidator for: self validationSubject by: SpecOfExpectedMessageSequence new
 ]
