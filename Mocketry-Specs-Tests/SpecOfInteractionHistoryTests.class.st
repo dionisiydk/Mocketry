@@ -5,12 +5,28 @@ Class {
 }
 
 { #category : #tests }
+SpecOfInteractionHistoryTests >> testMatches [
+	
+	| spec history |
+	
+	spec := SpecOfInteractionHistory with: ( 
+		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3)).
+			
+	history := MockInteractionHistory withAll: {
+		MockOccurredMessage receiver: #receiver selector: #selector.
+		MockOccurredMessage receiver: #receiver2 selector: #selector2.
+		MockOccurredMessage receiver: #receiver3 selector: #selector3
+	}.
+	
+	self assert: (spec matches: history)
+]
+
+{ #category : #tests }
 SpecOfInteractionHistoryTests >> testSucceedValidation [
 	
 	|  result spec history |
 	
-	spec := SpecOfInteractionHistory new.
-	spec expectedBehaviourSpec: ( 
+	spec := SpecOfInteractionHistory with: ( 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3)).
 			
 	history := MockInteractionHistory withAll: {

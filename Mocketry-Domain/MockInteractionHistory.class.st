@@ -2,6 +2,19 @@
 I represent the history of object interaction.
 I keep all involved objects and messages which were sent to them.
 
+I am used by MockBehavior to accumulate message sends between objects.
+But you can create my instance on given list of messages using: 
+
+	MockInteractionHistory withAll: {
+		MockOccurredMessage receiver: #receiver selector: #selector.
+		MockOccurredMessage receiver: #receiver2 selector: #selector2.
+	}.
+
+Following API is used to register objects and messages: 
+
+- recordObject:
+- recordMessage:
+	
 Internal Representation and Key Implementation Points.
 
     Instance Variables
