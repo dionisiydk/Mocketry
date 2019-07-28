@@ -939,6 +939,17 @@ MockAcceptanceTests >> testValidationMessagesCountByTwice [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationMessagesCountForNegatedSendSpec [
+
+	| error |
+	mock someMessage.
+	mock someMessage.
+	
+	error := [mock should not receive someMessage2 twice] should raise: MessageNotUnderstood.
+	error where message selector should be: #twice
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationOfExpectedMessageSequence [
 
 	mock someMessage.

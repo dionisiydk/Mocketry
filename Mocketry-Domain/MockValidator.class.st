@@ -36,10 +36,11 @@ MockValidator >> anyMessage [
 { #category : #processing }
 MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 
-	| spec |	
+	| spec result |	
 	spec := SpecOfExpectedMessage from: anOccurredMessage.
 	
-	shouldExpression evaluateWith: spec forMockBehaviour: aMockBehaviour.
+	result := shouldExpression evaluateWith: spec forMockBehaviour: aMockBehaviour.
+	shouldExpression withNegation ifTrue: [ ^result ].
 	
 	^MockDetailedMessagesValidation for: shouldExpression on: spec
 ]
