@@ -11,13 +11,22 @@ Look at my superclass comment and methods
 Class {
 	#name : #MockDetailedMessagesValidation,
 	#superclass : #MockOperationWithMessageSpec,
-	#category : 'Mocketry-Domain'
+	#instVars : [
+		'shouldExpression'
+	],
+	#category : #'Mocketry-Domain'
 }
+
+{ #category : #'instance creation' }
+MockDetailedMessagesValidation class >> for: aShouldExpression on: anExpectedMessageSpec [
+	^(self on: anExpectedMessageSpec)
+		shouldExpression: aShouldExpression 
+]
 
 { #category : #execution }
 MockDetailedMessagesValidation >> execute [
 	
-	^MockCurrentBehaviour validateOccurredMessagesBy: spec
+	^shouldExpression evaluateWith: spec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'extra validation' }
@@ -29,6 +38,16 @@ MockDetailedMessagesValidation >> inProcessWhich [
 	
 	^SpecOfShouldExpressionReceiverBuilder 
 		startingWith: (MockOccurredMessageProcessProperty of: lastMessage)
+]
+
+{ #category : #accessing }
+MockDetailedMessagesValidation >> shouldExpression [
+	^ shouldExpression
+]
+
+{ #category : #accessing }
+MockDetailedMessagesValidation >> shouldExpression: anObject [
+	shouldExpression := anObject
 ]
 
 { #category : #'extra validation' }

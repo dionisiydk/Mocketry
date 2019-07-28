@@ -837,6 +837,15 @@ MockAcceptanceTests >> testValidationFutureMessageSend [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationFutureMessageSendWhichShouldBeSentTwice [
+
+	mock someMessage.
+	[mock someMessage] fork.
+	
+	mock should takeAWhile to receive someMessage twice
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess [
 
 	[mock someMessage] fork.

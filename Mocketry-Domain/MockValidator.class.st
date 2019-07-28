@@ -41,7 +41,7 @@ MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehav
 	
 	shouldExpression evaluateWith: spec forMockBehaviour: aMockBehaviour.
 	
-	^MockDetailedMessagesValidation on: spec
+	^MockDetailedMessagesValidation for: shouldExpression on: spec
 ]
 
 { #category : #accessing }
