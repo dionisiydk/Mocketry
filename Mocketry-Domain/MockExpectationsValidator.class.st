@@ -60,7 +60,7 @@ MockExpectationsValidator >> satisfy: blockWithExpectations [
 	
 	verifiedBlock value.
 	interactionSpec expectedMessages: teacher convertExpectationsToSpecs.
-	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec
+	self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value.
 ]
 
 { #category : #accessing }

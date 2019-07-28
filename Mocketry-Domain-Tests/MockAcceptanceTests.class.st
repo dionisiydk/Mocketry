@@ -930,7 +930,7 @@ MockAcceptanceTests >> testValidationMessagesCountByTwice [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteraction [
+MockAcceptanceTests >> testValidationOfExpectedMessageSequence [
 
 	mock someMessage.
 	mock someMessage2.
@@ -942,7 +942,7 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteraction [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessageShouldHappenTwice [
+MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
 	mock someMessage.
@@ -955,7 +955,7 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessageS
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessagesShouldHappenAtDifferentTime [
+MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessagesShouldHappenAtDifferentTime [
 
 	mock someMessage.
 	mock someMessage2.
@@ -968,7 +968,25 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessages
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteraction [
+MockAcceptanceTests >> testValidationOfFutureExpectedMessageSequence [
+
+	mock someMessage.
+	[mock someMessage2] fork.
+		
+	[mock someMessage. mock someMessage2] should takeAWhile to beDoneInOrder
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationOfFutureMultipleMessageSends [
+
+	[mock someMessage.
+	mock someMessage2] fork.
+	
+	[mock someMessage2. mock someMessage] should takeAWhile to beDone
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationOfMultipleMessageSends [
 
 	mock someMessage.
 	mock someMessage2.
@@ -980,7 +998,7 @@ MockAcceptanceTests >> testValidationOfUnorderedObjectsInteraction [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWhenSameMessageShouldHappenTwice [
+MockAcceptanceTests >> testValidationOfMultipleMessageSendsWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
 	mock someMessage2.
@@ -990,7 +1008,7 @@ MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWhenSameMessag
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWithUsageSpecs [
+MockAcceptanceTests >> testValidationOfMultipleMessageSendsWithUsageSpecs [
 	
 	mock someMessage.
 	mock someMessage.
@@ -1103,6 +1121,18 @@ MockAcceptanceTests >> testValidationThatObjectIsResultOfDeepMessageSendWhichWas
 	
 	result should beReturnedFrom: [mock x].
 	result should beReturnedFrom: [rect right].
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationThatObjectIsResultOfFutureMessageSend [
+
+	| array |
+	array := {mock}.
+	array stub.
+	
+	[array first] fork.
+	
+	mock should takeAWhile to beReturnedFrom: [array first]
 ]
 
 { #category : #tests }
