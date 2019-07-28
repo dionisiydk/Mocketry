@@ -159,6 +159,16 @@ MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgument [
+
+	mock stub someMessageWith: Arg argName.
+	
+ 	[mock someMessageWith: #argValue] fork.
+	
+	Arg argName should takeAWhile to be: #argValue
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testChoosingPreferredExpectedMessageByArgs [
 
 	(mock stub someMessageWith: 2) willReturn: #resultFor2.
