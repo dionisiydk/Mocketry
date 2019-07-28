@@ -37,7 +37,6 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 		
 	expectedSender := interactionSpec expectedMessages last.
 	senderSpec := SpecOfExpectedObjectSender for: self validationSubject returnedFrom: expectedSender.
-	senderSpec denial: withNegation.
 	
 	^self evaluateWith: senderSpec forMockBehaviour: MockCurrentBehaviour value
 ]
