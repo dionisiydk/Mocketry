@@ -38,9 +38,10 @@ MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehav
 
 	| spec |	
 	spec := SpecOfExpectedMessage from: anOccurredMessage.
-	spec denial: shouldExpression withNegation.
 	
-	aMockBehaviour validateOccurredMessagesBy: spec.
+	shouldExpression 
+		receiver: (SpecOfShouldExpressionObjectReceiver from: aMockBehaviour interactionHistory);
+		evaluateWith: (SpecOfInteractionHistory with: spec).
 	
 	^MockDetailedMessagesValidation on: spec
 ]

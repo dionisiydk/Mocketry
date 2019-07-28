@@ -135,6 +135,16 @@ MockBehaviour >> initialize [
 	self replayMocks.
 ]
 
+{ #category : #accessing }
+MockBehaviour >> interactionHistory [
+	^ interactionHistory
+]
+
+{ #category : #accessing }
+MockBehaviour >> interactionHistory: anObject [
+	interactionHistory := anObject
+]
+
 { #category : #testing }
 MockBehaviour >> isInheritableByFork [
 

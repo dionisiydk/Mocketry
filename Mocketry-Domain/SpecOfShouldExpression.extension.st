@@ -2,7 +2,6 @@ Extension { #name : #SpecOfShouldExpression }
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> beDone [
-
 	| interactionSpec |
 	interactionSpec := SpecOfMultipleMessages new.
 	

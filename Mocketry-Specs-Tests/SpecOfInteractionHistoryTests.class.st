@@ -59,3 +59,20 @@ SpecOfInteractionHistoryTests >> testSucceedValidation [
 	result should beInstanceOf: SpecOfMessagesValidationSuccess.
 	result where occurredMessages should equal: {history lastMessage}
 ]
+
+{ #category : #tests }
+SpecOfInteractionHistoryTests >> testSucceedValidationWithNegation [
+	
+	|  result spec history |
+	
+	spec := SpecOfInteractionHistory with: ( 
+		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3)).
+	spec := spec not.
+			
+	history := MockInteractionHistory withAll: {
+		MockOccurredMessage receiver: #receiver selector: #selector}.
+	
+	result := spec validate: history.
+	
+	result should be isSuccess
+]

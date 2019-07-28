@@ -73,6 +73,12 @@ SpecOfInteractionHistory >> expectedBehaviourSpec: anObject [
 	expectedBehaviourSpec := anObject
 ]
 
+{ #category : #accessing }
+SpecOfInteractionHistory >> invertChildren [
+	super invertChildren.
+	expectedBehaviourSpec invert
+]
+
 { #category : #validation }
 SpecOfInteractionHistory >> validate: anInteractionHistory [
 	| concreteObjectInteraction |
