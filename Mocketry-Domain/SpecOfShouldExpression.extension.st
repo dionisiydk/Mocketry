@@ -58,13 +58,6 @@ SpecOfShouldExpression >> expect [
 ]
 
 { #category : #'*Mocketry-Domain' }
-SpecOfShouldExpression >> got [
-	self deprecated: 'use #receive instead'.
-	
-	^self receive
-]
-
-{ #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
 	^MockExpectationsValidator for: self by: SpecOfMultipleMessages new
