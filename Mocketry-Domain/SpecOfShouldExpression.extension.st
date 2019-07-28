@@ -9,9 +9,7 @@ SpecOfShouldExpression >> beDone [
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
 		while: self validationSubject.
 	
-	self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value.
-		
-	^interactionSpec
+	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -24,7 +22,7 @@ SpecOfShouldExpression >> beDoneInOrder [
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
 		while: self validationSubject.
 	
-	self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
+	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -41,7 +39,7 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 	senderSpec := SpecOfExpectedObjectSender for: self validationSubject returnedFrom: expectedSender.
 	senderSpec denial: withNegation.
 	
-	self evaluateWith: senderSpec forMockBehaviour: MockCurrentBehaviour value.
+	^self evaluateWith: senderSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -70,7 +68,7 @@ SpecOfShouldExpression >> got [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
-	^MockExpectationsValidator for: self validationSubject by: SpecOfMultipleMessages new
+	^MockExpectationsValidator for: self by: SpecOfMultipleMessages new
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -83,5 +81,5 @@ SpecOfShouldExpression >> receive [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> strictly [
 	
-	^MockExpectationsValidator for: self validationSubject by: SpecOfExpectedMessageSequence new
+	^MockExpectationsValidator for: self by: SpecOfExpectedMessageSequence new
 ]
