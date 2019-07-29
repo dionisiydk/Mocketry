@@ -16,3 +16,15 @@ MockConcreteCallArgReceiver >> callNumber [
 MockConcreteCallArgReceiver >> callNumber: anObject [
 	callNumber := anObject
 ]
+
+{ #category : #printing }
+MockConcreteCallArgReceiver >> stringForSpecValidation [
+
+	^super stringForSpecValidation, ' in ', callNumber asString, 'th call'
+]
+
+{ #category : #accessing }
+MockConcreteCallArgReceiver >> validationSubject [
+	
+	^argCapture fromCall: callNumber
+]

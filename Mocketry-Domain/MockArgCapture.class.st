@@ -77,9 +77,7 @@ MockArgCapture >> captureValue: anObject [
 { #category : #'delegation messages' }
 MockArgCapture >> doesNotUnderstand: aMessage [
 	
-	self validateSingleValue.
-	
-	^aMessage sendTo: self fromFirstCall
+	^self where doesNotUnderstand: aMessage
 ]
 
 { #category : #accessing }
@@ -142,12 +140,7 @@ MockArgCapture >> printOn: aStream [
 { #category : #specs }
 MockArgCapture >> should [ 
 
-	| expression |
-	self validateSingleValue.
-	
-	expression := self fromFirstCall should.
-	expression receiverOwner: self.
-	^expression
+	^(MockSingleCallArgReceiver from: self) should
 ]
 
 { #category : #printing }
@@ -200,7 +193,5 @@ MockArgCapture >> values: anObject [
 { #category : #specs }
 MockArgCapture >> where [ 
 
-	self validateSingleValue.
-	
-	^self fromFirstCall where
+	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockSingleCallArgReceiver from: self)
 ]
