@@ -80,6 +80,11 @@ MockArgCapture >> doesNotUnderstand: aMessage [
 	^self where doesNotUnderstand: aMessage
 ]
 
+{ #category : #initialization }
+MockArgCapture >> ensureMessageSpec [
+	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
+]
+
 { #category : #accessing }
 MockArgCapture >> fromCall: callNumber [
 	
@@ -139,7 +144,8 @@ MockArgCapture >> printOn: aStream [
 
 { #category : #specs }
 MockArgCapture >> should [ 
-
+	self ensureMessageSpec.
+	
 	^(MockSingleCallArgReceiver from: self) should
 ]
 
@@ -158,7 +164,7 @@ MockArgCapture >> validate: anObject [
 { #category : #validation }
 MockArgCapture >> validateNumberOfCalls: callsNumber [
 	| expectedMessageSpec |
-	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
+	self ensureMessageSpec.
 	
 	expectedMessageSpec := SpecOfExpectedMessage new.
 	expectedMessageSpec messageSend: messageSpec.
@@ -177,7 +183,7 @@ MockArgCapture >> validateSingleValue [
 
 	self validateNumberOfCalls: 1.
 	
-	values asSet size > 1 ifTrue: [ self error: 'Multiple args was captured! Choose concrete by #fromCall:' ].
+	values asSet size > 1 ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall:' ].
 ]
 
 { #category : #accessing }

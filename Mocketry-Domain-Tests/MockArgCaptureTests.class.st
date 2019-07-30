@@ -17,46 +17,6 @@ MockArgCaptureTests >> prepareCapture [
 ]
 
 { #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMessageSpecDefinedButNoArgumentCaptured [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	
-	arg values: #().
-	
-	[arg should] should fail
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMessageWasNotOccurred [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	arg messageSpec selector requiredValue: #wrongSelector.
-	
-	arg values: #().
-	
-	[arg should] should raise: SpecOfFailed
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMultipleDifferentArgsWasCaptured [
-
-	| arg |
-	
-	arg := self prepareCapture.	
-	arg values: #(arg1).
-	
-	[arg should] should not fail.
-
-	arg values: #(arg1 arg2).	
-	
-	[arg should] should fail
-]
-
-{ #category : #tests }
 MockArgCaptureTests >> testApplyingShouldWhenNoMessageSpecDefined [
 
 	| arg |

@@ -144,6 +144,16 @@ MockAcceptanceTests >> testCapturingArgument [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentWhichMessageWasNotOccurred [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+	error := [Arg argName should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: Arg argName'
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 
 	| rect |
@@ -166,6 +176,19 @@ MockAcceptanceTests >> testCapturingFutureArgument [
  	[mock someMessageWith: #argValue] fork.
 	
 	Arg argName should takeAWhile to be: #argValue
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	mock someMessageWith: #arg1.
+	Arg argName should be: #arg1.
+	
+	mock someMessageWith: #arg2.
+	error := [Arg argName should be: #arg1] should fail.
+	error where messageText should includeSubstring: 'multiple args were captured'
 ]
 
 { #category : #tests }
