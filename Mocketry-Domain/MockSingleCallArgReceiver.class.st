@@ -8,5 +8,5 @@ Class {
 MockSingleCallArgReceiver >> validationSubject [
 	argCapture validateSingleValue.
 	
-	^argCapture fromFirstCall
+	^argCapture valueFromCall: 1
 ]

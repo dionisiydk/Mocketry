@@ -187,6 +187,14 @@ MockArgCapture >> validateSingleValue [
 ]
 
 { #category : #accessing }
+MockArgCapture >> valueFromCall: callNumber [
+	
+	self validateNumberOfCalls: callNumber.
+	
+	^values at: callNumber
+]
+
+{ #category : #accessing }
 MockArgCapture >> values [
 	^ values
 ]
