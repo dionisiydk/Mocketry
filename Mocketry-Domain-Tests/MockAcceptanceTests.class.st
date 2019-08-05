@@ -144,7 +144,7 @@ MockAcceptanceTests >> testCapturingAllValuesOfArgument [
 	
 	Arg argName fromAllCalls should beInstanceOf: Symbol.
 	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
-	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but it should be #argValue'
+	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but all should be #argValue'
 ]
 
 { #category : #tests }
@@ -168,6 +168,19 @@ MockAcceptanceTests >> testCapturingArgument [
 	Arg argName should be: #argValue.
 	error := [ Arg argName should be: #wrongValue ] should raise: SpecOfFailed.
 	error where messageText should equal: 'Got #argValue from #argName but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: 10@20.
+	
+	Arg argName where x should be: 10.
+	error := [ Arg argName where x should be: -1 ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got 10 from #argName x but it should be -1'
 ]
 
 { #category : #tests }

@@ -38,6 +38,18 @@ MockArgCaptureTests >> testApplyingWhereExpression [
 ]
 
 { #category : #tests }
+MockArgCaptureTests >> testApplyingWhereExpressionWhenThereAreMultipleValues [
+
+	| arg |
+	
+	arg := self prepareCapture.
+	
+	arg values: {2@3. 2@3}.
+	
+	[arg where x should be: 2] should fail
+]
+
+{ #category : #tests }
 MockArgCaptureTests >> testCapturingArguments [
 
 	| arg |
@@ -65,30 +77,6 @@ MockArgCaptureTests >> testConvertingToMessageArgumentSpec [
 ]
 
 { #category : #tests }
-MockArgCaptureTests >> testDelegatingMessagesToFirstValue [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	
-	arg values: {2@3}.
-	
-	arg x should be: 2
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testDelegatingMessagesToFirstValueWhenThereAreMultipleValues [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	
-	arg values: {2@3. 10@20}.
-	
-	[arg x] should fail
-]
-
-{ #category : #tests }
 MockArgCaptureTests >> testFromAllCall [
 
 	| arg shouldReceiver |
@@ -96,7 +84,7 @@ MockArgCaptureTests >> testFromAllCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromAllCalls.
-	shouldReceiver class should beInstanceOf: MockAllValuesArgReceiver.
+	shouldReceiver class should be: MockAllValuesArgReceiver.
 	self assert: shouldReceiver argCapture == arg
 ]
 
@@ -108,7 +96,7 @@ MockArgCaptureTests >> testFromConcreteCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromCall: 2.
-	shouldReceiver class should beInstanceOf: MockConcreteCallArgReceiver.
+	shouldReceiver class should be: MockConcreteCallArgReceiver.
 	shouldReceiver callNumber should equal: 2.
 	self assert: shouldReceiver argCapture == arg
 ]
@@ -121,7 +109,7 @@ MockArgCaptureTests >> testFromFirstCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromFirstCall.
-	shouldReceiver class should beInstanceOf: MockConcreteCallArgReceiver.
+	shouldReceiver class should be: MockConcreteCallArgReceiver.
 	shouldReceiver callNumber should equal: 1.
 	self assert: shouldReceiver argCapture == arg
 ]
@@ -134,7 +122,7 @@ MockArgCaptureTests >> testFromLastCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromLastCall.
-	shouldReceiver class should beInstanceOf: MockLastCallArgReceiver.
+	shouldReceiver class should be: MockLastCallArgReceiver.
 	self assert: shouldReceiver argCapture == arg
 ]
 

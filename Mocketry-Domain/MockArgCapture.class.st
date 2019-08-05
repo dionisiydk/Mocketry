@@ -43,6 +43,12 @@ MockArgCapture class >> named: aString [
 		name: aString
 ]
 
+{ #category : #converting }
+MockArgCapture >> asShouldExpressionReceiver [ 
+
+	^MockSingleCallArgReceiver from: self
+]
+
 { #category : #specs }
 MockArgCapture >> asSimpleValue [
 	^self
@@ -74,12 +80,6 @@ MockArgCapture >> captureValue: anObject [
 	values add: anObject
 ]
 
-{ #category : #'delegation messages' }
-MockArgCapture >> doesNotUnderstand: aMessage [
-	
-	^self where doesNotUnderstand: aMessage
-]
-
 { #category : #initialization }
 MockArgCapture >> ensureMessageSpec [
 	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
@@ -88,14 +88,13 @@ MockArgCapture >> ensureMessageSpec [
 { #category : #accessing }
 MockArgCapture >> fromAllCalls [
 	
-	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockAllValuesArgReceiver from: self)
+	^MockAllValuesArgReceiver from: self
 ]
 
 { #category : #accessing }
 MockArgCapture >> fromCall: callNumber [
 	
-	^SpecOfShouldExpressionReceiverBuilder startingWith: (
-		MockConcreteCallArgReceiver from: self callNumber: callNumber)
+	^MockConcreteCallArgReceiver from: self callNumber: callNumber
 ]
 
 { #category : #accessing }
@@ -105,7 +104,7 @@ MockArgCapture >> fromFirstCall [
 
 { #category : #accessing }
 MockArgCapture >> fromLastCall [
-	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockLastCallArgReceiver from: self)
+	^MockLastCallArgReceiver from: self
 ]
 
 { #category : #initialization }
@@ -215,10 +214,4 @@ MockArgCapture >> values [
 { #category : #accessing }
 MockArgCapture >> values: anObject [
 	values := anObject
-]
-
-{ #category : #specs }
-MockArgCapture >> where [ 
-
-	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockSingleCallArgReceiver from: self)
 ]

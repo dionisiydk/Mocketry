@@ -36,8 +36,7 @@ MockDetailedMessagesValidation >> inProcessWhich [
 	result := self execute.
 	lastMessage := result occurredMessages last.
 	
-	^SpecOfShouldExpressionReceiverBuilder 
-		startingWith: (MockOccurredMessageProcessProperty of: lastMessage)
+	^(MockOccurredMessageProcessProperty of: lastMessage) where
 ]
 
 { #category : #accessing }
@@ -57,6 +56,5 @@ MockDetailedMessagesValidation >> which [
 	result := self execute.
 	lastMessage := result occurredMessages last.
 	
-	^SpecOfShouldExpressionReceiverBuilder 
-		startingWith: (MockOccurredResultProperty of: lastMessage)
+	^(MockOccurredResultProperty of: lastMessage) where
 ]
