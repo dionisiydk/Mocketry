@@ -7,6 +7,13 @@ Class {
 	#category : #'Mocketry-Domain'
 }
 
+{ #category : #'instance creation' }
+MockConcreteCallArgReceiver class >> from: aMockArgCapture callNumber: aNumber [
+
+	^(self from: aMockArgCapture) 
+		callNumber: aNumber
+]
+
 { #category : #accessing }
 MockConcreteCallArgReceiver >> callNumber [
 	^ callNumber
@@ -26,5 +33,5 @@ MockConcreteCallArgReceiver >> stringForSpecValidation [
 { #category : #accessing }
 MockConcreteCallArgReceiver >> validationSubject [
 	
-	^argCapture fromCall: callNumber
+	^argCapture valueFromCall: callNumber
 ]

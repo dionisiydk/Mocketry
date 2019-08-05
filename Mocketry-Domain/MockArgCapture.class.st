@@ -86,11 +86,16 @@ MockArgCapture >> ensureMessageSpec [
 ]
 
 { #category : #accessing }
+MockArgCapture >> fromAllCalls [
+	
+	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockAllValuesArgReceiver from: self)
+]
+
+{ #category : #accessing }
 MockArgCapture >> fromCall: callNumber [
 	
-	self validateNumberOfCalls: callNumber.
-	
-	^values at: callNumber
+	^SpecOfShouldExpressionReceiverBuilder startingWith: (
+		MockConcreteCallArgReceiver from: self callNumber: callNumber)
 ]
 
 { #category : #accessing }
@@ -100,7 +105,7 @@ MockArgCapture >> fromFirstCall [
 
 { #category : #accessing }
 MockArgCapture >> fromLastCall [
-	^self fromCall: values size
+	^SpecOfShouldExpressionReceiverBuilder startingWith: (MockLastCallArgReceiver from: self)
 ]
 
 { #category : #initialization }
@@ -192,6 +197,14 @@ MockArgCapture >> valueFromCall: callNumber [
 	self validateNumberOfCalls: callNumber.
 	
 	^values at: callNumber
+]
+
+{ #category : #accessing }
+MockArgCapture >> valueFromLastCall [
+	
+	self validateNumberOfCalls: 1.
+	
+	^values last
 ]
 
 { #category : #accessing }

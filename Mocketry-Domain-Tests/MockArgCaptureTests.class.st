@@ -96,7 +96,8 @@ MockArgCaptureTests >> testFromAllCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromAllCalls.
-	shouldReceiver class should beInstanceOf: MockAllValuesArgReceiver
+	shouldReceiver class should beInstanceOf: MockAllValuesArgReceiver.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
@@ -108,7 +109,8 @@ MockArgCaptureTests >> testFromConcreteCall [
 	
 	shouldReceiver := arg fromCall: 2.
 	shouldReceiver class should beInstanceOf: MockConcreteCallArgReceiver.
-	shouldReceiver callNumber should equal: 2
+	shouldReceiver callNumber should equal: 2.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
@@ -120,7 +122,8 @@ MockArgCaptureTests >> testFromFirstCall [
 	
 	shouldReceiver := arg fromFirstCall.
 	shouldReceiver class should beInstanceOf: MockConcreteCallArgReceiver.
-	shouldReceiver callNumber should equal: 1
+	shouldReceiver callNumber should equal: 1.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
@@ -131,7 +134,8 @@ MockArgCaptureTests >> testFromLastCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromLastCall.
-	shouldReceiver class should beInstanceOf: MockLastCallArgReceiver
+	shouldReceiver class should beInstanceOf: MockLastCallArgReceiver.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
@@ -158,6 +162,18 @@ MockArgCaptureTests >> testGettingValueFromGivenCall [
 	arg values: #(1 2 3).
 	
 	(arg valueFromCall: 2) should be: 2
+]
+
+{ #category : #tests }
+MockArgCaptureTests >> testGettingValueFromLastCall [
+
+	| arg |
+	
+	arg := self prepareCapture.
+	
+	arg values: #(1 2 3).
+	
+	arg valueFromLastCall should be: 3
 ]
 
 { #category : #tests }
