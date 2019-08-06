@@ -156,7 +156,7 @@ MockArgCapture >> should [
 { #category : #printing }
 MockArgCapture >> stringForSpecTitle [ 
 
-	^'Arg ', name
+	^name printString
 ]
 
 { #category : #validation }

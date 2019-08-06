@@ -27,7 +27,7 @@ MockConcreteCallArgReceiver >> callNumber: anObject [
 { #category : #printing }
 MockConcreteCallArgReceiver >> stringForSpecValidation [
 
-	^super stringForSpecValidation, ' in ', callNumber asString, 'th call'
+	^super stringForSpecValidation, ' from ', callNumber asString, ' call'
 ]
 
 { #category : #accessing }

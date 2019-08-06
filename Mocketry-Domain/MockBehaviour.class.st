@@ -93,9 +93,9 @@ MockBehaviour >> addExpectation: aMockExpectedMessage asPartOfGroup: expectation
 ]
 
 { #category : #accessing }
-MockBehaviour >> argCaptureNamed: aString [
+MockBehaviour >> argCaptureNamed: aSymbol [
 
-	^messageArgCaptures at: aString ifAbsentPut: [ MockArgCapture named: aString ]
+	^messageArgCaptures at: aSymbol ifAbsentPut: [ MockArgCapture named: aSymbol ]
 ]
 
 { #category : #operations }
