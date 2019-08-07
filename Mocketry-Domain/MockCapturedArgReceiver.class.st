@@ -32,7 +32,7 @@ MockCapturedArgReceiver >> argCapture: anObject [
 { #category : #printing }
 MockCapturedArgReceiver >> printSubject: anObject [
 
-	^(super printSubject: anObject) , ' from ', self stringForSpecValidation
+	^(super printSubject: anObject) , ' from ', self stringForSpecTitle
 ]
 
 { #category : #printing }
@@ -44,7 +44,7 @@ MockCapturedArgReceiver >> stringForSpecTitle [
 { #category : #accessing }
 MockCapturedArgReceiver >> subPropertyAt: aMessage [
 
-	^SpecOfShouldExpressionPropertyReceiver of: self message: aMessage
+	^SpecOfShouldExpressionReceiverProperty of: self message: aMessage
 ]
 
 { #category : #accessing }

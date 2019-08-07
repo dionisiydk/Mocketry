@@ -134,30 +134,6 @@ MockAcceptanceTests >> testBuildingExpectationsByBlock [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testCapturingAllValuesOfArgument [
-
-	| error |
-	mock stub someMessageWith: Arg argName.
-	
- 	mock someMessageWith: #argValue.
-	mock someMessageWith: #argValue2.
-	
-	Arg argName fromAllCalls should beInstanceOf: Symbol.
-	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
-	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but all should be #argValue'
-]
-
-{ #category : #tests }
-MockAcceptanceTests >> testCapturingAllValuesOfArgumentWhenNothingWasCalled [
-
-	| error |
-	mock stub someMessageWith: Arg argName.
-	
- 	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
-	error where messageText should equal: 'a Mock(mock) never received someMessageWith: Arg argName'
-]
-
-{ #category : #tests }
 MockAcceptanceTests >> testCapturingArgument [
 
 	| error |
@@ -181,6 +157,108 @@ MockAcceptanceTests >> testCapturingArgumentAndValidatingWithWhere [
 	Arg argName where x should be: 10.
 	error := [ Arg argName where x should be: -1 ] should raise: SpecOfFailed.
 	error where messageText should equal: 'Got 10 from #argName x but it should be -1'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalls [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromAllCalls should beInstanceOf: Symbol.
+	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but all should be #argValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: Arg argName'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromFirstCall [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromFirstCall should be: #argValue.
+	error := [ Arg argName fromFirstCall should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue from #argName from 1 call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromFirstCallAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromFirstCall where last should be: $e.
+	error := [ Arg argName fromFirstCall where last should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got $e from #argName last from 1 call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCall [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromLastCall should be: #argValue2.
+	error := [ Arg argName fromLastCall should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue2 from #argName from last call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCallAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: 1@2.
+	mock someMessageWith: 10@20.
+
+	Arg argName fromLastCall where x even should be: true.
+	error := [ Arg argName fromLastCall where x even should be: false ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got true from #argName x even from last call but it should be false'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCallWhenNothingWasSent [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+		
+	error := [Arg argName fromLastCall should be: #argValue2] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromSecondCall [
+
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	mock someMessageWith: #argValue3.
+	
+	(Arg argName fromCall: 2) should be: #argValue2
 ]
 
 { #category : #tests }
@@ -209,20 +287,6 @@ MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testCapturingFirstValueOfArgument [
-
-	| error |
-	mock stub someMessageWith: Arg argName.
-	
- 	mock someMessageWith: #argValue.
-	mock someMessageWith: #argValue2.
-	
-	Arg argName fromFirstCall should be: #argValue.
-	error := [ Arg argName fromFirstCall should be: #wrongValue ] should raise: SpecOfFailed.
-	error where messageText should equal: 'Got #argValue from #argName from 1 call but it should be #wrongValue'
-]
-
-{ #category : #tests }
 MockAcceptanceTests >> testCapturingFutureArgument [
 
 	mock stub someMessageWith: Arg argName.
@@ -230,30 +294,6 @@ MockAcceptanceTests >> testCapturingFutureArgument [
  	[mock someMessageWith: #argValue] fork.
 	
 	Arg argName should takeAWhile to be: #argValue
-]
-
-{ #category : #tests }
-MockAcceptanceTests >> testCapturingLastValueOfArgument [
-
-	| error |
-	mock stub someMessageWith: Arg argName.
-	
- 	mock someMessageWith: #argValue.
-	mock someMessageWith: #argValue2.
-	
-	Arg argName fromLastCall should be: #argValue2.
-	error := [ Arg argName fromLastCall should be: #wrongValue ] should raise: SpecOfFailed.
-	error where messageText should equal: 'Got #argValue2 from #argName from last call but it should be #wrongValue'
-]
-
-{ #category : #tests }
-MockAcceptanceTests >> testCapturingLastValueOfArgumentWhenNothingWasCalled [
-
-	| error |
-	mock stub someMessageWith: Arg argName.
-		
-	error := [Arg argName fromLastCall should be: #argValue2] should raise: SpecOfFailed.
-	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
 { #category : #tests }
@@ -267,18 +307,6 @@ MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne 
 	mock someMessageWith: #arg2.
 	error := [Arg argName should be: #arg1] should fail.
 	error where messageText should includeSubstring: 'multiple args were captured'
-]
-
-{ #category : #tests }
-MockAcceptanceTests >> testCapturingSecondValueOfArgument [
-
-	mock stub someMessageWith: Arg argName.
-	
- 	mock someMessageWith: #argValue.
-	mock someMessageWith: #argValue2.
-	mock someMessageWith: #argValue3.
-	
-	(Arg argName fromCall: 2) should be: #argValue2
 ]
 
 { #category : #tests }

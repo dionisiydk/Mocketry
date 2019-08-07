@@ -25,9 +25,15 @@ MockConcreteCallArgReceiver >> callNumber: anObject [
 ]
 
 { #category : #printing }
-MockConcreteCallArgReceiver >> stringForSpecValidation [
+MockConcreteCallArgReceiver >> printProperty: aShouldExpressionReceiverProperty [
+	^argCapture stringForSpecTitle, ' ', aShouldExpressionReceiverProperty printPath,
+		' from ' , callNumber asString, ' call'
+]
 
-	^super stringForSpecValidation, ' from ', callNumber asString, ' call'
+{ #category : #printing }
+MockConcreteCallArgReceiver >> stringForSpecTitle [
+
+	^super stringForSpecTitle, ' from ', callNumber asString, ' call'
 ]
 
 { #category : #accessing }

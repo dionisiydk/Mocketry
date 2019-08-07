@@ -45,7 +45,8 @@ MockArgCapture class >> named: aString [
 
 { #category : #converting }
 MockArgCapture >> asShouldExpressionReceiver [ 
-
+	self ensureMessageSpec.
+	
 	^MockSingleCallArgReceiver from: self
 ]
 
@@ -144,13 +145,6 @@ MockArgCapture >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream << $( << name << $)
-]
-
-{ #category : #specs }
-MockArgCapture >> should [ 
-	self ensureMessageSpec.
-	
-	^(MockSingleCallArgReceiver from: self) should
 ]
 
 { #category : #printing }

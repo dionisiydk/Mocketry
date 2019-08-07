@@ -5,9 +5,15 @@ Class {
 }
 
 { #category : #printing }
-MockLastCallArgReceiver >> stringForSpecValidation [
+MockLastCallArgReceiver >> printProperty: aShouldExpressionReceiverProperty [
+	^argCapture stringForSpecTitle, ' ', aShouldExpressionReceiverProperty printPath,
+		' from last call'
+]
 
-	^super stringForSpecValidation, ' from last call'
+{ #category : #printing }
+MockLastCallArgReceiver >> stringForSpecTitle [
+
+	^super stringForSpecTitle, ' from last call'
 ]
 
 { #category : #accessing }
