@@ -36,6 +36,12 @@ MockConcreteCallArgReceiver >> stringForSpecTitle [
 	^super stringForSpecTitle, ' from ', callNumber asString, ' call'
 ]
 
+{ #category : #validation }
+MockConcreteCallArgReceiver >> validate [
+	
+	^argCapture validateNumberOfCalls: callNumber
+]
+
 { #category : #accessing }
 MockConcreteCallArgReceiver >> validationSubject [
 	

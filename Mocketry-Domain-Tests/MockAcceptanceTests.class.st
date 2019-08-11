@@ -168,9 +168,9 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalls [
  	mock someMessageWith: #argValue.
 	mock someMessageWith: #argValue2.
 	
-	Arg argName fromAllCalls should beInstanceOf: Symbol.
+	Arg argName fromAllCalls should beKindOf: Symbol.
 	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
-	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but all should be #argValue'
+	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but it should be #argValue'
 ]
 
 { #category : #tests }
@@ -180,7 +180,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
 	mock stub someMessageWith: Arg argName.
 	
  	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
-	error where messageText should equal: 'a Mock(mock) never received someMessageWith: Arg argName'
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
 { #category : #tests }

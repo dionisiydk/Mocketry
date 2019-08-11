@@ -4,9 +4,13 @@ Class {
 	#category : #'Mocketry-Domain'
 }
 
+{ #category : #validation }
+MockSingleCallArgReceiver >> validate [
+	^argCapture validateSingleValue
+]
+
 { #category : #accessing }
 MockSingleCallArgReceiver >> validationSubject [
-	argCapture validateSingleValue.
 	
 	^argCapture valueFromCall: 1
 ]

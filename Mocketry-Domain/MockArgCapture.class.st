@@ -140,6 +140,11 @@ MockArgCapture >> name: anObject [
 	name := anObject
 ]
 
+{ #category : #accessing }
+MockArgCapture >> numberOfCalls [
+	^values size
+]
+
 { #category : #printing }
 MockArgCapture >> printOn: aStream [
 	super printOn: aStream.
@@ -161,41 +166,44 @@ MockArgCapture >> validate: anObject [
 
 { #category : #validation }
 MockArgCapture >> validateNumberOfCalls: callsNumber [
-	| expectedMessageSpec |
+	| expectedMessageSpec result history |
 	self ensureMessageSpec.
 	
 	expectedMessageSpec := SpecOfExpectedMessage new.
 	expectedMessageSpec messageSend: messageSpec.
 	expectedMessageSpec usage minCount: callsNumber.
-		
-	MockCurrentBehaviour validateOccurredMessagesBy: expectedMessageSpec.
 	
-	values ifEmpty: [ self error: 'No argument was captured!' ].
-	values size < callsNumber ifTrue: [ 
-		self error: 'Arguments was captured ', values size asString
-							, ' times but should be ', callsNumber ]			
+	history := MockCurrentBehaviour value interactionHistory.
+	result := expectedMessageSpec validate: history occurredMessages.
+	result isSuccess ifTrue: [ 
+		values ifEmpty: [ self error: 'No argument was captured but message was sent!' ].
+		values size < callsNumber ifTrue: [ 
+			self error: 'Arguments was captured ', values size asString
+							, ' times but should be ', callsNumber ]].
+	^result
 ]
 
 { #category : #validation }
 MockArgCapture >> validateSingleValue [ 
 
-	self validateNumberOfCalls: 1.
+	| result |
+	result := self validateNumberOfCalls: 1.
 	
-	values asSet size > 1 ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall:' ].
+	result isSuccess ifTrue: [ 
+		values asSet size > 1
+			ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall:' ]].
+		
+	^result
 ]
 
 { #category : #accessing }
 MockArgCapture >> valueFromCall: callNumber [
-	
-	self validateNumberOfCalls: callNumber.
 	
 	^values at: callNumber
 ]
 
 { #category : #accessing }
 MockArgCapture >> valueFromLastCall [
-	
-	self validateNumberOfCalls: 1.
 	
 	^values last
 ]

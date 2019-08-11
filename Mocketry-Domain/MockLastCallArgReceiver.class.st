@@ -16,6 +16,12 @@ MockLastCallArgReceiver >> stringForSpecTitle [
 	^super stringForSpecTitle, ' from last call'
 ]
 
+{ #category : #validation }
+MockLastCallArgReceiver >> validate [
+	
+	^argCapture validateNumberOfCalls: 1
+]
+
 { #category : #accessing }
 MockLastCallArgReceiver >> validationSubject [
 	
