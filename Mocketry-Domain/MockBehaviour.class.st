@@ -261,13 +261,3 @@ MockBehaviour >> useMockRole: aMockRole while: aBlock [
 	mockRole := aMockRole.
 	aBlock ensure: [ mockRole := currentRole ]
 ]
-
-{ #category : #operations }
-MockBehaviour >> validateOccurredMessagesBy: aSpecOfOccurredMessages [ 
-	
-	| separateSpecs |
-	separateSpecs := aSpecOfOccurredMessages 
-		asInteractionSpecBetweenAll: interactionHistory involvedObjects.
-	
-	^(separateSpecs validate: interactionHistory occurredMessages) raise
-]
