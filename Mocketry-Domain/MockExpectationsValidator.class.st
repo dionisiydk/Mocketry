@@ -58,7 +58,7 @@ MockExpectationsValidator >> satisfy: blockWithExpectations [
 	teacher := MockValidatedExpectationsTeacher new.
 	MockCurrentBehaviour useMockRole: teacher while: blockWithExpectations.
 	
-	shouldExpression validationSubject value.
+	shouldExpression receiver value value.
 	interactionSpec expectedMessages: teacher convertExpectationsToSpecs.
 	^shouldExpression evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value.
 ]

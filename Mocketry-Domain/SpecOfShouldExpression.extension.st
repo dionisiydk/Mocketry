@@ -7,7 +7,7 @@ SpecOfShouldExpression >> beDone [
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
-		while: self validationSubject.
+		while: receiver value.
 	
 	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
@@ -20,7 +20,7 @@ SpecOfShouldExpression >> beDoneInOrder [
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
-		while: self validationSubject.
+		while: receiver value.
 	
 	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
@@ -44,9 +44,8 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> evaluateWith: anOccurredMessagesSpec forMockBehaviour: aMockBehaviour [
 
-	^aMockBehaviour interactionHistory should 
-		withNegation: withNegation;
-		evaluateWith: (SpecOfInteractionHistory with: anOccurredMessagesSpec)
+	receiver := SpecOfShouldExpressionObjectReceiver from: aMockBehaviour interactionHistory.
+	^self evaluateWith: (SpecOfInteractionHistory with: anOccurredMessagesSpec)
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -54,7 +53,7 @@ SpecOfShouldExpression >> expect [
 	
 	| teacher |
 	teacher := MockTeacher default.
-	MockCurrentBehaviour useMockRole: teacher while: self validationSubject.
+	MockCurrentBehaviour useMockRole: teacher while: receiver value.
 	^teacher
 ]
 
