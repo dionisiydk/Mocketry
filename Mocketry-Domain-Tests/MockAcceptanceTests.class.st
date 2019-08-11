@@ -297,6 +297,32 @@ MockAcceptanceTests >> testCapturingFutureArgument [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation [
+
+	| array |
+	array := Array new: 1.
+	mock stub someMessageWith: Arg argName.
+	
+ 	[mock someMessageWith: array] fork.
+	array at: 1 put: #expected.
+	
+	Arg argName where first should takeAWhile to be: #expected
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation2 [
+
+	| array |
+	array := Array new: 1.
+	mock stub someMessageWith: Arg argName.
+	
+	mock someMessageWith: array.
+ 	[array at: 1 put: #expected] fork.	
+	
+	Arg argName where first should takeAWhile to be: #expected
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne [
 
 	| error |

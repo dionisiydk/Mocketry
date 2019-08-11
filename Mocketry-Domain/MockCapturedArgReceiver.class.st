@@ -46,18 +46,3 @@ MockCapturedArgReceiver >> subPropertyAt: aMessage [
 
 	^SpecOfShouldExpressionReceiverProperty of: self message: aMessage
 ]
-
-{ #category : #validation }
-MockCapturedArgReceiver >> validate [
-	self subclassResponsibility 
-]
-
-{ #category : #validation }
-MockCapturedArgReceiver >> validate: aSpecOfObjectState [
-
-	| result |
-	result := self validate.
-	result isSuccess ifFalse: [ ^result ].
-	
-	^super validate: aSpecOfObjectState 
-]

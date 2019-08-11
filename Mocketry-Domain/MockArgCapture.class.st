@@ -190,8 +190,8 @@ MockArgCapture >> validateSingleValue [
 	result := self validateNumberOfCalls: 1.
 	
 	result isSuccess ifTrue: [ 
-		values asSet size > 1
-			ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall:' ]].
+		values size > 1
+			ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall: or #fromAllCalls' ]].
 		
 	^result
 ]
