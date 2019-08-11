@@ -46,8 +46,3 @@ MockCapturedArgReceiver >> subPropertyAt: aMessage [
 
 	^SpecOfShouldExpressionReceiverProperty of: self message: aMessage
 ]
-
-{ #category : #accessing }
-MockCapturedArgReceiver >> valueForFutureStateValidation [ 
-	^self validationSubject
-]
