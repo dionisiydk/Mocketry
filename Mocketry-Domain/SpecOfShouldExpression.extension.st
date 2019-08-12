@@ -44,7 +44,7 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> evaluateWith: anOccurredMessagesSpec forMockBehaviour: aMockBehaviour [
 
-	receiver := SpecOfShouldExpressionObjectReceiver from: aMockBehaviour interactionHistory.
+	receiver := SpecOfShouldReceiverRoot from: aMockBehaviour interactionHistory.
 	^self evaluateWith: (SpecOfInteractionHistory with: anOccurredMessagesSpec)
 ]
 

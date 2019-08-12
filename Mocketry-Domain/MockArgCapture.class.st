@@ -47,7 +47,7 @@ MockArgCapture class >> named: aString [
 MockArgCapture >> asShouldExpressionReceiver [ 
 	self ensureMessageSpec.
 	
-	^MockSingleCallArgReceiver from: self
+	^MockSingleCapturedValueReceiver from: self
 ]
 
 { #category : #specs }
@@ -89,13 +89,13 @@ MockArgCapture >> ensureMessageSpec [
 { #category : #accessing }
 MockArgCapture >> fromAllCalls [
 	
-	^MockAllValuesArgReceiver from: self
+	^MockAllCapturedValuesReceiver from: self
 ]
 
 { #category : #accessing }
 MockArgCapture >> fromCall: callNumber [
 	
-	^MockConcreteCallArgReceiver from: self callNumber: callNumber
+	^MockConcreteCapturedValueReceiver from: self callNumber: callNumber
 ]
 
 { #category : #accessing }
@@ -105,7 +105,7 @@ MockArgCapture >> fromFirstCall [
 
 { #category : #accessing }
 MockArgCapture >> fromLastCall [
-	^MockLastCallArgReceiver from: self
+	^MockLastCapturedValueReceiver from: self
 ]
 
 { #category : #initialization }

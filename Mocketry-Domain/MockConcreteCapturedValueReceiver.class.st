@@ -8,7 +8,7 @@ I ensure that given number of messages was actually sent (given number of values
 
 My instances can be created using following method:
 
-	MockConcreteCallArgReceiver from: Arg argName callNumber: 2.
+	MockConcreteCapturedValueReceiver from: Arg argName callNumber: 2.
  
 Internal Representation and Key Implementation Points.
 
@@ -16,7 +16,7 @@ Internal Representation and Key Implementation Points.
 	callNumber:		<Integer>
 "
 Class {
-	#name : #MockConcreteCallArgReceiver,
+	#name : #MockConcreteCapturedValueReceiver,
 	#superclass : #MockCapturedArgReceiver,
 	#instVars : [
 		'callNumber'
@@ -25,42 +25,42 @@ Class {
 }
 
 { #category : #'instance creation' }
-MockConcreteCallArgReceiver class >> from: aMockArgCapture callNumber: aNumber [
+MockConcreteCapturedValueReceiver class >> from: aMockArgCapture callNumber: aNumber [
 
 	^(self from: aMockArgCapture) 
 		callNumber: aNumber
 ]
 
 { #category : #accessing }
-MockConcreteCallArgReceiver >> callNumber [
+MockConcreteCapturedValueReceiver >> callNumber [
 	^ callNumber
 ]
 
 { #category : #accessing }
-MockConcreteCallArgReceiver >> callNumber: anObject [
+MockConcreteCapturedValueReceiver >> callNumber: anObject [
 	callNumber := anObject
 ]
 
 { #category : #printing }
-MockConcreteCallArgReceiver >> printProperty: aShouldExpressionReceiverProperty [
-	^argCapture stringForSpecTitle, ' ', aShouldExpressionReceiverProperty printPath,
+MockConcreteCapturedValueReceiver >> printProperty: aShouldReceiverProperty [
+	^self argCapture stringForSpecTitle, ' ', aShouldReceiverProperty printPath,
 		' from ' , callNumber asString, ' call'
 ]
 
 { #category : #printing }
-MockConcreteCallArgReceiver >> stringForSpecTitle [
+MockConcreteCapturedValueReceiver >> stringForSpecTitle [
 
 	^super stringForSpecTitle, ' from ', callNumber asString, ' call'
 ]
 
 { #category : #validation }
-MockConcreteCallArgReceiver >> validate [
+MockConcreteCapturedValueReceiver >> validate [
 	
-	^argCapture validateNumberOfCalls: callNumber
+	^self argCapture validateNumberOfCalls: callNumber
 ]
 
 { #category : #accessing }
-MockConcreteCallArgReceiver >> validationSubject [
+MockConcreteCapturedValueReceiver >> validationSubject [
 	
-	^argCapture valueFromCall: callNumber
+	^self argCapture valueFromCall: callNumber
 ]

@@ -13,7 +13,7 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #MockOccurredMessageProperty,
-	#superclass : #SpecOfShouldExpressionObjectReceiver,
+	#superclass : #SpecOfShouldReceiverRoot,
 	#instVars : [
 		'message'
 	],

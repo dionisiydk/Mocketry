@@ -84,7 +84,7 @@ MockArgCaptureTests >> testFromAllCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromAllCalls.
-	shouldReceiver class should be: MockAllValuesArgReceiver.
+	shouldReceiver class should be: MockAllCapturedValuesReceiver.
 	self assert: shouldReceiver argCapture == arg
 ]
 
@@ -96,7 +96,7 @@ MockArgCaptureTests >> testFromConcreteCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromCall: 2.
-	shouldReceiver class should be: MockConcreteCallArgReceiver.
+	shouldReceiver class should be: MockConcreteCapturedValueReceiver.
 	shouldReceiver callNumber should equal: 2.
 	self assert: shouldReceiver argCapture == arg
 ]
@@ -109,7 +109,7 @@ MockArgCaptureTests >> testFromFirstCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromFirstCall.
-	shouldReceiver class should be: MockConcreteCallArgReceiver.
+	shouldReceiver class should be: MockConcreteCapturedValueReceiver.
 	shouldReceiver callNumber should equal: 1.
 	self assert: shouldReceiver argCapture == arg
 ]
@@ -122,7 +122,7 @@ MockArgCaptureTests >> testFromLastCall [
 	arg := self prepareCapture.
 	
 	shouldReceiver := arg fromLastCall.
-	shouldReceiver class should be: MockLastCallArgReceiver.
+	shouldReceiver class should be: MockLastCapturedValueReceiver.
 	self assert: shouldReceiver argCapture == arg
 ]
 
