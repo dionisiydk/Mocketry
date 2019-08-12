@@ -66,7 +66,7 @@ SpecOfShouldExpression >> lenient [
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> receive [
 
-	^self validationSubject currentMockBehaviour 
+	^receiver currentMockBehaviour 
 		createHelperMockAs: (MockValidator forExpression: self)
 ]
 

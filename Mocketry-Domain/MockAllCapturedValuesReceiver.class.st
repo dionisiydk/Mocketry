@@ -22,13 +22,13 @@ MockAllCapturedValuesReceiver >> validate [
 ]
 
 { #category : #validation }
-MockAllCapturedValuesReceiver >> validate: aSpecOfObjectState [
+MockAllCapturedValuesReceiver >> validateWith: aSpecOfObjectState [
 	| result |
 	result := self validate.
 	result isSuccess ifFalse: [ ^result ].
 	
 	1 to: self argCapture numberOfCalls do: [:each | 
-		result := (self argCapture fromCall: each) validate: aSpecOfObjectState.
+		result := (self argCapture fromCall: each) validateWith: aSpecOfObjectState.
 		result isFailure ifTrue: [ ^result ]].
 	^result
 ]
