@@ -1,3 +1,22 @@
+"
+My subclasses represent captured agrument values from the message sends (mock object call) in should expressions.
+
+For simplest cases there is MockSingleCallArgReceiver which allows to validate the argument of single message send: 
+
+	Arg argName should equal: 10
+
+Subclasses decide what captured value needs to be validated and according to that they specialize the printing of validation result.
+	
+Instances are created with argument capture:
+
+	MockSingleCallArgReceiver from: Arg argName
+	 
+Internal Representation and Key Implementation Points.
+
+    Instance Variables
+	argCapture:		<MockArgCapture>
+			
+"
 Class {
 	#name : #MockCapturedArgReceiver,
 	#superclass : #SpecOfShouldExpressionReceiver,
