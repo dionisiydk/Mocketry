@@ -184,6 +184,40 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesReceivedGivenMessage [
+
+	| error mock2 mock3 |
+	mock stub someMessageWith: Arg argName.
+	mock2 := Mock new.
+	mock3 := Mock new.
+	
+	mock2 someMessage.
+	mock3 someMessage.
+ 	mock someMessageWith: mock2.
+	mock someMessageWith: mock3.
+	
+	Arg argName fromAllCalls should receive someMessage.
+	error := [ Arg argName fromAllCalls should receive someMessage2 ] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock2) from #argName from 1 call never received someMessage2'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesWasReturnedFromGivenMessage [
+
+	| error stream |
+	mock stub someMessageWith: Arg argName.
+	stream := { #argValue1. #argValue2 } readStream.
+	stream stub.
+	
+ 	mock someMessageWith: stream next.
+	mock someMessageWith: stream next.
+	
+	Arg argName fromAllCalls should beReturnedFrom: [ stream next ].
+	error := [ Arg argName fromAllCalls should beReturnedFrom: [ stream peek ] ] should raise: SpecOfFailed.
+	error where messageText should equal: ''
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testCapturingArgumentFromFirstCall [
 
 	| error |
