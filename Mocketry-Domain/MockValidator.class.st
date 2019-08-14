@@ -21,7 +21,7 @@ Class {
 
 { #category : #'instance creation' }
 MockValidator class >> forExpression: aShouldExpression [
-	^(self for: aShouldExpression validationSubject)
+	^(self for: aShouldExpression createSpecOfValidationSubject)
 		shouldExpression: aShouldExpression
 ]
 
