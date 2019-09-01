@@ -13,7 +13,7 @@ SpecOfOccurredMessages class >> isAbstract [
 ]
 
 { #category : #converting }
-SpecOfOccurredMessages >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfOccurredMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	self subclassResponsibility 
 ]
 

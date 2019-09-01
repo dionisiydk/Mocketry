@@ -143,7 +143,7 @@ MockOccurredMessage >> result: anObject [
 
 { #category : #accessing }
 MockOccurredMessage >> returnedValue [
-	^self result value
+	^result returnedValue
 ]
 
 { #category : #accessing }

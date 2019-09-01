@@ -26,14 +26,14 @@ SpecOfMultipleMessages >> addExpectedMessages: newExpectedMessages [
 ]
 
 { #category : #converting }
-SpecOfMultipleMessages >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfMultipleMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 
 	| result interactionSpec |
 	result := self class new.
 	
 	expectedMessages do: [ :each | 
 
-		interactionSpec := each asInteractionSpecBetweenAll: expectedReceivers.
+		interactionSpec := each asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory.
 		interactionSpec populateMultipleMessagesSpec: result		
 	 ].
 

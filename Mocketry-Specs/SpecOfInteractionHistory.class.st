@@ -58,7 +58,7 @@ SpecOfInteractionHistory class >> with: anOccurredMessagesSpec [
 SpecOfInteractionHistory >> basicMatches: anInteractionHistory [
 	| concreteObjectInteraction |
 	concreteObjectInteraction := expectedBehaviourSpec 
-		asInteractionSpecBetweenAll: anInteractionHistory involvedObjects.
+		asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory.
 	
 	^concreteObjectInteraction matches: anInteractionHistory occurredMessages
 ]
@@ -83,7 +83,7 @@ SpecOfInteractionHistory >> invertChildren [
 SpecOfInteractionHistory >> validate: anInteractionHistory [
 	| concreteObjectInteraction |
 	concreteObjectInteraction := expectedBehaviourSpec 
-		asInteractionSpecBetweenAll: anInteractionHistory involvedObjects.
+		asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory.
 	
 	^concreteObjectInteraction validate: anInteractionHistory occurredMessages
 ]

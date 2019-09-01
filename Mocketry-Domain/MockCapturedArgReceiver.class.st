@@ -38,6 +38,11 @@ MockCapturedArgReceiver >> asFutureStateShouldReceiver [
 	^self 
 ]
 
+{ #category : #validation }
+MockCapturedArgReceiver >> createSpecOfValidationSubject [
+	^SpecOfObjectHolder requiredHolder: self
+]
+
 { #category : #printing }
 MockCapturedArgReceiver >> printSubject: anObject [
 

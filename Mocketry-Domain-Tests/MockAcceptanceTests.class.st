@@ -214,7 +214,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesWa
 	
 	Arg argName fromAllCalls should beReturnedFrom: [ stream next ].
 	error := [ Arg argName fromAllCalls should beReturnedFrom: [ stream peek ] ] should raise: SpecOfFailed.
-	error where messageText should equal: ''
+	error where messageText should equal: '#argValue1 was returned from a ReadStream next but it should be a ReadStream peek'
 ]
 
 { #category : #tests }

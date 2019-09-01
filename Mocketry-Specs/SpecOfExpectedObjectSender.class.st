@@ -28,9 +28,21 @@ SpecOfExpectedObjectSender class >> for: aString returnedFrom: aSpecOfExpectedMe
 ]
 
 { #category : #converting }
-SpecOfExpectedObjectSender >> asInteractionSpecBetweenAll: expectedReceivers [ 
+SpecOfExpectedObjectSender >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 
-	^self
+	| result returnedObjects concreteSenderSpec |
+	object asStateSpec class == SpecOfIdentity ifTrue: [^self]. 
+	result := SpecOfMultipleMessages new.
+	
+	returnedObjects := anInteractionHistory occurredMessages 
+		select: [:each | each hasReturnedValueLike: object]
+		thenCollect: [:each | each returnedValue ].
+	returnedObjects do: [ :each | 
+		concreteSenderSpec := self class for: each returnedFrom: requiredSender.
+		result addExpectedMessage: concreteSenderSpec 
+	].
+
+	^result
 ]
 
 { #category : #testing }
@@ -91,12 +103,12 @@ SpecOfExpectedObjectSender >> requiredSender: anObject [
 
 { #category : #validation }
 SpecOfExpectedObjectSender >> validate: occurredMessages [
-	| actualSenders success |
+	| actualSenders result |
 	actualSenders := occurredMessages	select: [ :each | each hasReturnedValueLike: object ].
 	actualSenders ifEmpty: [ ^ self validateRequiredSenderFor: occurredMessages ].
 	
-	success := requiredSender matches: actualSenders.
-	success ifTrue: [ ^ SpecOfValidationResult success ].
+	result := requiredSender validate: actualSenders.
+	result isSuccess ifTrue: [ ^ result ].
 	
 	^ SpecOfWrongObjectSender spec: self for: occurredMessages wrongSender: actualSenders last
 ]

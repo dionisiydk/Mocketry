@@ -15,6 +15,11 @@ Class {
 	#category : #'Mocketry-Domain'
 }
 
+{ #category : #accessing }
+MockAllCapturedValuesReceiver >> includes: anObject [
+	^self validationSubject includes: anObject
+]
+
 { #category : #validation }
 MockAllCapturedValuesReceiver >> validate [
 	
@@ -35,5 +40,5 @@ MockAllCapturedValuesReceiver >> validateWith: aSpecOfObjectState [
 
 { #category : #accessing }
 MockAllCapturedValuesReceiver >> validationSubject [
-	self shouldNotImplement 
+	^self argCapture values
 ]

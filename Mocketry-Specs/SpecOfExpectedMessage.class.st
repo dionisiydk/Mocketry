@@ -54,12 +54,12 @@ SpecOfExpectedMessage >> allowSendsCount: aNumber [
 ]
 
 { #category : #converting }
-SpecOfExpectedMessage >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfExpectedMessage >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	| result copy |
 	self isAboutConcreteReceiver ifTrue: [ ^ self ].
 	
 	result := SpecOfMultipleMessages new.
-	expectedReceivers	do: [ :eachReceiver | 
+	anInteractionHistory involvedObjects do: [ :eachReceiver | 
 			(messageSend receiver matches: eachReceiver) ifTrue: [ 
 				copy := self copy.
 				copy receiver: eachReceiver.
