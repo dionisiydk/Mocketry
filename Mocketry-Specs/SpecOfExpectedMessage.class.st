@@ -101,7 +101,9 @@ SpecOfExpectedMessage >> copy [
 { #category : #validation }
 SpecOfExpectedMessage >> createValidationSuccessFor: occurredMessages [
 	
-	^SpecOfMessagesValidationSuccess occurredMessages: occurredMessages minCount: usage minCount 
+	^SpecOfMessagesValidationSuccess 
+		occurredMessages: occurredMessages 
+		minCount: (denial ifTrue: [ 0 ] ifFalse: [usage minCount ])
 ]
 
 { #category : #printing }

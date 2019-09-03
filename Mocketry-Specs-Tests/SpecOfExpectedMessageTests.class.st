@@ -216,7 +216,8 @@ SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageC
 	
 	result := spec validate: interaction.		
 	
-	result should be isSuccess
+	result should be isSuccess.
+	result requiredOccurredMessages should be isEmpty
 ]
 
 { #category : #tests }
