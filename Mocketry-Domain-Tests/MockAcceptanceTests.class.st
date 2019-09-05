@@ -198,7 +198,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesRe
 	
 	Arg argName fromAllCalls should receive someMessage.
 	error := [ Arg argName fromAllCalls should receive someMessage2 ] should raise: SpecOfFailed.
-	error where messageText should equal: 'a Mock(mock2) from #argName from 1 call never received someMessage2'
+	error where messageText should equal: 'a Mock(mock2) never received someMessage2'
 ]
 
 { #category : #tests }
