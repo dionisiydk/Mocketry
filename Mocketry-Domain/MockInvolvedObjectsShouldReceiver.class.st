@@ -41,15 +41,21 @@ MockInvolvedObjectsShouldReceiver >> objectsSpec [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : #validation }
+MockInvolvedObjectsShouldReceiver >> validate [
+	| spec |
+	spec := Has emptyItems not.
+	spec failureDescription: 'No object involved in test which ' , self objectsSpec description.
+	^ spec validate: self validationSubject
+]
+
+{ #category : #validation }
 MockInvolvedObjectsShouldReceiver >> validateWith: aSpecOfObjectState [
 	| result |
 	result := self validate.
 	result isSuccess ifFalse: [ ^result ].
 	
-	self validationSubject 
-		select: [ :each | self objectsSpec matches: each ]
-		thenDo: [:each | 
+	self validationSubject do: [:each | 
 			result := aSpecOfObjectState validate: each.
 			result isFailure ifTrue: [ ^result ]].
 	^result
@@ -57,5 +63,7 @@ MockInvolvedObjectsShouldReceiver >> validateWith: aSpecOfObjectState [
 
 { #category : #accessing }
 MockInvolvedObjectsShouldReceiver >> validationSubject [
-	^MockCurrentBehaviour value interactionHistory involvedObjects
+	| all |
+	all := MockCurrentBehaviour value interactionHistory involvedObjects.
+	^all select: [ :each | self objectsSpec matches: each ]
 ]

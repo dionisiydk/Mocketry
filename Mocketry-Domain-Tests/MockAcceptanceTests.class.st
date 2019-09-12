@@ -1074,9 +1074,11 @@ MockAcceptanceTests >> testValidationInvolvedObjectsState [
 { #category : #tests }
 MockAcceptanceTests >> testValidationInvolvedObjectsStateWhenNobodyWasInvolved [
 
-	| error |
+	| error involvedMock |
+	involvedMock := Mock new. "To have at least one object which is not an array"
+	
 	error := [(Instance of: Array) inTest should include: #missingItem] should raise: SpecOfFailed.
-	error where messageText should equal: ''
+	error where messageText should equal: 'No object involved in test which should be an instance of Array'
 ]
 
 { #category : #tests }
