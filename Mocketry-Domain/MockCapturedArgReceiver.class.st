@@ -14,7 +14,7 @@ Instances are created with argument capture:
 Internal Representation and Key Implementation Points.
 
     Instance Variables
-	argCapture:		<MockArgCapture>
+	value:		<MockArgCapture>
 			
 "
 Class {

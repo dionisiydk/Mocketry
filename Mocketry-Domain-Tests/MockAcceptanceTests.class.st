@@ -1057,6 +1057,29 @@ MockAcceptanceTests >> testValidationFutureMessageSendWhichShouldBeSentTwice [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationInvolvedObjectsState [
+
+	| array1 array2 error |
+	array1 := { #expectedItem. #missingItem }.
+	array2 := { #expectedItem. #missingItem2 }.
+	array1 stub. array2 stub. "real objects stub registers them in interaction history"
+	
+	(Instance of: Array) inTest should include: #expectedItem.
+	(Instance of: Array) inTest should haveSize: 2.
+	
+	error := [(Instance of: Array) inTest should include: #missingItem] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #(#expectedItem #missingItem2) but it should include #missingItem'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationInvolvedObjectsStateWhenNobodyWasInvolved [
+
+	| error |
+	error := [(Instance of: Array) inTest should include: #missingItem] should raise: SpecOfFailed.
+	error where messageText should equal: ''
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess [
 
 	[mock someMessage] fork.
@@ -1302,11 +1325,11 @@ MockAcceptanceTests >> testValidationReturnedValueOfRealObjectStub [
 { #category : #tests }
 MockAcceptanceTests >> testValidationThatAnyMessageWasSentToAnyMock [
 
-	[Any should receive anyMessage] should raise: SpecOfFailed.
+	[Any inTest should receive anyMessage] should raise: SpecOfFailed.
 	
 	mock someMessage.
 	
-	Any should receive anyMessage
+	Any inTest should receive anyMessage
 ]
 
 { #category : #tests }
@@ -1395,27 +1418,27 @@ MockAcceptanceTests >> testValidationThatParticularMessageWasSentToAllMocks [
 	mock someMessage.
 	mock2 := Mock new.
 		
-	[Any should receive someMessage] should raise: SpecOfFailed.
+	[Any inTest should receive someMessage] should raise: SpecOfFailed.
 
 	mock2 someMessage.
 	
-	Any should receive someMessage	
+	Any inTest should receive someMessage	
 ]
 
 { #category : #tests }
 MockAcceptanceTests >> testValidationThatParticularMessageWasSentToSetOfObjectsDefinedBySpec [
 
 	| mock2 |
-	[(Instance of: Mock) should receive someMessage] should raise: SpecOfFailed.
+	[(Instance of: Mock) inTest should receive someMessage] should raise: SpecOfFailed.
 
 	mock someMessage.
 	mock2 := Mock new.
 
-	[(Instance of: Mock) should receive someMessage] should raise: SpecOfFailed.	
+	[(Instance of: Mock) inTest should receive someMessage] should raise: SpecOfFailed.	
 
 	mock2 someMessage.
 	
-	(Instance of: Mock) should receive someMessage	
+	(Instance of: Mock) inTest should receive someMessage	
 ]
 
 { #category : #tests }

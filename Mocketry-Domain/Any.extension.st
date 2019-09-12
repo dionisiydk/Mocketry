@@ -11,6 +11,11 @@ Any class >> captureValue: anObject [
 ]
 
 { #category : #'*Mocketry-Domain' }
+Any class >> inTest [ 
+	^MockInvolvedObjectsShouldReceiver from: self
+]
+
+{ #category : #'*Mocketry-Domain' }
 Any class >> isAllowAutoStub [
 	^false
 ]
