@@ -11,49 +11,9 @@ MockArgCaptureTests >> prepareCapture [
 	message := MockOccurredMessage receiver: #receiver selector: #asString.
 	4 timesRepeat: [MockCurrentBehaviour value replayMessageSend: message].
 	
-	arg := MockArgCapture named: 'testArg'.
+	arg := MockArgCapture named: #testArg.
 	arg messageSpec: (SpecOfMessageSend from: message).
 	^arg
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMessageSpecDefinedButNoArgumentCaptured [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	
-	arg values: #().
-	
-	[arg should] should fail
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMessageWasNotOccurred [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	arg messageSpec selector requiredValue: #wrongSelector.
-	
-	arg values: #().
-	
-	[arg should] should raise: SpecOfFailed
-]
-
-{ #category : #tests }
-MockArgCaptureTests >> testApplyingShouldWhenMultipleDifferentArgsWasCaptured [
-
-	| arg |
-	
-	arg := self prepareCapture.	
-	arg values: #(arg1).
-	
-	[arg should] should not fail.
-
-	arg values: #(arg1 arg2).	
-	
-	[arg should] should fail
 ]
 
 { #category : #tests }
@@ -75,6 +35,18 @@ MockArgCaptureTests >> testApplyingWhereExpression [
 	arg values: {2@3}.
 	
 	arg where x should be: 2
+]
+
+{ #category : #tests }
+MockArgCaptureTests >> testApplyingWhereExpressionWhenThereAreMultipleValues [
+
+	| arg |
+	
+	arg := self prepareCapture.
+	
+	arg values: {2@3. 2@3}.
+	
+	[arg where x should be: 2] should fail
 ]
 
 { #category : #tests }
@@ -105,27 +77,53 @@ MockArgCaptureTests >> testConvertingToMessageArgumentSpec [
 ]
 
 { #category : #tests }
-MockArgCaptureTests >> testDelegatingMessagesToFirstValue [
+MockArgCaptureTests >> testFromAllCall [
 
-	| arg |
+	| arg shouldReceiver |
 	
 	arg := self prepareCapture.
 	
-	arg values: {2@3}.
-	
-	arg x should be: 2
+	shouldReceiver := arg fromAllCalls.
+	shouldReceiver class should be: MockAllCapturedValuesReceiver.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
-MockArgCaptureTests >> testDelegatingMessagesToFirstValueWhenThereAreMultipleValues [
+MockArgCaptureTests >> testFromConcreteCall [
 
-	| arg |
+	| arg shouldReceiver |
 	
 	arg := self prepareCapture.
 	
-	arg values: {2@3. 10@20}.
+	shouldReceiver := arg fromCall: 2.
+	shouldReceiver class should be: MockConcreteCapturedValueReceiver.
+	shouldReceiver callNumber should equal: 2.
+	self assert: shouldReceiver argCapture == arg
+]
+
+{ #category : #tests }
+MockArgCaptureTests >> testFromFirstCall [
+
+	| arg shouldReceiver |
 	
-	[arg x] should fail
+	arg := self prepareCapture.
+	
+	shouldReceiver := arg fromFirstCall.
+	shouldReceiver class should be: MockConcreteCapturedValueReceiver.
+	shouldReceiver callNumber should equal: 1.
+	self assert: shouldReceiver argCapture == arg
+]
+
+{ #category : #tests }
+MockArgCaptureTests >> testFromLastCall [
+
+	| arg shouldReceiver |
+	
+	arg := self prepareCapture.
+	
+	shouldReceiver := arg fromLastCall.
+	shouldReceiver class should be: MockLastCapturedValueReceiver.
+	self assert: shouldReceiver argCapture == arg
 ]
 
 { #category : #tests }
@@ -143,18 +141,6 @@ MockArgCaptureTests >> testGettingByArgClass [
 ]
 
 { #category : #tests }
-MockArgCaptureTests >> testGettingValueFromFirstCall [
-
-	| arg |
-	
-	arg := self prepareCapture.
-	
-	arg values: #(1 2).
-	
-	arg fromFirstCall should be: 1
-]
-
-{ #category : #tests }
 MockArgCaptureTests >> testGettingValueFromGivenCall [
 
 	| arg |
@@ -163,7 +149,7 @@ MockArgCaptureTests >> testGettingValueFromGivenCall [
 	
 	arg values: #(1 2 3).
 	
-	(arg fromCall: 2) should be: 2
+	(arg valueFromCall: 2) should be: 2
 ]
 
 { #category : #tests }
@@ -173,9 +159,9 @@ MockArgCaptureTests >> testGettingValueFromLastCall [
 	
 	arg := self prepareCapture.
 	
-	arg values: #(1 2).
+	arg values: #(1 2 3).
 	
-	arg fromLastCall should be: 2
+	arg valueFromLastCall should be: 3
 ]
 
 { #category : #tests }

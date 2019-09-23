@@ -10,18 +10,23 @@ BaselineOfMocketry >> baseline: spec [
 	
 	spec for: #common do: [
 		spec 
-			baseline: 'StateSpecs' with: [
-		 	    spec repository: 'github://dionisiydk/StateSpecs:v3.0.0'];
+			baseline: 'StateSpecs' with: [spec repository: 'github://dionisiydk/StateSpecs:dev'];
+			project: 'StateSpecsCore' copyFrom: 'StateSpecs' with: [
+		 	    spec	loads: #('Core' 'GhostSupport')];
+			project: 'StateSpecsTests' copyFrom: 'StateSpecs' with: [
+		 	    spec	loads: #('Tests' 'GhostSupportTests' )];	
+				
 			baseline: 'Ghost' with: [
-		 	    spec repository: 'github://pharo-ide/Ghost:v4.0.0'];
+		 	    spec repository: 'github://pharo-ide/Ghost:dev'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
-		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'StateSpecsSupport' 'ObjectMutation')];
+		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'ObjectMutation')];
 			project: 'GhostTests' copyFrom: 'Ghost' with: [
-		 	    spec	loads: #('ObjectGhostTests' 'StateSpecsSupport' 'ClassGhostTests' 'ObjectMutationTests')];
-			package: 'Mocketry-Specs' with: [ spec requires: #('StateSpecs')];
+		 	    spec	loads: #('ObjectGhostTests' 'ClassGhostTests' 'ObjectMutationTests')];
+			package: 'Mocketry-Specs' with: [ spec requires: #('StateSpecsCore')];
 			package: 'Mocketry-Domain' with: [ spec requires: #('Mocketry-Specs' 'GhostCore')];
 			package: 'Mocketry-Help' with: [ spec requires: #('Mocketry-Domain')];
-			package: 'Mocketry-Specs-Tests' with: [ spec requires: #('Mocketry-Specs') ];
+			package: 'Mocketry-Specs-Tests' with: [ 
+				spec requires: #('Mocketry-Specs' 'StateSpecsTests') ];
 			package: 'Mocketry-Domain-Tests' with: [ spec requires: #('Mocketry-Specs' 'GhostTests') ].
 		spec
 			group: 'default' with: #('Core' 'Tests');

@@ -54,12 +54,12 @@ SpecOfExpectedMessage >> allowSendsCount: aNumber [
 ]
 
 { #category : #converting }
-SpecOfExpectedMessage >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfExpectedMessage >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	| result copy |
 	self isAboutConcreteReceiver ifTrue: [ ^ self ].
 	
-	result := SpecOfObjectsInteraction new.
-	expectedReceivers	do: [ :eachReceiver | 
+	result := SpecOfMultipleMessages new.
+	anInteractionHistory involvedObjects do: [ :eachReceiver | 
 			(messageSend receiver matches: eachReceiver) ifTrue: [ 
 				copy := self copy.
 				copy receiver: eachReceiver.
@@ -101,7 +101,9 @@ SpecOfExpectedMessage >> copy [
 { #category : #validation }
 SpecOfExpectedMessage >> createValidationSuccessFor: occurredMessages [
 	
-	^SpecOfMessagesValidationSuccess occurredMessages: occurredMessages minCount: usage minCount 
+	^SpecOfMessagesValidationSuccess 
+		occurredMessages: occurredMessages 
+		minCount: (denial ifTrue: [ 0 ] ifFalse: [usage minCount ])
 ]
 
 { #category : #printing }
@@ -154,9 +156,9 @@ SpecOfExpectedMessage >> messageSend: anObject [
 ]
 
 { #category : #accessing }
-SpecOfExpectedMessage >> populateObjectsInteractionSpec: anObjectsInteractionSpec [
+SpecOfExpectedMessage >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 
-	anObjectsInteractionSpec addExpectedMessage: self
+	aMultipleMessagesSpec addExpectedMessage: self
 ]
 
 { #category : #printing }

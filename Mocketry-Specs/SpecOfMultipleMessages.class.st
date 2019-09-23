@@ -1,54 +1,54 @@
 "
 I specify group of expected message specs. (as conjunction)
-I dont care on messages sends order
+I don't care on messages sends order
 
 My contents are SpecOfExpectedMessage
 "
 Class {
-	#name : #SpecOfObjectsInteraction,
+	#name : #SpecOfMultipleMessages,
 	#superclass : #SpecOfOccurredMessages,
 	#instVars : [
 		'expectedMessages'
 	],
-	#category : 'Mocketry-Specs'
+	#category : #'Mocketry-Specs'
 }
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> addExpectedMessage: aSpecOfExpectedMessage [
+SpecOfMultipleMessages >> addExpectedMessage: aSpecOfExpectedMessage [
 	
 	expectedMessages add: aSpecOfExpectedMessage 
 ]
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> addExpectedMessages: newExpectedMessages [
+SpecOfMultipleMessages >> addExpectedMessages: newExpectedMessages [
 	
 	expectedMessages addAll: newExpectedMessages
 ]
 
 { #category : #converting }
-SpecOfObjectsInteraction >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfMultipleMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 
 	| result interactionSpec |
 	result := self class new.
 	
 	expectedMessages do: [ :each | 
 
-		interactionSpec := each asInteractionSpecBetweenAll: expectedReceivers.
-		interactionSpec populateObjectsInteractionSpec: result		
+		interactionSpec := each asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory.
+		interactionSpec populateMultipleMessagesSpec: result		
 	 ].
 
 	^result
 ]
 
 { #category : #testing }
-SpecOfObjectsInteraction >> basicMatches: occurredMessages [
+SpecOfMultipleMessages >> basicMatches: occurredMessages [
 
 	^expectedMessages allSatisfy: [ :each | 
 		each matches: occurredMessages ]
 ]
 
 { #category : #copying }
-SpecOfObjectsInteraction >> copy [
+SpecOfMultipleMessages >> copy [
 	| copy |
 	copy := super copy.
 	copy expectedMessages: (expectedMessages collect: [ :each | each copy]).
@@ -56,41 +56,41 @@ SpecOfObjectsInteraction >> copy [
 ]
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> expectedMessages [
+SpecOfMultipleMessages >> expectedMessages [
 	^ expectedMessages
 ]
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> expectedMessages: anObject [
+SpecOfMultipleMessages >> expectedMessages: anObject [
 	expectedMessages := anObject
 ]
 
 { #category : #initialization }
-SpecOfObjectsInteraction >> initialize [
+SpecOfMultipleMessages >> initialize [
 	super initialize.
 	
 	expectedMessages := OrderedCollection new
 ]
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> invertChildren [
+SpecOfMultipleMessages >> invertChildren [
 
 	expectedMessages do: [ :each | each invert ]
 ]
 
 { #category : #testing }
-SpecOfObjectsInteraction >> isEmpty [
+SpecOfMultipleMessages >> isEmpty [
 	^expectedMessages isEmpty
 ]
 
 { #category : #accessing }
-SpecOfObjectsInteraction >> populateObjectsInteractionSpec: anObjectsInteractionSpec [
+SpecOfMultipleMessages >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 
-	anObjectsInteractionSpec addExpectedMessages: expectedMessages
+	aMultipleMessagesSpec addExpectedMessages: expectedMessages
 ]
 
 { #category : #validation }
-SpecOfObjectsInteraction >> validate: occurredMessages [
+SpecOfMultipleMessages >> validate: occurredMessages [
 
 	| uncheckedMessages failedSpecs result |
 	uncheckedMessages := OrderedCollection withAll: occurredMessages.

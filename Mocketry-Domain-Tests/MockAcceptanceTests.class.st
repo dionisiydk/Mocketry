@@ -136,11 +136,173 @@ MockAcceptanceTests >> testBuildingExpectationsByBlock [
 { #category : #tests }
 MockAcceptanceTests >> testCapturingArgument [
 
+	| error |
 	mock stub someMessageWith: Arg argName.
 	
  	mock someMessageWith: #argValue.
 	
-	Arg argName should be: #argValue
+	Arg argName should be: #argValue.
+	error := [ Arg argName should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue from #argName but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: 10@20.
+	
+	Arg argName where x should be: 10.
+	error := [ Arg argName where x should be: -1 ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got 10 from #argName x but it should be -1'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalls [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromAllCalls should beKindOf: Symbol.
+	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but it should be #argValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	error := [Arg argName fromAllCalls should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesReceivedGivenMessage [
+
+	| error mock2 mock3 |
+	mock stub someMessageWith: Arg argName.
+	mock2 := Mock new.
+	mock3 := Mock new.
+	
+	mock2 someMessage.
+	mock3 someMessage.
+ 	mock someMessageWith: mock2.
+	mock someMessageWith: mock3.
+	
+	Arg argName fromAllCalls should receive someMessage.
+	error := [ Arg argName fromAllCalls should receive someMessage2 ] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock2) never received someMessage2'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesWasReturnedFromGivenMessage [
+
+	| error stream |
+	mock stub someMessageWith: Arg argName.
+	stream := { #argValue1. #argValue2 } readStream.
+	stream stub.
+	
+ 	mock someMessageWith: stream next.
+	mock someMessageWith: stream next.
+	
+	Arg argName fromAllCalls should beReturnedFrom: [ stream next ].
+	error := [ Arg argName fromAllCalls should beReturnedFrom: [ stream peek ] ] should raise: SpecOfFailed.
+	error where messageText should equal: '#argValue1 was returned from a ReadStream next but it should be a ReadStream peek'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromFirstCall [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromFirstCall should be: #argValue.
+	error := [ Arg argName fromFirstCall should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue from #argName from 1 call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromFirstCallAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromFirstCall where last should be: $e.
+	error := [ Arg argName fromFirstCall where last should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got $e from #argName last from 1 call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCall [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	
+	Arg argName fromLastCall should be: #argValue2.
+	error := [ Arg argName fromLastCall should be: #wrongValue ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #argValue2 from #argName from last call but it should be #wrongValue'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCallAndValidatingWithWhere [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: 1@2.
+	mock someMessageWith: 10@20.
+
+	Arg argName fromLastCall where x even should be: true.
+	error := [ Arg argName fromLastCall where x even should be: false ] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got true from #argName x even from last call but it should be false'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromLastCallWhenNothingWasSent [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+		
+	error := [Arg argName fromLastCall should be: #argValue2] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentFromSecondCall [
+
+	mock stub someMessageWith: Arg argName.
+	
+ 	mock someMessageWith: #argValue.
+	mock someMessageWith: #argValue2.
+	mock someMessageWith: #argValue3.
+	
+	(Arg argName fromCall: 2) should be: #argValue2
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingArgumentWhichMessageWasNotOccurred [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	
+	error := [Arg argName should be: #argValue] should raise: SpecOfFailed.
+	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
 { #category : #tests }
@@ -156,6 +318,55 @@ MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 	Arg rectangle should be: rect.
 	Arg rectangle should receive width.
 	Arg rectangle where corner x should be: 2
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgument [
+
+	mock stub someMessageWith: Arg argName.
+	
+ 	[mock someMessageWith: #argValue] fork.
+	
+	Arg argName should takeAWhile to be: #argValue
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation [
+
+	| array |
+	array := Array new: 1.
+	mock stub someMessageWith: Arg argName.
+	
+ 	[mock someMessageWith: array] fork.
+	array at: 1 put: #expected.
+	
+	Arg argName where first should takeAWhile to be: #expected
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation2 [
+
+	| array |
+	array := Array new: 1.
+	mock stub someMessageWith: Arg argName.
+	
+	mock someMessageWith: array.
+ 	[array at: 1 put: #expected] fork.	
+	
+	Arg argName where first should takeAWhile to be: #expected
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne [
+
+	| error |
+	mock stub someMessageWith: Arg argName.
+	mock someMessageWith: #arg1.
+	Arg argName should be: #arg1.
+	
+	mock someMessageWith: #arg2.
+	error := [Arg argName should be: #arg1] should fail.
+	error where messageText should includeSubstring: 'multiple args were captured'
 ]
 
 { #category : #tests }
@@ -829,6 +1040,48 @@ MockAcceptanceTests >> testValidationAutomockReceivedMessage [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationFutureMessageSend [
+
+	[mock someMessage] fork.
+	
+	mock should takeAWhile to receive someMessage
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationFutureMessageSendWhichShouldBeSentTwice [
+
+	mock someMessage.
+	[mock someMessage] fork.
+	
+	mock should takeAWhile to receive someMessage twice
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationInvolvedObjectsState [
+
+	| array1 array2 error |
+	array1 := { #expectedItem. #missingItem }.
+	array2 := { #expectedItem. #missingItem2 }.
+	array1 stub. array2 stub. "real objects stub registers them in interaction history"
+	
+	(Instance of: Array) inTest should include: #expectedItem.
+	(Instance of: Array) inTest should haveSize: 2.
+	
+	error := [(Instance of: Array) inTest should include: #missingItem] should raise: SpecOfFailed.
+	error where messageText should equal: 'Got #(#expectedItem #missingItem2) but it should include #missingItem'
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationInvolvedObjectsStateWhenNobodyWasInvolved [
+
+	| error involvedMock |
+	involvedMock := Mock new. "To have at least one object which is not an array"
+	
+	error := [(Instance of: Array) inTest should include: #missingItem] should raise: SpecOfFailed.
+	error where messageText should equal: 'No object involved in test which should be an instance of Array'
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess [
 
 	[mock someMessage] fork.
@@ -922,7 +1175,18 @@ MockAcceptanceTests >> testValidationMessagesCountByTwice [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteraction [
+MockAcceptanceTests >> testValidationMessagesCountForNegatedSendSpec [
+
+	| error |
+	mock someMessage.
+	mock someMessage.
+	
+	error := [mock should not receive someMessage2 twice] should raise: MessageNotUnderstood.
+	error where message selector should be: #twice
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationOfExpectedMessageSequence [
 
 	mock someMessage.
 	mock someMessage2.
@@ -934,7 +1198,7 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteraction [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessageShouldHappenTwice [
+MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
 	mock someMessage.
@@ -947,7 +1211,7 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessageS
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessagesShouldHappenAtDifferentTime [
+MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessagesShouldHappenAtDifferentTime [
 
 	mock someMessage.
 	mock someMessage2.
@@ -960,7 +1224,25 @@ MockAcceptanceTests >> testValidationOfOrderedObjectsInteractionWhenSameMessages
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteraction [
+MockAcceptanceTests >> testValidationOfFutureExpectedMessageSequence [
+
+	mock someMessage.
+	[mock someMessage2] fork.
+		
+	[mock someMessage. mock someMessage2] should takeAWhile to beDoneInOrder
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationOfFutureMultipleMessageSends [
+
+	[mock someMessage.
+	mock someMessage2] fork.
+	
+	[mock someMessage2. mock someMessage] should takeAWhile to beDone
+]
+
+{ #category : #tests }
+MockAcceptanceTests >> testValidationOfMultipleMessageSends [
 
 	mock someMessage.
 	mock someMessage2.
@@ -972,7 +1254,7 @@ MockAcceptanceTests >> testValidationOfUnorderedObjectsInteraction [
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWhenSameMessageShouldHappenTwice [
+MockAcceptanceTests >> testValidationOfMultipleMessageSendsWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
 	mock someMessage2.
@@ -982,7 +1264,7 @@ MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWhenSameMessag
 ]
 
 { #category : #tests }
-MockAcceptanceTests >> testValidationOfUnorderedObjectsInteractionWithUsageSpecs [
+MockAcceptanceTests >> testValidationOfMultipleMessageSendsWithUsageSpecs [
 	
 	mock someMessage.
 	mock someMessage.
@@ -1045,11 +1327,11 @@ MockAcceptanceTests >> testValidationReturnedValueOfRealObjectStub [
 { #category : #tests }
 MockAcceptanceTests >> testValidationThatAnyMessageWasSentToAnyMock [
 
-	[Any should receive anyMessage] should raise: SpecOfFailed.
+	[Any inTest should receive anyMessage] should raise: SpecOfFailed.
 	
 	mock someMessage.
 	
-	Any should receive anyMessage
+	Any inTest should receive anyMessage
 ]
 
 { #category : #tests }
@@ -1098,6 +1380,18 @@ MockAcceptanceTests >> testValidationThatObjectIsResultOfDeepMessageSendWhichWas
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testValidationThatObjectIsResultOfFutureMessageSend [
+
+	| array |
+	array := {mock}.
+	array stub.
+	
+	[array first] fork.
+	
+	mock should takeAWhile to beReturnedFrom: [array first]
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testValidationThatObjectIsResultOfParticularMessageSend [
 
 	| result |
@@ -1126,27 +1420,27 @@ MockAcceptanceTests >> testValidationThatParticularMessageWasSentToAllMocks [
 	mock someMessage.
 	mock2 := Mock new.
 		
-	[Any should receive someMessage] should raise: SpecOfFailed.
+	[Any inTest should receive someMessage] should raise: SpecOfFailed.
 
 	mock2 someMessage.
 	
-	Any should receive someMessage	
+	Any inTest should receive someMessage	
 ]
 
 { #category : #tests }
 MockAcceptanceTests >> testValidationThatParticularMessageWasSentToSetOfObjectsDefinedBySpec [
 
 	| mock2 |
-	[(Instance of: Mock) should receive someMessage] should raise: SpecOfFailed.
+	[(Instance of: Mock) inTest should receive someMessage] should raise: SpecOfFailed.
 
 	mock someMessage.
 	mock2 := Mock new.
 
-	[(Instance of: Mock) should receive someMessage] should raise: SpecOfFailed.	
+	[(Instance of: Mock) inTest should receive someMessage] should raise: SpecOfFailed.	
 
 	mock2 someMessage.
 	
-	(Instance of: Mock) should receive someMessage	
+	(Instance of: Mock) inTest should receive someMessage	
 ]
 
 { #category : #tests }

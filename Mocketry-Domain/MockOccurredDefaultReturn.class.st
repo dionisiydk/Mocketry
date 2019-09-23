@@ -49,6 +49,11 @@ MockOccurredDefaultReturn >> returnedMock: anObject [
 	returnedMock := anObject
 ]
 
+{ #category : #accessing }
+MockOccurredDefaultReturn >> returnedValue [ 
+	^returnedMock
+]
+
 { #category : #printing }
 MockOccurredDefaultReturn >> stringForSpecTitle [
 	returnedMock isGhost ifFalse: [ ^returnedMock stringForSpecValidation]. "it is possible that mock was converted into normal object like boolean or number due to boolean logic or arithmetic operations which happens with returned mock"

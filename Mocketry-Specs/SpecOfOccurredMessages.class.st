@@ -7,12 +7,17 @@ Class {
 	#category : 'Mocketry-Specs'
 }
 
+{ #category : #testing }
+SpecOfOccurredMessages class >> isAbstract [ 
+	^self = SpecOfOccurredMessages
+]
+
 { #category : #converting }
-SpecOfOccurredMessages >> asInteractionSpecBetweenAll: expectedReceivers [
+SpecOfOccurredMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	self subclassResponsibility 
 ]
 
 { #category : #accessing }
-SpecOfOccurredMessages >> populateObjectsInteractionSpec: anObjectsInteractionSpec [
+SpecOfOccurredMessages >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 	self subclassResponsibility 
 ]

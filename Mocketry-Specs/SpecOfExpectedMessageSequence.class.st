@@ -1,17 +1,17 @@
 "
 I specify ordered group of expected message specs. (as conjunction).
-I am valid for group of message only if they occurred in exact order which defined by my contents.
+I am valid for group of messages only if they occurred in exact order which defined by my contents.
 
 My contents are SpecOfExpectedMessage
 "
 Class {
-	#name : #SpecOfOrderedObjectsInteraction,
-	#superclass : #SpecOfObjectsInteraction,
-	#category : 'Mocketry-Specs'
+	#name : #SpecOfExpectedMessageSequence,
+	#superclass : #SpecOfMultipleMessages,
+	#category : #'Mocketry-Specs'
 }
 
 { #category : #validation }
-SpecOfOrderedObjectsInteraction >> basicMatches: occurredMessages [
+SpecOfExpectedMessageSequence >> basicMatches: occurredMessages [
 
 	| uncheckedMessages result |
 	
@@ -28,7 +28,7 @@ SpecOfOrderedObjectsInteraction >> basicMatches: occurredMessages [
 ]
 
 { #category : #validation }
-SpecOfOrderedObjectsInteraction >> validate: occurredMessages [
+SpecOfExpectedMessageSequence >> validate: occurredMessages [
 
 	| uncheckedMessages result allOccurred validMessages |
 	allOccurred := super validate: occurredMessages.

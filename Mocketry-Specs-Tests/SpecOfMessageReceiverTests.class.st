@@ -13,7 +13,7 @@ SpecOfMessageReceiverTests >> testFailedValidationWhenSenderWasWrong [
 	result := spec validate: (MockOccurredMessage receiver: 1 selector: #someMessage).
 	
 	result should be isFailure.
-	result where description should equal: 'someMessage is sent to "1" but it should be "2"'
+	result where description should equal: 'someMessage is sent to 1 but it should be 2'
 ]
 
 { #category : #tests }
@@ -25,7 +25,7 @@ SpecOfMessageReceiverTests >> testFailedValidationWhenSpecWithDenial [
 	result := spec validate: (MockOccurredMessage receiver: 2 selector: #someMessage).
 	
 	result should be isFailure.
-	result where description should equal: 'someMessage is sent to "2" but it should not be "2"'
+	result where description should equal: 'someMessage is sent to 2 but it should not be 2'
 ]
 
 { #category : #tests }

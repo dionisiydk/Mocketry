@@ -1,14 +1,14 @@
 Class {
-	#name : #SpecOfObjectsInteractionTests,
+	#name : #SpecOfMultipleMessagesTests,
 	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#category : #'Mocketry-Specs-Tests'
 }
 
 { #category : #tests }
-SpecOfObjectsInteractionTests >> testFailedValidationWhenSenderWasWrong [
+SpecOfMultipleMessagesTests >> testFailedValidationWhenSenderWasWrong [
 	
 	| spec messages result |
-	spec := SpecOfObjectsInteraction new.
+	spec := SpecOfMultipleMessages new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector3).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
@@ -26,10 +26,10 @@ SpecOfObjectsInteractionTests >> testFailedValidationWhenSenderWasWrong [
 ]
 
 { #category : #tests }
-SpecOfObjectsInteractionTests >> testMatches [
+SpecOfMultipleMessagesTests >> testMatches [
 	
 	| spec messages |
-	spec := SpecOfObjectsInteraction new.
+	spec := SpecOfMultipleMessages new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
@@ -45,10 +45,10 @@ SpecOfObjectsInteractionTests >> testMatches [
 ]
 
 { #category : #tests }
-SpecOfObjectsInteractionTests >> testMatchesWhenSomeMessageExpectedTwiceTime [
+SpecOfMultipleMessagesTests >> testMatchesWhenSomeMessageExpectedTwiceTime [
 	
 	| spec messages |
-	spec := SpecOfObjectsInteraction new.
+	spec := SpecOfMultipleMessages new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver2 selector: #selector2).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
@@ -65,10 +65,10 @@ SpecOfObjectsInteractionTests >> testMatchesWhenSomeMessageExpectedTwiceTime [
 ]
 
 { #category : #tests }
-SpecOfObjectsInteractionTests >> testNotMatches [
+SpecOfMultipleMessagesTests >> testNotMatches [
 	
 	| spec messages |
-	spec := SpecOfObjectsInteraction new.
+	spec := SpecOfMultipleMessages new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).
@@ -82,10 +82,10 @@ SpecOfObjectsInteractionTests >> testNotMatches [
 ]
 
 { #category : #tests }
-SpecOfObjectsInteractionTests >> testSucceedValidation [
+SpecOfMultipleMessagesTests >> testSucceedValidation [
 	
 	| spec messages result |
-	spec := SpecOfObjectsInteraction new.
+	spec := SpecOfMultipleMessages new.
 	spec expectedMessages: { 
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver3 selector: #selector3).
 		SpecOfExpectedMessage from: (MockOccurredMessage receiver: #receiver selector: #selector).

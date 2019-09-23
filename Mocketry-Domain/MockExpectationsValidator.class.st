@@ -27,18 +27,18 @@ Class {
 	#name : #MockExpectationsValidator,
 	#superclass : #Object,
 	#instVars : [
-		'verifiedBlock',
-		'interactionSpec'
+		'interactionSpec',
+		'shouldExpression'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
-MockExpectationsValidator class >> for: verifiedBlock by: anObjectsInteractionSpec [
+MockExpectationsValidator class >> for: aShouldExpression by: aMultipleMessagesSpec [
 
 	^self new 
-		verifiedBlock: verifiedBlock;
-		interactionSpec: anObjectsInteractionSpec 
+		shouldExpression: aShouldExpression;
+		interactionSpec: aMultipleMessagesSpec
 ]
 
 { #category : #accessing }
@@ -58,17 +58,17 @@ MockExpectationsValidator >> satisfy: blockWithExpectations [
 	teacher := MockValidatedExpectationsTeacher new.
 	MockCurrentBehaviour useMockRole: teacher while: blockWithExpectations.
 	
-	verifiedBlock value.
+	shouldExpression receiver value value.
 	interactionSpec expectedMessages: teacher convertExpectationsToSpecs.
-	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec
+	^shouldExpression evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value.
 ]
 
 { #category : #accessing }
-MockExpectationsValidator >> verifiedBlock [
-	^ verifiedBlock
+MockExpectationsValidator >> shouldExpression [
+	^ shouldExpression
 ]
 
 { #category : #accessing }
-MockExpectationsValidator >> verifiedBlock: anObject [
-	verifiedBlock := anObject
+MockExpectationsValidator >> shouldExpression: anObject [
+	shouldExpression := anObject
 ]
