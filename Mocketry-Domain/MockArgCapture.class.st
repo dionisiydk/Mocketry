@@ -43,6 +43,13 @@ MockArgCapture class >> named: aString [
 		name: aString
 ]
 
+{ #category : #converting }
+MockArgCapture >> asShouldExpressionReceiver [ 
+	self ensureMessageSpec.
+	
+	^MockSingleCapturedValueReceiver from: self
+]
+
 { #category : #specs }
 MockArgCapture >> asSimpleValue [
 	^self
@@ -74,20 +81,21 @@ MockArgCapture >> captureValue: anObject [
 	values add: anObject
 ]
 
-{ #category : #'delegation messages' }
-MockArgCapture >> doesNotUnderstand: aMessage [
+{ #category : #initialization }
+MockArgCapture >> ensureMessageSpec [
+	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
+]
+
+{ #category : #accessing }
+MockArgCapture >> fromAllCalls [
 	
-	self validateSingleValue.
-	
-	^aMessage sendTo: self fromFirstCall
+	^MockAllCapturedValuesReceiver from: self
 ]
 
 { #category : #accessing }
 MockArgCapture >> fromCall: callNumber [
 	
-	self validateNumberOfCalls: callNumber.
-	
-	^values at: callNumber
+	^MockConcreteCapturedValueReceiver from: self callNumber: callNumber
 ]
 
 { #category : #accessing }
@@ -97,7 +105,7 @@ MockArgCapture >> fromFirstCall [
 
 { #category : #accessing }
 MockArgCapture >> fromLastCall [
-	^self fromCall: values size
+	^MockLastCapturedValueReceiver from: self
 ]
 
 { #category : #initialization }
@@ -132,6 +140,11 @@ MockArgCapture >> name: anObject [
 	name := anObject
 ]
 
+{ #category : #accessing }
+MockArgCapture >> numberOfCalls [
+	^values size
+]
+
 { #category : #printing }
 MockArgCapture >> printOn: aStream [
 	super printOn: aStream.
@@ -139,21 +152,10 @@ MockArgCapture >> printOn: aStream [
 	aStream << $( << name << $)
 ]
 
-{ #category : #specs }
-MockArgCapture >> should [ 
-
-	| expression |
-	self validateSingleValue.
-	
-	expression := self fromFirstCall should.
-	expression receiverOwner: self.
-	^expression
-]
-
 { #category : #printing }
 MockArgCapture >> stringForSpecTitle [ 
 
-	^'Arg ', name
+	^name printString
 ]
 
 { #category : #validation }
@@ -164,27 +166,46 @@ MockArgCapture >> validate: anObject [
 
 { #category : #validation }
 MockArgCapture >> validateNumberOfCalls: callsNumber [
-	| expectedMessageSpec |
-	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
+	| expectedMessageSpec result history |
+	self ensureMessageSpec.
 	
 	expectedMessageSpec := SpecOfExpectedMessage new.
 	expectedMessageSpec messageSend: messageSpec.
 	expectedMessageSpec usage minCount: callsNumber.
-		
-	MockCurrentBehaviour validateOccurredMessagesBy: expectedMessageSpec.
 	
-	values ifEmpty: [ self error: 'No argument was captured!' ].
-	values size < callsNumber ifTrue: [ 
-		self error: 'Arguments was captured ', values size asString
-							, ' times but should be ', callsNumber ]			
+	history := MockCurrentBehaviour value interactionHistory.
+	result := expectedMessageSpec validate: history occurredMessages.
+	result isSuccess ifTrue: [ 
+		values ifEmpty: [ self error: 'No argument was captured but message was sent!' ].
+		values size < callsNumber ifTrue: [ 
+			self error: 'Arguments was captured ', values size asString
+							, ' times but should be ', callsNumber ]].
+	^result
 ]
 
 { #category : #validation }
 MockArgCapture >> validateSingleValue [ 
 
-	self validateNumberOfCalls: 1.
+	| result |
+	result := self validateNumberOfCalls: 1.
 	
-	values asSet size > 1 ifTrue: [ self error: 'Multiple args was captured! Choose concrete by #fromCall:' ].
+	result isSuccess ifTrue: [ 
+		values size > 1
+			ifTrue: [ self error: 'Multiple args were captured! Choose concrete by #fromCall: or #fromAllCalls' ]].
+		
+	^result
+]
+
+{ #category : #accessing }
+MockArgCapture >> valueFromCall: callNumber [
+	
+	^values at: callNumber
+]
+
+{ #category : #accessing }
+MockArgCapture >> valueFromLastCall [
+	
+	^values last
 ]
 
 { #category : #accessing }
@@ -195,12 +216,4 @@ MockArgCapture >> values [
 { #category : #accessing }
 MockArgCapture >> values: anObject [
 	values := anObject
-]
-
-{ #category : #specs }
-MockArgCapture >> where [ 
-
-	self validateSingleValue.
-	
-	^self fromFirstCall where
 ]

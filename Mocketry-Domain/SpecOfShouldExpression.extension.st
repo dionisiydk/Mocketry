@@ -2,43 +2,51 @@ Extension { #name : #SpecOfShouldExpression }
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> beDone [
-
 	| interactionSpec |
-	interactionSpec := SpecOfObjectsInteraction new.
+	interactionSpec := SpecOfMultipleMessages new.
 	
-	MockCurrentBehaviour useMockRole: (MockInteractionSpecBuilder for: interactionSpec) while: receiver.
+	MockCurrentBehaviour 
+		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
+		while: receiver value.
 	
-	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec.
-	
-	^interactionSpec
+	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> beDoneInOrder [
 
 	| interactionSpec |
-	interactionSpec := SpecOfOrderedObjectsInteraction new.
+	interactionSpec := SpecOfExpectedMessageSequence new.
 	
-	MockCurrentBehaviour useMockRole: (MockInteractionSpecBuilder for: interactionSpec) while: receiver.
+	MockCurrentBehaviour 
+		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
+		while: receiver value.
 	
-	MockCurrentBehaviour validateOccurredMessagesBy: interactionSpec
+	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 
 	| interactionSpec expectedSender senderSpec |
-	interactionSpec := SpecOfObjectsInteraction new.
+	interactionSpec := SpecOfMultipleMessages new.
 	
 	MockCurrentBehaviour 
 		useMockRole: (MockInteractionSpecBuilder for: interactionSpec) 
 		while: aBlockWithMessageSpec.
 		
 	expectedSender := interactionSpec expectedMessages last.
-	senderSpec := SpecOfExpectedObjectSender for: receiver returnedFrom: expectedSender.
-	senderSpec denial: withNegation.
+	senderSpec := SpecOfExpectedObjectSender 
+		for: self createSpecOfValidationSubject returnedFrom: expectedSender.
 	
-	MockCurrentBehaviour validateOccurredMessagesBy: senderSpec
+	^self evaluateWith: senderSpec forMockBehaviour: MockCurrentBehaviour value
+]
+
+{ #category : #'*Mocketry-Domain' }
+SpecOfShouldExpression >> evaluateWith: anOccurredMessagesSpec forMockBehaviour: aMockBehaviour [
+
+	receiver := SpecOfShouldReceiverRoot from: aMockBehaviour interactionHistory.
+	^self evaluateWith: (SpecOfInteractionHistory with: anOccurredMessagesSpec)
 ]
 
 { #category : #'*Mocketry-Domain' }
@@ -46,31 +54,25 @@ SpecOfShouldExpression >> expect [
 	
 	| teacher |
 	teacher := MockTeacher default.
-	MockCurrentBehaviour useMockRole: teacher while: receiver.
+	MockCurrentBehaviour useMockRole: teacher while: receiver value.
 	^teacher
-]
-
-{ #category : #'*Mocketry-Domain' }
-SpecOfShouldExpression >> got [
-	self deprecated: 'use #receive instead'.
-	
-	^self receive
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
-	^MockExpectationsValidator for: receiver by: SpecOfObjectsInteraction new
+	^MockExpectationsValidator for: self by: SpecOfMultipleMessages new
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> receive [
 
-	^receiver currentMockBehaviour createMockToValidate: receiver withNegation: withNegation 
+	^receiver currentMockBehaviour 
+		createHelperMockAs: (MockValidator forExpression: self)
 ]
 
 { #category : #'*Mocketry-Domain' }
 SpecOfShouldExpression >> strictly [
 	
-	^MockExpectationsValidator for: receiver by: SpecOfOrderedObjectsInteraction new
+	^MockExpectationsValidator for: self by: SpecOfExpectedMessageSequence new
 ]

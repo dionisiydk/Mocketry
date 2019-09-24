@@ -14,21 +14,21 @@ Class {
 	#name : #MockValidator,
 	#superclass : #MockHelperRole,
 	#instVars : [
-		'withNegation'
+		'shouldExpression'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
-MockValidator class >> for: anObject withNegation: aBoolean [
-	^(self for: anObject)
-		withNegation: aBoolean
+MockValidator class >> forExpression: aShouldExpression [
+	^(self for: aShouldExpression createSpecOfValidationSubject)
+		shouldExpression: aShouldExpression
 ]
 
 { #category : #processing }
 MockValidator >> anyMessage [
 
-	"This method for documenting purpose. Look at processing method. You will see that this particular selector is substituted by Any. It make possible to validate that there was any message to particular object (or any object):
+	"This method for documenting purpose. Look at processing method. You will see that this particular selector is substituted by Any. It allows to validate that there was any message to particular object (or any object):
 		mock should receive anyMessage.
 		Any should receive anyMessage"
 ]
@@ -36,21 +36,21 @@ MockValidator >> anyMessage [
 { #category : #processing }
 MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 
-	| spec |	
+	| spec result |	
 	spec := SpecOfExpectedMessage from: anOccurredMessage.
-	spec denial: withNegation.
 	
-	aMockBehaviour validateOccurredMessagesBy: spec.
+	result := shouldExpression evaluateWith: spec forMockBehaviour: aMockBehaviour.
+	shouldExpression withNegation ifTrue: [ ^result ].
 	
-	^MockDetailedMessagesValidation on: spec
+	^MockDetailedMessagesValidation for: shouldExpression on: spec
 ]
 
 { #category : #accessing }
-MockValidator >> withNegation [
-	^ withNegation
+MockValidator >> shouldExpression [
+	^ shouldExpression
 ]
 
 { #category : #accessing }
-MockValidator >> withNegation: anObject [
-	withNegation := anObject
+MockValidator >> shouldExpression: anObject [
+	shouldExpression := anObject
 ]

@@ -138,7 +138,8 @@ SpecOfExpectedObjectSenderTests >> testSucceedValidation [
 	
 	result := spec validate: { message }.
 	
-	result should be: SpecOfValidationResult success
+	result should beKindOf: SpecOfMessagesValidationSuccess.
+	result requiredOccurredMessages should equal: {message}.
 ]
 
 { #category : #tests }
@@ -155,5 +156,6 @@ SpecOfExpectedObjectSenderTests >> testSucceedValidationOfMultipleSenders [
 	
 	result := spec validate: { anotherSenderMessage. expectedSenderMessage }.
 	
-	result should be: SpecOfValidationResult success
+	result should beKindOf: SpecOfMessagesValidationSuccess.
+	result requiredOccurredMessages should equal: { expectedSenderMessage }..
 ]

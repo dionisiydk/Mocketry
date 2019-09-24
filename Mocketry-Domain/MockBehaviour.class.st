@@ -58,13 +58,12 @@ Class {
 		'ownerTestCase',
 		'testSelector',
 		'mockRole',
-		'occurredMessages',
 		'expectedMessages',
 		'messageArgCaptures',
-		'registeredObjects',
+		'interactionHistory',
 		'globalStubs'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
@@ -94,9 +93,9 @@ MockBehaviour >> addExpectation: aMockExpectedMessage asPartOfGroup: expectation
 ]
 
 { #category : #accessing }
-MockBehaviour >> argCaptureNamed: aString [
+MockBehaviour >> argCaptureNamed: aSymbol [
 
-	^messageArgCaptures at: aString ifAbsentPut: [ MockArgCapture named: aString ]
+	^messageArgCaptures at: aSymbol ifAbsentPut: [ MockArgCapture named: aSymbol ]
 ]
 
 { #category : #operations }
@@ -109,12 +108,6 @@ MockBehaviour >> createHelperMockAs: aMockRole [
 	mock := MockHelper named: aMockRole printString.
 	mock ghostBehaviour: helperBehaviour.
 	^mock
-]
-
-{ #category : #operations }
-MockBehaviour >> createMockToValidate: anObject withNegation: aBoolean [
-	
-	^self createHelperMockAs: (MockValidator for: anObject withNegation: aBoolean)
 ]
 
 { #category : #accessing }
@@ -135,12 +128,21 @@ MockBehaviour >> expectedMessages: anObject [
 { #category : #initialization }
 MockBehaviour >> initialize [
 	super initialize.
-	registeredObjects := OrderedCollection new.
+	interactionHistory := MockInteractionHistory new.
 	globalStubs := OrderedCollection new.
 	expectedMessages := OrderedCollection new.
-	occurredMessages := OrderedCollection new.
 	messageArgCaptures := Dictionary new.
 	self replayMocks.
+]
+
+{ #category : #accessing }
+MockBehaviour >> interactionHistory [
+	^ interactionHistory
+]
+
+{ #category : #accessing }
+MockBehaviour >> interactionHistory: anObject [
+	interactionHistory := anObject
 ]
 
 { #category : #testing }
@@ -161,12 +163,7 @@ MockBehaviour >> mockRole: anObject [
 
 { #category : #accessing }
 MockBehaviour >> occurredMessages [
-	^ occurredMessages
-]
-
-{ #category : #accessing }
-MockBehaviour >> occurredMessages: anObject [
-	occurredMessages := anObject
+	^ interactionHistory occurredMessages
 ]
 
 { #category : #accessing }
@@ -207,21 +204,15 @@ MockBehaviour >> recoverGlobalStubs [
 { #category : #controlling }
 MockBehaviour >> registerObject: anObject [
 
-	registeredObjects add: anObject.
+	interactionHistory recordObject: anObject.
 	(anObject ghostClass inheritsFrom: Class) ifTrue: [ globalStubs add: anObject ]
-]
-
-{ #category : #accessing }
-MockBehaviour >> registeredObjects [
-
-	^registeredObjects
 ]
 
 { #category : #operations }
 MockBehaviour >> replayMessageSend: anOccurredMessage [
 	| expected |
 	
-	occurredMessages add: anOccurredMessage.
+	interactionHistory recordMessage: anOccurredMessage.
 	
 	expected := expectedMessages 
 		detect: [ :each | each isAbout: anOccurredMessage ]
@@ -269,13 +260,4 @@ MockBehaviour >> useMockRole: aMockRole while: aBlock [
 	currentRole := mockRole.
 	mockRole := aMockRole.
 	aBlock ensure: [ mockRole := currentRole ]
-]
-
-{ #category : #operations }
-MockBehaviour >> validateOccurredMessagesBy: aSpecOfOccurredMessages [ 
-	
-	| separateSpecs |
-	separateSpecs := aSpecOfOccurredMessages asInteractionSpecBetweenAll: self registeredObjects.
-	
-	^(separateSpecs validate: occurredMessages) raise
 ]

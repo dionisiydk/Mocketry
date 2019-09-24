@@ -93,7 +93,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWr
 	
 	result should be isFailure.
 	result where description should equal: '#receiver never received selectorWith: #expectedArg'.
-	result where mostSimilarMessage description should equal: '#receiver received selectorWith: #wrongArg but arg 1 should equal "#expectedArg"'
+	result where mostSimilarMessage description should equal: '#receiver received selectorWith: #wrongArg but arg 1 should equal #expectedArg'
 ]
 
 { #category : #tests }
@@ -109,7 +109,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWr
 	
 	result should be isFailure.
 	result where description should equal: '#receiver never received selector'.
-	result where mostSimilarMessage description should equal: '#receiver received wrongSelector but it should be "#selector"'
+	result where mostSimilarMessage description should equal: '#receiver received wrongSelector but it should be #selector'
 ]
 
 { #category : #tests }
@@ -216,7 +216,8 @@ SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageC
 	
 	result := spec validate: interaction.		
 	
-	result should be isSuccess
+	result should be isSuccess.
+	result requiredOccurredMessages should be isEmpty
 ]
 
 { #category : #tests }

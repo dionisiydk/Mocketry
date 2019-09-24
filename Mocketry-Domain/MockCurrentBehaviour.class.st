@@ -21,11 +21,6 @@ MockCurrentBehaviour class >> useMockRole: aMockRole while: aBlock [
 	self value useMockRole: aMockRole while: aBlock
 ]
 
-{ #category : #operations }
-MockCurrentBehaviour class >> validateOccurredMessagesBy: aSpecOfOccurredMessages [ 
-	^self value validateOccurredMessagesBy: aSpecOfOccurredMessages  
-]
-
 { #category : #accessing }
 MockCurrentBehaviour >> installValue: aMockBehaviour intoForked: newProcess from: ownerProcess [
 	
