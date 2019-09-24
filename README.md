@@ -15,7 +15,7 @@ To add dependency in your project baseline:
 ```Smalltalk
 spec
     baseline: 'Mocketry'
-    with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
+    with: [ spec repository: 'github://dionisiydk/Mocketry:versionTagOrBranch' ]
 ```
 For old Pharo versions project should be loaded from smalltalkhub:
 ```Smalltalk
