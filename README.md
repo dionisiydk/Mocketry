@@ -144,7 +144,7 @@ mock := Mock new.
     
 (mock messageWith: 10) should be: #ten.
 (mock messageWith: 20) should be: #anyInt.
-(mock messageWith: 'test' should be: #anyString
+(mock messageWith: 'test') should be: #anyString
 ```
 ### Expected actions for stubs
 There are different kind of expected actions:
