@@ -420,10 +420,10 @@ mock2 := Mock new.
 mock someMessage; someMessage.
 mock2 someMessage.
     
-Any should receive someMessage twice. "will fail because mock2 received #someMessage only once"
+Any inTest should receive someMessage twice. "will fail because mock2 received #someMessage only once"
     
 mock2 someMessage.
-Any should receive someMessage twice. "will not fail because both mocks received #someMessage twice"
+Any inTest should receive someMessage twice. "will not fail because both mocks received #someMessage twice"
 ```
 ### Verify message send result
 There are two ways how to verify result of occurred message:
