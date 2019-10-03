@@ -349,8 +349,8 @@ In place of message arguments you can use expected objects itself\. Or you can p
 ```Smalltalk
 mock := Mock new.
     
-(mock messageWith: 10) should be: #ten.
-(mock messageWith: 'test' should be: #anyString.
+mock messageWith: 10.
+mock messageWith: 'test'.
     
 mock should receive messageWith: 10.
 mock should receive messageWith: (Instance of: SmallInteger).
