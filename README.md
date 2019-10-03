@@ -94,7 +94,7 @@ Or you can stub **ANY message** to particular object:
 ```Smalltalk
 mock := Mock new.
     
-mock stub anyMessage willreturn:: 100.
+mock stub anyMessage willReturn: 100.
     
 mock someMessage should be: 100.
 mock someMessage2 should be: 100.
@@ -302,8 +302,8 @@ rect stub.
 mock width.
 rect area.
     
-Any should receive width. "it will check that mock and rect received message #width"
-Any should receive area "it will fail because mock not received #area message".
+Any inTest should receive width. "it will check that mock and rect received message #width"
+Any inTest should receive area "it will fail because mock not received #area message".
 ```
 Also you can verify that **ANY message** was sent to particular object:
 ```Smalltalk
@@ -321,13 +321,13 @@ rect stub.
     
 mock someMessage.
     
-Any should receive anyMessage. "will fail because rect not received any message".
+Any inTest should receive anyMessage. "will fail because rect not received any message".
     
 rect width.
     
-Any should receive anyMessage. "will not fail because both objects received at least one message"
+Any inTest should receive anyMessage. "will not fail because both objects received at least one message"
 ```
-**Any** class is specific object spec which means "any" object\. You can uses any kind of specs to verify message send for set of objects:
+**Any** class is specific object spec which means "any" object\. You can use any kind of specs to verify message send for set of objects:
 ```Smalltalk
 rect := 0@0 corner: 2@3.
 rect stub.
@@ -337,11 +337,11 @@ rect area.
 rect2 := 0@0 corner: 4@5.
 rect2 width.
     
-(Kind of: Rectangle) should receive width. "will not fail because both rect's received message #width"
-(Kind of: Rectangle) should receive area "will fail because rect2 not received message #area"
+(Kind of: Rectangle) inTest should receive width. "will not fail because both rect's received message #width"
+(Kind of: Rectangle) inTest should receive area "will fail because rect2 not received message #area"
     
 mock := Mock new.
-(Kind of: Rectangle) should receive width. "will not fail because mock is not kind of Rectangle"
+(Kind of: Rectangle) inTest should receive width. "will not fail because mock is not kind of Rectangle"
 ```
 ### Verify message sends with arguments
 
@@ -368,11 +368,12 @@ mock someMessageWith: #argValue.
     
 Arg argName should be: #argValue.
 ```
-As argument spec capture plays role of any object\. So it not restricts message send expectation\. Capture will store all received argument values\. To verify concrete argument use message \#fromCall:
+As argument spec capture plays role of any object\. So it does not restrict message send expectation\. Capture will store all received argument values\. To verify concrete argument use message \#fromCall:
 ```Smalltalk
 Arg argName fromFirstCall should be: #value1.
 Arg argName fromLastCall should be: #value3.
 (Arg argName fromCall: 2) should be: #value2.
+Arg argName fromAllCalls should beKindOf: Symbol.
 ```
 Short version:
 ```Smalltalk
@@ -382,7 +383,7 @@ will signal error if there are multiple different captured values\.
 
 Also "should" expression on capture will verify that owner message send was occurred required number of times\.
 
-When argument is captured it value is stubbed\. It allows you to verify subsequent message sends to captured arguments:
+When argument is captured its value is stubbed\. It allows you to verify subsequent message sends to captured arguments:
 ```Smalltalk
 mock stub someMessageWith: Arg rectangle.
     
@@ -487,3 +488,13 @@ mock2 := Mock new.
 mock2 someMessage2].
 ```
 **\#strictly** means that we want expected messages were happened in same order in which they were defined\.
+
+### Verify delayed async message sends
+StateSpecs provide special expression **\#takeAWhile** on verify future state of objects which use usefull for testing asyncronous code when synchronization in the test is not possible:
+```Smalltalk
+mock := Mock new.
+[mock someMessage] fork.
+
+mock should takeAWhile to receive someMessage.
+```
+"Take a while" logic is supported for any kind of should expressions described above.
