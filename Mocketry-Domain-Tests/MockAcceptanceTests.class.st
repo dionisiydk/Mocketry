@@ -121,6 +121,13 @@ MockAcceptanceTests >> testBuildingExpectationForMocksReturnedFromMessages [
 ]
 
 { #category : #tests }
+MockAcceptanceTests >> testBuildingExpectationWithoutStubShouldAlwaysFail [
+
+	[mock someMessage willReturn: #result]
+		should fail
+]
+
+{ #category : #tests }
 MockAcceptanceTests >> testBuildingExpectationsByBlock [
 
 	| mock2 |
