@@ -11,6 +11,11 @@ Class {
 	#category : 'Mocketry-Domain'
 }
 
+{ #category : #testing }
+MockTeacher >> isTeaching [
+	^true
+]
+
 { #category : #processing }
 MockTeacher >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 

@@ -164,8 +164,10 @@ MockOccurredMessage >> shouldBeAllowedForMock [
 	expectationMethod := MockExpectedMessage compiledMethodAt: selector ifAbsent: [ ^self ].
 	(expectationMethod hasPragmaNamed: #dontSendToMock) ifFalse: [ ^self ].
 	
-	GHCurrentMetaLevelDepth increaseFor: [
-		self error: '#stub is missing to define expectation using ', selector printString
+	GHCurrentMetaLevelDepth increaseFor: [ | error |
+		error := receiver ghostBehaviour mockRole isTeaching
+			ifTrue: [ 'Missing expected message (after #stub)' ] ifFalse: [ 'Missing #stub' ].
+		self error: error, ' to define expectation using ', selector printString
 	]
 ]
 
