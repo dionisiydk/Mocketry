@@ -29,9 +29,17 @@ And to specify conditions which should be valid when expectation is executed use
 
 - when: aBlock is: aSpecOfObjectState
 - when: aBlock satisfying: aBlock 
-- shouldOccurInThisThread
-- shouldOccurInAnotherThread 
- 
+- shouldBeSentInThisThread
+- shouldBeSentInAnotherThread 
+
+In addition I mark particular methods with pragma <dontSendToMock>. It allows to prevent user mistakes when expectations are defined without #stub message to the mock. It is easy to do such mistake. So such messages (mock teacher API) are completely forbidden for mocks. For example following expressions fail:
+
+	mock someMessage willReturn: 1.
+	mock will: [2].
+	mock stub willRaise: Error new
+
+It means that users can't stub such messages but it is reasonable restriction.
+
 Internal Representation and Key Implementation Points.
 
     Instance Variables
@@ -49,7 +57,7 @@ Class {
 		'actions',
 		'conditionsSpec'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
@@ -125,11 +133,13 @@ MockExpectedMessage >> restrictUsage [
 
 { #category : #conditions }
 MockExpectedMessage >> shouldBeSentInAnotherProcess [
+	<dontSendToMock>
 	conditionsSpec addSpec: SpecOfAsynchMessage forActiveProcess
 ]
 
 { #category : #conditions }
 MockExpectedMessage >> shouldBeSentInThisProcess [
+	<dontSendToMock>
 	conditionsSpec addSpec: SpecOfAsynchMessage forActiveProcess not
 ]
 
@@ -178,52 +188,62 @@ MockExpectedMessage >> useTwice [
 ]
 
 { #category : #conditions }
-MockExpectedMessage >> when: subjectBlock is: aSpecOfOBjectState [
-	conditionsSpec addSpec: (SpecOfMessageSendCondition of: subjectBlock by: aSpecOfOBjectState)
+MockExpectedMessage >> when: subjectBlock is: aSpecOfObjectState [
+	<dontSendToMock>
+	conditionsSpec addSpec: (SpecOfMessageSendCondition of: subjectBlock by: aSpecOfObjectState)
 ]
 
 { #category : #conditions }
 MockExpectedMessage >> when: subjectBlock satisfy: conditionBlock [
+	<dontSendToMock>
 	self when: subjectBlock is: (Satisfying for: conditionBlock)
 ]
 
 { #category : #actions }
 MockExpectedMessage >> will: anObject [
+	<dontSendToMock>
 	actions add: anObject asMockExpectationAction
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willCallOriginalMethod [
+	<dontSendToMock>
 	self will: MockExpectedOriginalMethodCall new
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willLogMessage [
+	<dontSendToMock>
 	self will: MockExpectedMessageLogging new
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willRaise: anExceptionOrClass [ 
+	<dontSendToMock>
 	self will: (MockExpectedException exception: anExceptionOrClass)
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willReturn: anObject [ 
+	<dontSendToMock>
 	self will: (MockExpectedValueReturn value: anObject)
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willReturnValueFrom: anArray [ 
+	<dontSendToMock>
 	self will: (MockExpectedValueForForEachCall values: anArray).
 	spec usage maxCount: anArray size
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willReturnYourself [
+	<dontSendToMock>
 	self will: MockExpectedReceiverReturn new
 ]
 
 { #category : #actions }
 MockExpectedMessage >> willStubRealResult [
+	<dontSendToMock>
 	self will: MockExpectedMethodResultStub new
 ]

@@ -152,6 +152,23 @@ MockOccurredMessage >> setUpUnexpectedResult [
 	^self extractResultFrom: [ receiver stubDoesNotExpect: self ]
 ]
 
+{ #category : #controlling }
+MockOccurredMessage >> shouldBeAllowedForMock [
+	"Method is introduced to prevent user mistakes due to missing #stub message.
+	It is easy to forget to send #stub message when defining an expectation for a mock. 
+	So with this method following examples fail with explicit error:
+		mock someMessage willReturn: 3.
+		mock will: [3].
+		mock stub willRaise: Error new"
+	| expectationMethod |
+	expectationMethod := MockExpectedMessage compiledMethodAt: selector ifAbsent: [ ^self ].
+	(expectationMethod hasPragmaNamed: #dontSendToMock) ifFalse: [ ^self ].
+	
+	GHCurrentMetaLevelDepth increaseFor: [
+		self error: '#stub is missing to define expectation using ', selector printString
+	]
+]
+
 { #category : #printing }
 MockOccurredMessage >> stringForResultSpec [
 
