@@ -18,6 +18,11 @@ MockStubTeacher >> anyMessage [
 		Any stub anyMessage willReturn: 10 "
 ]
 
+{ #category : #testing }
+MockStubTeacher >> isTeaching [
+	^true
+]
+
 { #category : #processing }
 MockStubTeacher >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 	

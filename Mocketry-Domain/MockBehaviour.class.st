@@ -233,7 +233,10 @@ MockBehaviour >> send: aMessage to: aMockObject [
 				receiver: aMockObject 
 				selector: aMessage selector
 				arguments: aMessage arguments.
-				
+	"Following is a hook to prevent user mistakes do to missing #stub message for expectations. 
+	Check method comment for details"
+	occurredMessage shouldBeAllowedForMock.
+	
 	^mockRole processMessageSend: occurredMessage by: self
 ]
 
