@@ -26,6 +26,11 @@ MockRole class >> default [
 	^default ifNil: [ default := self new ]
 ]
 
+{ #category : #testing }
+MockRole >> isTeaching [ 
+	^false
+]
+
 { #category : #processing }
 MockRole >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	self subclassResponsibility 
