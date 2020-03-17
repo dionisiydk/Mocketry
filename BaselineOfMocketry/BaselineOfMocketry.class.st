@@ -10,14 +10,14 @@ BaselineOfMocketry >> baseline: spec [
 	
 	spec for: #common do: [
 		spec 
-			baseline: 'StateSpecs' with: [spec repository: 'github://dionisiydk/StateSpecs:v4.0.0'];
+			baseline: 'StateSpecs' with: [spec repository: 'github://dionisiydk/StateSpecs:v4.0.2'];
 			project: 'StateSpecsCore' copyFrom: 'StateSpecs' with: [
 		 	    spec	loads: #('Core' 'GhostSupport')];
 			project: 'StateSpecsTests' copyFrom: 'StateSpecs' with: [
 		 	    spec	loads: #('Tests' 'GhostSupportTests' )];	
 				
 			baseline: 'Ghost' with: [
-		 	    spec repository: 'github://pharo-ide/Ghost:v5.0.0'];
+		 	    spec repository: 'github://pharo-ide/Ghost:v5.0.2'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
 		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'ObjectMutation')];
 			project: 'GhostTests' copyFrom: 'Ghost' with: [
