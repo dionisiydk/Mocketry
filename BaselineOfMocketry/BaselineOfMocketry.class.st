@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfMocketry,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfMocketry'
+	#category : #BaselineOfMocketry
 }
 
 { #category : #baselines }
@@ -33,4 +33,11 @@ BaselineOfMocketry >> baseline: spec [
 			group: 'Core' with: #('Mocketry-Specs' 'Mocketry-Domain');
 			group: 'Tests' with: #('Mocketry-Specs-Tests' 'Mocketry-Domain-Tests' 'Mocketry-Help')].
 
+]
+
+{ #category : #accessing }
+BaselineOfMocketry >> projectClass [
+	^ [ self class environment at: #MetacelloCypressBaselineProject ]
+		on: NotFound
+		do: [ super projectClass ]
 ]
