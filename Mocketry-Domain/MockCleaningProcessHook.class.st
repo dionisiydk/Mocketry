@@ -20,3 +20,18 @@ MockCleaningProcessHook class >> instance [
 MockCleaningProcessHook >> terminate [
 	MockCurrentBehaviour value: nil
 ]
+
+{ #category : #testing }
+MockCleaningProcessHook >> isSuspended [
+	^false
+]
+
+{ #category : #testing }
+MockCleaningProcessHook >> isTerminated [
+	^MockCurrentBehaviour value isNil
+]
+
+{ #category : #accessing }
+MockCleaningProcessHook >> priority [
+	^Processor activePriority
+]

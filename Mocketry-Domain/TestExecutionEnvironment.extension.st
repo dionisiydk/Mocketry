@@ -9,7 +9,7 @@ TestExecutionEnvironment >> allowsForkedProcessInheritMocks [
 { #category : #'*Mocketry-Domain' }
 TestExecutionEnvironment >> createMockBehaviour [
 	| behaviour |
-	forkedProcesses add: MockCleaningProcessHook instance.
+	self forkedProcesses add: MockCleaningProcessHook instance.
 	
 	behaviour := super createMockBehaviour.
 	behaviour ownerTestCase: testCase.
