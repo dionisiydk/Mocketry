@@ -1,8 +1,0 @@
-SmalltalkCISpec {
-  #loading : [
-    SCIMetacelloLoadSpec {
-      #baseline : 'Mocketry',
-      #platforms : [ #pharo ]
-    }
-  ]
-}
