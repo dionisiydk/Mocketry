@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dionisiydk/Mocketry.svg?branch=master)](https://travis-ci.org/dionisiydk/Mocketry)
+[![Unit Tests](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml/badge.svg)](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml)
 # Mocketry
 
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
