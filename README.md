@@ -1,5 +1,12 @@
-[![Unit Tests](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml/badge.svg)](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml)
 # Mocketry
+
+[![GitHub release](https://img.shields.io/github/release/dionisiydk/Mocketry.svg)](https://github.com/dionisiydk/Mocketry/releases/latest)
+[![Unit Tests](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml/badge.svg)](https://github.com/dionisiydk/Mocketry/actions/workflows/tests.yml)
+
+[![Pharo 7.0](https://img.shields.io/badge/Pharo-7.0-informational)](https://pharo.org)
+[![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
+[![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
+[![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
 
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
 
