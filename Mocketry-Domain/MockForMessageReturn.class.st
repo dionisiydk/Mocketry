@@ -17,7 +17,7 @@ Class {
 	#instVars : [
 		'message'
 	],
-	#category : 'Mocketry-Domain'
+	#category : #'Mocketry-Domain'
 }
 
 { #category : #'instance creation' }
@@ -108,10 +108,12 @@ MockForMessageReturn >> mockOwnerMessage: anOccurredMessage [
 
 { #category : #'boolean simulation' }
 MockForMessageReturn >> mustBeBoolean [
-	| sender |
+	| sender previousPc |
 	
 	sender := thisContext sender.
-	sender pc: sender previousPc.
+	previousPc := (sender respondsTo: #previousPc) "Compatibility with old Pharos (< 9.0)"
+		ifTrue: [ sender previousPc ] ifFalse: [ sender instructionStream previousPc ].
+	sender pc: previousPc.
 
 	self mockBecome: false
 ]

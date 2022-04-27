@@ -16,11 +16,6 @@ MockCleaningProcessHook class >> instance [
 	^instance ifNil: [ instance := MockCleaningProcessHook new]
 ]
 
-{ #category : #actions }
-MockCleaningProcessHook >> terminate [
-	MockCurrentBehaviour value: nil
-]
-
 { #category : #testing }
 MockCleaningProcessHook >> isSuspended [
 	^false
@@ -34,4 +29,9 @@ MockCleaningProcessHook >> isTerminated [
 { #category : #accessing }
 MockCleaningProcessHook >> priority [
 	^Processor activePriority
+]
+
+{ #category : #actions }
+MockCleaningProcessHook >> terminate [
+	MockCurrentBehaviour value: nil
 ]
