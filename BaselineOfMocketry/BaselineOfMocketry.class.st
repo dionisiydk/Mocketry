@@ -10,7 +10,7 @@ BaselineOfMocketry >> baseline: spec [
 	
 	spec for: #common do: [
 		spec 
-			baseline: 'StateSpecs' with: [spec repository: 'github://dionisiydk/StateSpecs:v4.0.2'];
+			baseline: 'StateSpecs' with: [spec repository: 'github://dionisiydk/StateSpecs:v5.0.0'];
 			project: 'StateSpecsCore' copyFrom: 'StateSpecs' with: [
 		 	    spec	loads: #('Core' 'GhostSupport')];
 			project: 'StateSpecsTests' copyFrom: 'StateSpecs' with: [
