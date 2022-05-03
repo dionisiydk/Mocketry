@@ -19,7 +19,7 @@ BaselineOfMocketry >> baseline: spec [
 			baseline: 'Ghost' with: [
 		 	    spec repository: 'github://pharo-ide/Ghost:v6.0.0'];
 			project: 'GhostCore' copyFrom: 'Ghost' with: [
-		 	    spec	loads: #('ObjectGhost' 'GTSupport' 'ObjectMutation')];
+		 	    spec	loads: #('ObjectGhost' 'ToolsSupport' 'ObjectMutation')];
 			project: 'GhostTests' copyFrom: 'Ghost' with: [
 		 	    spec	loads: #('ObjectGhostTests' 'ClassGhostTests' 'ObjectMutationTests')];
 			package: 'Mocketry-Specs' with: [ spec requires: #('StateSpecsCore')];
