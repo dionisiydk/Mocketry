@@ -31,7 +31,7 @@ BaselineOfMocketry >> baseline: spec [
 		spec
 			group: 'default' with: #('Core' 'Tests');
 			group: 'Core' with: #('Mocketry-Specs' 'Mocketry-Domain');
-			group: 'Tests' with: #('Mocketry-Specs-Tests' 'Mocketry-Domain-Tests' 'Mocketry-Help')].
+			group: 'Tests' with: #('Mocketry-Specs-Tests' 'Mocketry-Domain-Tests')].
 
 ]
 
