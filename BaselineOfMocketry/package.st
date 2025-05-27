@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfMocketry }
+Package { #name : 'BaselineOfMocketry' }
