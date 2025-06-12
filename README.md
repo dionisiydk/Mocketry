@@ -8,25 +8,31 @@
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
 [![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
-[![Pharo 11](https://img.shields.io/badge/Pharo-12-informational)](https://pharo.org)
+[![Pharo 12](https://img.shields.io/badge/Pharo-12-informational)](https://pharo.org)
+[![Pharo 13](https://img.shields.io/badge/Pharo-13-informational)](https://pharo.org)
 
 Mocketry is mock objects framework\. It provides simplest way to stub any message to any object and to verify any occurred behaviour
 
 ## Installation
-Use following script for Pharo version >= 6:
+The installation script (therefore version of StateSpecs) depends on Pharo version you are using it in.
+
+Pharo 13 (master branch):
 ```Smalltalk
 Metacello new
   baseline: 'Mocketry';
-  repository: 'github://dionisiydk/Mocketry';
+  repository: 'github://dionisiydk/Mocketry:master';
   load
 ```
-To add dependency in your project baseline:
+
+Pharo 6-12 (v7.0.2):
 ```Smalltalk
-spec
-    baseline: 'Mocketry'
-    with: [ spec repository: 'github://dionisiydk/Mocketry:versionTagOrBranch' ]
+Metacello new
+  baseline: 'Mocketry';
+  repository: 'github://dionisiydk/Mocketry:v7.0.2';
+  load
 ```
-For old Pharo versions project should be loaded from smalltalkhub:
+
+Pharo <= 5:
 ```Smalltalk
 Metacello new
       smalltalkhubUser: 'dionisiy' project: 'Mocketry';
@@ -34,6 +40,15 @@ Metacello new
       version: #stable;
       load.
 ```
+
+To add dependency in your project baseline:
+```Smalltalk
+spec
+    baseline: 'Mocketry'
+    with: [ spec repository: 'github://dionisiydk/Mocketry:v7.0.2' ].
+```
+(replace the version in the URL depending on Pharo version as shown above with standalone scripts)
+
 ## Create mocks easily
 To create mock just use **\#new**
 ```Smalltalk
