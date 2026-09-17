@@ -15,25 +15,26 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #MockExpectedActionSequence,
-	#superclass : #MockExpectedAction,
+	#name : 'MockExpectedActionSequence',
+	#superclass : 'MockExpectedAction',
 	#instVars : [
 		'actions'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedActionSequence class >> new [
 	^super new initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedActionSequence >> add: aMockAction [ 
 	actions add: aMockAction
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedActionSequence >> executeFor: anOccurredMessage [ 
 
 	actions ifEmpty: [ ^anOccurredMessage setUpUnexpectedResult  ].
@@ -43,7 +44,7 @@ MockExpectedActionSequence >> executeFor: anOccurredMessage [
 	^actions last executeFor: anOccurredMessage
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 MockExpectedActionSequence >> initialize [
 	actions := OrderedCollection new
 ]

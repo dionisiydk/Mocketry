@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageArgumentTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageArgumentTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testFailedValidationWhenSenderWasWrong [
 
 	| spec result |
@@ -16,7 +17,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: '1 received someMessage: 5 with: 6 with: 7 but arg 2 should equal 10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testFailedValidationWhenSpecWithDenial [
 
 	| spec result |
@@ -28,7 +29,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenSpecWithDenial [
 	result where description should equal: '1 received someMessage: 5 with: 10 with: 7 but arg 2 should not equal 10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgument [
 
 	| spec result |
@@ -40,7 +41,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgument 
 	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should equal 10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgumentAndSpecWithDenial [
 
 	| spec result |
@@ -52,7 +53,7 @@ SpecOfMessageArgumentTests >> testFailedValidationWhenThereIsNoRequiredArgumentA
 	result where description should equal: '1 received someMessage: 5 but it should have arg 2 which should not equal 10'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testMatchesWhenExplicitArgumentValue [
 
 	| spec |
@@ -68,7 +69,7 @@ SpecOfMessageArgumentTests >> testMatchesWhenExplicitArgumentValue [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testMatchesWhenRequiredArgumentIsSpec [
 
 	| spec |
@@ -79,7 +80,7 @@ SpecOfMessageArgumentTests >> testMatchesWhenRequiredArgumentIsSpec [
 	spec should not be matches: (MockOccurredMessage receiver: Any selector: #someMessage:with:with: arguments: {Any. 'string'. Any}).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageArgumentTests >> testSucceedValidation [
 
 	| spec result |

@@ -2,22 +2,23 @@
 I am base class for different kind of specifications for occurred message sends
 "
 Class {
-	#name : #SpecOfOccurredMessages,
-	#superclass : #SpecOfObjectState,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfOccurredMessages',
+	#superclass : 'SpecOfObjectState',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfOccurredMessages class >> isAbstract [ 
 	^self = SpecOfOccurredMessages
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SpecOfOccurredMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfOccurredMessages >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 	self subclassResponsibility 
 ]

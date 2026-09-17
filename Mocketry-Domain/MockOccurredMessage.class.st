@@ -19,22 +19,23 @@ Internal Representation and Key Implementation Points.
 	result:		<MockOccurredMessageResult>
 "
 Class {
-	#name : #MockOccurredMessage,
-	#superclass : #MessageSend,
+	#name : 'MockOccurredMessage',
+	#superclass : 'MessageSend',
 	#instVars : [
 		'process',
 		'result'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOccurredMessage class >> receiver: anObject selector: aSymbol result: anOccurredMessageResult [
 
 	^(self receiver: anObject selector: aSymbol) result: anOccurredMessageResult 
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MockOccurredMessage >> = aMockOccurredMessage [
 	"Occured message sends should not be equal if they include same parameters.
 	They are always different entities which reflect sends at different time"
@@ -43,7 +44,7 @@ MockOccurredMessage >> = aMockOccurredMessage [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> extractResultFrom: aBlock [
 
 	| returnedValue |
@@ -55,19 +56,19 @@ MockOccurredMessage >> extractResultFrom: aBlock [
 	^returnedValue
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredMessage >> hasRaisedExceptionLike: anExceptionOrSpec [
 
 	^result isSignalOf: anExceptionOrSpec
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredMessage >> hasReturnedValueLike: anObjectOrSpec [
 
 	^result isReturnOf: anObjectOrSpec
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MockOccurredMessage >> hash [
 	"Occured message sends should not be equal if they include same parameters.
 	They are always different entities which reflect sends at different time"
@@ -75,20 +76,20 @@ MockOccurredMessage >> hash [
 	^ self identityHash 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockOccurredMessage >> initialize [
 	super initialize.
 	
 	process := Processor activeProcess
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> printMessage [
 
 	^String streamContents: [ :s | self printMessageOn: s ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> printMessageOn: aStream [
 
 	arguments isEmpty ifTrue: [^ aStream << selector].
@@ -97,7 +98,7 @@ MockOccurredMessage >> printMessageOn: aStream [
 	aStream skip: -1
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> printOn: aStream [
 
 	arguments ifNil: [ 
@@ -108,51 +109,51 @@ MockOccurredMessage >> printOn: aStream [
 	result ifNotNil: [ aStream << ' '; print: result ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> printWithoutResult [
 	
 	^String streamContents: [ :s | self printWithoutResultOn: s ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> printWithoutResultOn: aStream [
 	
 	aStream << receiver stringForSpecTitle; << ' '.
 	self printMessageOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> process [
 	^ process
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> process: anObject [
 	process := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> result [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> result: anObject [
 	result := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> returnedValue [
 	^result returnedValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessage >> setUpUnexpectedResult [
 
 	^self extractResultFrom: [ receiver stubDoesNotExpect: self ]
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MockOccurredMessage >> shouldBeAllowedForMock [
 	"Method is introduced to prevent user mistakes due to missing #stub message.
 	It is easy to forget to send #stub message when defining an expectation for a mock. 
@@ -171,7 +172,7 @@ MockOccurredMessage >> shouldBeAllowedForMock [
 	]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessage >> stringForResultSpec [
 
 	^result stringForSpecValidation , ' from ', self printWithoutResult

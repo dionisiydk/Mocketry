@@ -11,23 +11,24 @@ Internal Representation and Key Implementation Points.
 	requiredSender:	<SpecOfExpectedMessage>
 "
 Class {
-	#name : #SpecOfExpectedObjectSender,
-	#superclass : #SpecOfOccurredMessages,
+	#name : 'SpecOfExpectedObjectSender',
+	#superclass : 'SpecOfOccurredMessages',
 	#instVars : [
 		'object',
 		'requiredSender'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfExpectedObjectSender class >> for: aString returnedFrom: aSpecOfExpectedMessage [ 
 	^self new 
 		object: aString;
 		requiredSender: aSpecOfExpectedMessage 
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SpecOfExpectedObjectSender >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 
 	| result returnedObjects concreteSenderSpec |
@@ -45,7 +46,7 @@ SpecOfExpectedObjectSender >> asInteractionSpecBetweenConcreteObjectsOf: anInter
 	^result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfExpectedObjectSender >> basicMatches: occurredMessages [
 
 	| actualSenders |
@@ -54,54 +55,54 @@ SpecOfExpectedObjectSender >> basicMatches: occurredMessages [
 	^requiredSender basicMatches: actualSenders
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedObjectSender >> description [
 	^self printObject, ' should be returned from ', self printRequiredSender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> invertChildren [
 	super invertChildren.
 	 
 	requiredSender invert
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> object: anObjectOrSpec [
 	object := anObjectOrSpec asStateSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 	self shouldNotImplement 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedObjectSender >> printObject [
 	^object printSimpleValue 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedObjectSender >> printRequiredSender [
 	^requiredSender printMessageSend
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> requiredSender [
 	^ requiredSender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedObjectSender >> requiredSender: anObject [
 	requiredSender := anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedObjectSender >> validate: occurredMessages [
 	| actualSenders result |
 	actualSenders := occurredMessages	select: [ :each | each hasReturnedValueLike: object ].
@@ -113,7 +114,7 @@ SpecOfExpectedObjectSender >> validate: occurredMessages [
 	^ SpecOfWrongObjectSender spec: self for: occurredMessages wrongSender: actualSenders last
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedObjectSender >> validateRequiredSenderFor: occurredMessages [
 	| result |
 	result := requiredSender validate: occurredMessages.

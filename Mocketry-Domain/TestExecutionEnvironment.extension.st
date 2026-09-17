@@ -1,12 +1,12 @@
-Extension { #name : #TestExecutionEnvironment }
+Extension { #name : 'TestExecutionEnvironment' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 TestExecutionEnvironment >> allowsForkedProcessInheritMocks [
 
 	^true
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 TestExecutionEnvironment >> createMockBehaviour [
 	| behaviour |
 	self forkedProcesses add: MockCleaningProcessHook instance.
@@ -16,19 +16,19 @@ TestExecutionEnvironment >> createMockBehaviour [
 	^behaviour
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 TestExecutionEnvironment >> currentMetaLevelForMocks [
 	^GHMetaLevel empty
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 TestExecutionEnvironment >> isMockBehaviourActive: aMockBehaviour [
 	^(super isMockBehaviourActive: aMockBehaviour)
 		and: [ aMockBehaviour ownerTestCase == testCase 
 			and: [ aMockBehaviour testSelector == testCase selector ] ]
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 TestExecutionEnvironment >> setUpMockNameFor: aMock inContextOf: ownerProcess [
 	| testContext currentReceiver |
 	testContext := Processor activeProcess == ownerProcess 

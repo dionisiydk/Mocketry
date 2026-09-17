@@ -15,22 +15,23 @@ Internal Representation and Key Implementation Points.
 	spec:		<SpecOfObjectsInteraction>
 "
 Class {
-	#name : #MockInteractionSpecBuilder,
-	#superclass : #MockRole,
+	#name : 'MockInteractionSpecBuilder',
+	#superclass : 'MockRole',
 	#instVars : [
 		'spec'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockInteractionSpecBuilder class >> for: anObjectsInteractionSpec [
 
 	^self new 
 		spec: anObjectsInteractionSpec 
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockInteractionSpecBuilder >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	
 	| messageSpec |
@@ -41,12 +42,12 @@ MockInteractionSpecBuilder >> processMessageSend: anOccurredMessage by: aMockBeh
 	^MockDetailedExpectationBuilding on: messageSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionSpecBuilder >> spec [
 	^ spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionSpecBuilder >> spec: anObject [
 	spec := anObject
 ]

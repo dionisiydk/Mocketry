@@ -6,17 +6,18 @@ I am defined as singleton:
 	MockTeacher default
 "
 Class {
-	#name : #MockTeacher,
-	#superclass : #MockRole,
-	#category : 'Mocketry-Domain'
+	#name : 'MockTeacher',
+	#superclass : 'MockRole',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockTeacher >> isTeaching [
 	^true
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockTeacher >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 
 	| expectation |

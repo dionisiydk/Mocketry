@@ -1,20 +1,21 @@
 Class {
-	#name : #SpecOfMessageUsageTests,
-	#superclass : #TestCase,
+	#name : 'SpecOfMessageUsageTests',
+	#superclass : 'TestCase',
 	#instVars : [
 		'usage'
 	],
-	#category : 'Mocketry-Specs-Tests'
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 SpecOfMessageUsageTests >> setUp [
 	super setUp.
 	
 	usage := SpecOfMessageUsage new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWhichGreaterThanMinCount [
 		
 	usage minCount: 3.
@@ -23,7 +24,7 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWhichGreaterThanMinCount [
 	usage should not be allowMessageSends: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWhichLesserThanMaxCount [
 		
 	usage maxCount: 3.
@@ -32,7 +33,7 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWhichLesserThanMaxCount [
 	usage should not be allowMessageSends: 4
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogic [
 		
 	usage minCount: 3.
@@ -41,7 +42,7 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogic [
 	usage should be allowMessageSends: 2 withNegatedLogic: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMaxCountSpecified [
 		
 	usage minCount: 3.
@@ -54,7 +55,7 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMaxCoun
 	usage should be allowMessageSends: 6 withNegatedLogic: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMinCountIsZero [
 		
 	usage minCount: 0.
@@ -63,7 +64,7 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMinCoun
 	usage should be allowMessageSends: 0 withNegatedLogic: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMinCountIsZeroButMaxCountSpecified [
 		
 	usage minCount: 0.
@@ -73,13 +74,13 @@ SpecOfMessageUsageTests >> testAllowMessageSendsCountWithNegatedLogicWhenMinCoun
 	usage should be allowMessageSends: 4 withNegatedLogic: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasInfiniteMaxCountByDefault [
 	
 	usage where maxCount should be: Float infinity
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasMeaningfulRestrictionsWhenMaxCountIsNotInfinity [
 	
 	usage maxCount: 2.
@@ -87,7 +88,7 @@ SpecOfMessageUsageTests >> testHasMeaningfulRestrictionsWhenMaxCountIsNotInfinit
 	usage should be hasMeaningfulRestrictions 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasMeaningfulRestrictionsWhenMinCountGreaterThanOne [
 	
 	usage minCount: 2.
@@ -95,13 +96,13 @@ SpecOfMessageUsageTests >> testHasMeaningfulRestrictionsWhenMinCountGreaterThanO
 	usage should be hasMeaningfulRestrictions 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasMinCountEqualOneByDefault [
 	
 	usage where minCount should be: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMaxCountIsInfinity [
 	
 	usage maxCount: Float infinity.
@@ -109,7 +110,7 @@ SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMaxCountIsInfinit
 	usage should not be hasMeaningfulRestrictions 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMinCountIsOne [
 	
 	usage minCount: 1.
@@ -117,7 +118,7 @@ SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMinCountIsOne [
 	usage should not be hasMeaningfulRestrictions 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMinCountIsZero [
 	
 	usage minCount: 0.
@@ -125,7 +126,7 @@ SpecOfMessageUsageTests >> testHasNotMeaningfulRestrictionsWhenMinCountIsZero [
 	usage should not be hasMeaningfulRestrictions 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testIsUnlimited [
 	
 	usage beUnlimited.
@@ -136,7 +137,7 @@ SpecOfMessageUsageTests >> testIsUnlimited [
 	usage should not be isUnlimited.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testPrintingRestrictionsWhenItIsExactCount [
 	
 	usage exactCount: 3.
@@ -144,7 +145,7 @@ SpecOfMessageUsageTests >> testPrintingRestrictionsWhenItIsExactCount [
 	usage where printRestrictions should equal: '3 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testPrintingRestrictionsWhenMinAndMaxCountSpecified [
 	
 	usage minCount: 2.	
@@ -153,7 +154,7 @@ SpecOfMessageUsageTests >> testPrintingRestrictionsWhenMinAndMaxCountSpecified [
 	usage where printRestrictions should equal: 'at least 2 times at most 3 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testPrintingRestrictionsWhenOnlyMaxCountSpecified [
 	
 	usage maxCount: 3.
@@ -161,7 +162,7 @@ SpecOfMessageUsageTests >> testPrintingRestrictionsWhenOnlyMaxCountSpecified [
 	usage where printRestrictions should equal: 'at most 3 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testPrintingRestrictionsWhenOnlyMinCountSpecified [
 		
 	usage minCount: 3.
@@ -169,7 +170,7 @@ SpecOfMessageUsageTests >> testPrintingRestrictionsWhenOnlyMinCountSpecified [
 	usage where printRestrictions should equal: 'at least 3 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageUsageTests >> testSettingExactCount [
 		
 	usage exactCount: 3.

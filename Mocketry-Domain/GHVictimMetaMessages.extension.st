@@ -1,11 +1,11 @@
-Extension { #name : #GHVictimMetaMessages }
+Extension { #name : 'GHVictimMetaMessages' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHVictimMetaMessages >> currentMockBehaviour [
 	^self ghMutation mutationBehaviour 
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHVictimMetaMessages >> stubDoesNotExpect: anOccurredMessage [
 	anOccurredMessage selector == #class ifTrue: [ 
 		"It is special case because we know that #class will return a mutation instance.

@@ -1,10 +1,11 @@
 Class {
-	#name : #MockRealObjectStubTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Domain-Tests'
+	#name : 'MockRealObjectStubTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testDoesNotExpectMessage [
 
 	| actual unexpectedMessage rect |
@@ -18,7 +19,7 @@ MockRealObjectStubTests >> testDoesNotExpectMessage [
 	actual should equal: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenCurrentMockBehaviourChanged [
 	
 	| currentBehaviour |
@@ -36,7 +37,7 @@ MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenCurrentMockBe
 	] ensure: [ GHClassStub recoverFromGHMutation ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenCurrentMockBehaviourReset [
 	
 	[
@@ -50,7 +51,7 @@ MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenCurrentMockBe
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenTestCompletes1 [
 	
 	GHClassStub stub.
@@ -58,13 +59,13 @@ MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenTestCompletes
 	GHClassStub hasGHMutation should be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testGlobalClassStubShouldBeRecoveredWhenTestCompletes2 [
 	
 	GHClassStub hasGHMutation should be: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testHasSameBehaviourAsMocks [
 
 	| rect mock |
@@ -76,7 +77,7 @@ MockRealObjectStubTests >> testHasSameBehaviourAsMocks [
 	rect ghMutation mutationBehaviour should be: mock ghostBehaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testShouldBe [
 
 	| rect |
@@ -87,7 +88,7 @@ MockRealObjectStubTests >> testShouldBe [
 	rect should not be: #wrongRect
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testShouldBeInstanceOfClass [
 
 	| rect |
@@ -97,7 +98,7 @@ MockRealObjectStubTests >> testShouldBeInstanceOfClass [
 	rect should beInstanceOf: Rectangle
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testShouldBeKindOfClass [
 
 	| rect |
@@ -107,7 +108,7 @@ MockRealObjectStubTests >> testShouldBeKindOfClass [
 	rect should beKindOf: Rectangle
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testShouldEqual [
 
 	| rect |
@@ -118,7 +119,7 @@ MockRealObjectStubTests >> testShouldEqual [
 	rect should equal: (0@0 corner: 2@3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testStubbingRealObjectTwice [
 
 	| rect firstMutation secondMutation |
@@ -135,7 +136,7 @@ MockRealObjectStubTests >> testStubbingRealObjectTwice [
 	rect origin should be: #origin
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testStubbingRealObjectTwiceWhenBehaviourChanged [
 
 	| rect firstStub secondStub |
@@ -150,7 +151,7 @@ MockRealObjectStubTests >> testStubbingRealObjectTwiceWhenBehaviourChanged [
 	firstStub ghostBehaviour expectedMessages should be: secondStub ghostBehaviour expectedMessages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testValidationReceivedMessageWhenBehaviourChanged [
 
 	| rect |
@@ -164,7 +165,7 @@ MockRealObjectStubTests >> testValidationReceivedMessageWhenBehaviourChanged [
 	rect should receive area
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testValidationReceivedMessageWhenBehaviourChanged2 [
 
 	| rect |
@@ -178,7 +179,7 @@ MockRealObjectStubTests >> testValidationReceivedMessageWhenBehaviourChanged2 [
 	rect should receive area
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockRealObjectStubTests >> testWhichPropertyShouldExpression [
 
 	| rect |

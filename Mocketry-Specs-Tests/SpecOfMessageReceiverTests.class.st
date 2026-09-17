@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageReceiverTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageReceiverTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testFailedValidationWhenSenderWasWrong [
 
 	| spec result |
@@ -16,7 +17,7 @@ SpecOfMessageReceiverTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: 'someMessage is sent to 1 but it should be 2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testFailedValidationWhenSpecWithDenial [
 
 	| spec result |
@@ -28,7 +29,7 @@ SpecOfMessageReceiverTests >> testFailedValidationWhenSpecWithDenial [
 	result where description should equal: 'someMessage is sent to 2 but it should not be 2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testMatchesWhenExplicitReceiver [
 
 	| spec |
@@ -41,7 +42,7 @@ SpecOfMessageReceiverTests >> testMatchesWhenExplicitReceiver [
 	spec should not be matches: (MockOccurredMessage receiver: 'wrongReceiver' selector: #someMessage).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testMatchesWhenRequiredReceiverIsSpec [
 
 	| spec |
@@ -52,7 +53,7 @@ SpecOfMessageReceiverTests >> testMatchesWhenRequiredReceiverIsSpec [
 	spec should not be matches: (MockOccurredMessage receiver: 'string' selector: #someMessage).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testMatchesWhenSpecWithDenial [
 
 	| spec |
@@ -63,7 +64,7 @@ SpecOfMessageReceiverTests >> testMatchesWhenSpecWithDenial [
 	spec should not be matches: (MockOccurredMessage receiver: 1 selector: #someMessage).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReceiverTests >> testSucceedValidation [
 
 	| spec result |

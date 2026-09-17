@@ -27,33 +27,34 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #SpecOfExpectedMessage,
-	#superclass : #SpecOfOccurredMessages,
+	#name : 'SpecOfExpectedMessage',
+	#superclass : 'SpecOfOccurredMessages',
 	#instVars : [
 		'messageSend',
 		'usage'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfExpectedMessage class >> from: aMessageSend [
 
 	^self new 
 		messageSend: (SpecOfMessageSend from: aMessageSend)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> addSpec: extraOccuredMessageSpec [ 
 	messageSend addSpec: extraOccuredMessageSpec 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfExpectedMessage >> allowSendsCount: aNumber [
 	^usage allowMessageSends: aNumber withNegatedLogic: denial
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SpecOfExpectedMessage >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 	| result copy |
 	self isAboutConcreteReceiver ifTrue: [ ^ self ].
@@ -69,7 +70,7 @@ SpecOfExpectedMessage >> asInteractionSpecBetweenConcreteObjectsOf: anInteractio
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfExpectedMessage >> basicMatches: occurredMessages [
 
 	| count |
@@ -79,13 +80,13 @@ SpecOfExpectedMessage >> basicMatches: occurredMessages [
 	^usage allowMessageSends: count
 ]
 
-{ #category : #'capturing arguments' }
+{ #category : 'capturing arguments' }
 SpecOfExpectedMessage >> captureArgumentsFrom: aMessageSend [
 
 	messageSend captureArgumentsFrom: aMessageSend
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SpecOfExpectedMessage >> copy [
 
 	| result |
@@ -98,7 +99,7 @@ SpecOfExpectedMessage >> copy [
 	^result
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedMessage >> createValidationSuccessFor: occurredMessages [
 	
 	^SpecOfMessagesValidationSuccess 
@@ -106,7 +107,7 @@ SpecOfExpectedMessage >> createValidationSuccessFor: occurredMessages [
 		minCount: (denial ifTrue: [ 0 ] ifFalse: [usage minCount ])
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedMessage >> description [
 	
 	^String streamContents: [ :s |
@@ -120,7 +121,7 @@ SpecOfExpectedMessage >> description [
 	
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedMessage >> detectFailureIn: messages [
 	| withSimilarReceiver withSimilarSelector |
 	withSimilarReceiver := messages select: [ :each | messageSend receiver matches: each receiver].
@@ -133,35 +134,35 @@ SpecOfExpectedMessage >> detectFailureIn: messages [
 	^messageSend validate: withSimilarSelector 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SpecOfExpectedMessage >> initialize [
 	super initialize.
 	
 	usage := SpecOfMessageUsage new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfExpectedMessage >> isAboutConcreteReceiver [
 	^ messageSend receiver class = SpecOfIdentity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> messageSend [
 	^ messageSend
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> messageSend: anObject [
 	messageSend := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 
 	aMultipleMessagesSpec addExpectedMessage: self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedMessage >> printMessageNotHappen [
 
 	^String streamContents: [ :s |
@@ -170,7 +171,7 @@ SpecOfExpectedMessage >> printMessageNotHappen [
 		messageSend printMessageOn: s]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedMessage >> printMessageSend [
 
 	^String streamContents: [ :s |
@@ -180,29 +181,29 @@ SpecOfExpectedMessage >> printMessageSend [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> receiver: aStateSpec [
 
 	messageSend receiver: aStateSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> restrictUsage [
 
 	usage beStrict
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> usage [
 	^ usage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessage >> usage: anObject [
 	usage := anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedMessage >> validate: occurredMessages [
 
 	| matched wrongMessage |

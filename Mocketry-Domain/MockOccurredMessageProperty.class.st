@@ -12,31 +12,32 @@ Internal Representation and Key Implementation Points.
 	message:		<MockOccurredMessage>
 "
 Class {
-	#name : #MockOccurredMessageProperty,
-	#superclass : #SpecOfShouldReceiverRoot,
+	#name : 'MockOccurredMessageProperty',
+	#superclass : 'SpecOfShouldReceiverRoot',
 	#instVars : [
 		'message'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOccurredMessageProperty class >> of: aMessage [
 	^self new 
 		message: aMessage
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockOccurredMessageProperty >> extractValueFromMessage [
 	self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessageProperty >> message [
 	^ message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredMessageProperty >> message: anOccurredMessage [
 	message := anOccurredMessage.
 	self extractValueFromMessage

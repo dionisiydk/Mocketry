@@ -11,17 +11,18 @@ Internal Representation and Key Implementation Points.
 	message:		<MockOccurredMessage>
 "
 Class {
-	#name : #MockOccurredMessageProcessProperty,
-	#superclass : #MockOccurredMessageProperty,
-	#category : 'Mocketry-Domain'
+	#name : 'MockOccurredMessageProcessProperty',
+	#superclass : 'MockOccurredMessageProperty',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockOccurredMessageProcessProperty >> extractValueFromMessage [
 	value := message process
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredMessageProcessProperty >> stringForSpecTitle [ 
 	^'process of ', message printWithoutResult
 ]

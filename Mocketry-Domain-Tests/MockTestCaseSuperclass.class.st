@@ -1,18 +1,19 @@
 Class {
-	#name : #MockTestCaseSuperclass,
-	#superclass : #TestCase,
+	#name : 'MockTestCaseSuperclass',
+	#superclass : 'TestCase',
 	#instVars : [
 		'mockFromSuperclass'
 	],
-	#category : 'Mocketry-Domain-Tests'
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockTestCaseSuperclass class >> isAbstract [
 	^self == MockTestCaseSuperclass 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MockTestCaseSuperclass >> setUp [
 	super setUp.
 	

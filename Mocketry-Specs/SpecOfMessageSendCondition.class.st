@@ -19,23 +19,24 @@ Internal Representation and Key Implementation Points.
     Implementation Points
 "
 Class {
-	#name : #SpecOfMessageSendCondition,
-	#superclass : #SpecOfObjectState,
+	#name : 'SpecOfMessageSendCondition',
+	#superclass : 'SpecOfObjectState',
 	#instVars : [
 		'conditionSpec',
 		'subjectBlock'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessageSendCondition class >> of: subjectBlock by: aSpecOfObjectState [
 	^self new 
 		subjectBlock: subjectBlock;
 		conditionSpec: aSpecOfObjectState 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageSendCondition >> basicMatches: aMessageSend [
 
 	| subject |
@@ -43,34 +44,34 @@ SpecOfMessageSendCondition >> basicMatches: aMessageSend [
 	^(conditionSpec matches: subject)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSendCondition >> conditionSpec [
 	^ conditionSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSendCondition >> conditionSpec: anObjectOrSpec [
 	conditionSpec := anObjectOrSpec asStateSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSendCondition >> invertChildren [
 	super invertChildren.
 	
 	conditionSpec invert
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSendCondition >> subjectBlock [
 	^ subjectBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSendCondition >> subjectBlock: anObject [
 	subjectBlock := anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMessageSendCondition >> validate: aMessageSend [ 
 	| subject |
 	subject := subjectBlock valueWithEnoughArguments: aMessageSend arguments.

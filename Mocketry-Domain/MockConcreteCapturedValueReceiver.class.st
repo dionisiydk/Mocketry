@@ -16,50 +16,51 @@ Internal Representation and Key Implementation Points.
 	callNumber:		<Integer>
 "
 Class {
-	#name : #MockConcreteCapturedValueReceiver,
-	#superclass : #MockCapturedArgReceiver,
+	#name : 'MockConcreteCapturedValueReceiver',
+	#superclass : 'MockCapturedArgReceiver',
 	#instVars : [
 		'callNumber'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockConcreteCapturedValueReceiver class >> from: aMockArgCapture callNumber: aNumber [
 
 	^(self from: aMockArgCapture) 
 		callNumber: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockConcreteCapturedValueReceiver >> callNumber [
 	^ callNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockConcreteCapturedValueReceiver >> callNumber: anObject [
 	callNumber := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockConcreteCapturedValueReceiver >> printProperty: aShouldReceiverProperty [
 	^self argCapture stringForSpecTitle, ' ', aShouldReceiverProperty printPath,
 		' from ' , callNumber asString, ' call'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockConcreteCapturedValueReceiver >> stringForSpecTitle [
 
 	^super stringForSpecTitle, ' from ', callNumber asString, ' call'
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockConcreteCapturedValueReceiver >> validate [
 	
 	^self argCapture validateNumberOfCalls: callNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockConcreteCapturedValueReceiver >> validationSubject [
 	
 	^self argCapture valueFromCall: callNumber

@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageRaisedExceptionTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageRaisedExceptionTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenDenialApplied [
 
 	| spec message result |
@@ -18,7 +19,7 @@ SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenDenialApplied [
 	result where description should equal: 'Got raised #requiredExc from #receiver selector but it should not equal #requiredExc'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenRaisedErrorIsWrong [
 
 	| spec message result |
@@ -32,7 +33,7 @@ SpecOfMessageRaisedExceptionTests >> testFailedValidationWhenRaisedErrorIsWrong 
 	result where description should equal: 'Got raised #wrongExc from #receiver selector but it should equal #requiredExc'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testMatchesWhenExplicitResult [
 
 	| spec message |
@@ -46,7 +47,7 @@ SpecOfMessageRaisedExceptionTests >> testMatchesWhenExplicitResult [
 	spec should not be matches: message.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testMatchesWhenRequiredResultSpec [
 
 	| spec message |
@@ -60,7 +61,7 @@ SpecOfMessageRaisedExceptionTests >> testMatchesWhenRequiredResultSpec [
 	spec should not be matches: message.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testMatchesWhenSpecWithDenial [
 
 	| spec message |
@@ -74,7 +75,7 @@ SpecOfMessageRaisedExceptionTests >> testMatchesWhenSpecWithDenial [
 	spec should be matches: message
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageRaisedExceptionTests >> testSucceedValidation [
 
 	| spec message result |

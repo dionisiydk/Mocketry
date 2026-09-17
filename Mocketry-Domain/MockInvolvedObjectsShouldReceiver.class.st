@@ -16,32 +16,33 @@ Internal Representation and Key Implementation Points.
 	value:		<SpecOfObjectState>
 "
 Class {
-	#name : #MockInvolvedObjectsShouldReceiver,
-	#superclass : #SpecOfShouldReceiverRoot,
-	#category : #'Mocketry-Domain'
+	#name : 'MockInvolvedObjectsShouldReceiver',
+	#superclass : 'SpecOfShouldReceiverRoot',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockInvolvedObjectsShouldReceiver >> asFutureStateShouldReceiver [
 	^self 
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockInvolvedObjectsShouldReceiver >> createSpecOfValidationSubject [
 	^SpecOfObjectHolder requiredHolder: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockInvolvedObjectsShouldReceiver >> includes: anObject [
 	^self validationSubject includes: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInvolvedObjectsShouldReceiver >> objectsSpec [
 	^ value
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockInvolvedObjectsShouldReceiver >> validate [
 	| spec |
 	spec := Has emptyItems not.
@@ -49,7 +50,7 @@ MockInvolvedObjectsShouldReceiver >> validate [
 	^ spec validate: self validationSubject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockInvolvedObjectsShouldReceiver >> validateWith: aSpecOfObjectState [
 	| result |
 	result := self validate.
@@ -61,7 +62,7 @@ MockInvolvedObjectsShouldReceiver >> validateWith: aSpecOfObjectState [
 	^result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInvolvedObjectsShouldReceiver >> validationSubject [
 	| all |
 	all := MockCurrentBehaviour value interactionHistory involvedObjects.

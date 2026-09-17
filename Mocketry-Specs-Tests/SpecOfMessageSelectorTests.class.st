@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageSelectorTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageSelectorTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testFailedValidationWhenSenderWasWrong [
 
 	| spec result |
@@ -16,7 +17,7 @@ SpecOfMessageSelectorTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: '1 received anotherMessage but it should be #someMessage'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testFailedValidationWhenSpecWithDenial [
 
 	| spec result |
@@ -28,7 +29,7 @@ SpecOfMessageSelectorTests >> testFailedValidationWhenSpecWithDenial [
 	result where description should equal: '1 received someMessage but it should not be #someMessage'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testMatchesWhenSpecSelector [
 
 	| spec |
@@ -41,7 +42,7 @@ SpecOfMessageSelectorTests >> testMatchesWhenSpecSelector [
 	spec should not be matches: (MockOccurredMessage receiver: 1 selector: 'stringSelector').
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testMatchesWhenSpecWithDenial [
 
 	| spec |
@@ -52,7 +53,7 @@ SpecOfMessageSelectorTests >> testMatchesWhenSpecWithDenial [
 	spec should be matches: (MockOccurredMessage receiver: 1 selector: #anotherMessage).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testMatchesWhenSymbolSelector [
 
 	| spec |
@@ -63,7 +64,7 @@ SpecOfMessageSelectorTests >> testMatchesWhenSymbolSelector [
 	spec should not be matches: (MockOccurredMessage receiver: 1 selector: #anotherMessage).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSelectorTests >> testSucceedValidation [
 
 	| spec result |

@@ -1,6 +1,6 @@
-Extension { #name : #Behavior }
+Extension { #name : 'Behavior' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Behavior >> isAllowAutoStub [
 	^false
 ]

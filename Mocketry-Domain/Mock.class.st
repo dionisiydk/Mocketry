@@ -48,41 +48,42 @@ Internal Representation and Key Implementation Points.
 	name:		<String>
 "
 Class {
-	#name : #Mock,
-	#superclass : #GHObjectGhost,
+	#name : 'Mock',
+	#superclass : 'GHObjectGhost',
 	#traits : 'GHTNotNilGhost + GHTIdentifiedGhost',
 	#classTraits : 'GHTNotNilGhost classTrait + GHTIdentifiedGhost classTrait',
 	#instVars : [
 		'behaviour',
 		'name'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock class >> canonicalArgumentName [
 	^'aMock'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Mock class >> named: aString [
 
 	^self withBehaviour 
 		mockName: aString
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Mock class >> new [
 	
 	^self withBehaviour
 ]
 
-{ #category : #stub }
+{ #category : 'stub' }
 Mock class >> stub [
 	^MockCurrentBehaviour value createHelperMockAs: (MockStubTeacher for: (Kind of: self))
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 Mock class >> withBehaviour [
 	"This method creates most primitive mock instance with prepared ghostBehaviour. Users should use high level instance creation methods"
 	
@@ -90,7 +91,7 @@ Mock class >> withBehaviour [
 		prepareGhostBehaviour
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Mock class >> withoutName [
 	"It is explicit message to create mock without name. 
 	Standart #new message always detects name by name of containing variable in context"
@@ -100,23 +101,23 @@ Mock class >> withoutName [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> currentMockBehaviour [
 	^behaviour 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> ghostBehaviour [
 	^behaviour
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> ghostBehaviour: aMockBehaviour [
 	behaviour := aMockBehaviour.
 	behaviour registerObject: self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Mock >> ghostPrintString [
 
 	| objectName |
@@ -125,12 +126,12 @@ Mock >> ghostPrintString [
 	^objectName, '(', self mockName, ')'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Mock >> isAllowAutoStub [
 	^true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> mockName [
 
 	^name ifNil: [ self setUpDefaultMockName. "it is to prevent recursion if tools start to debug next sentence and they will needed in mock name"
@@ -138,37 +139,37 @@ Mock >> mockName [
 		name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> mockName: aString [
 
 	name := aString
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Mock >> prepareGhostBehaviour [
 	self ghostBehaviour: MockCurrentBehaviour value
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 Mock >> setUpDefaultMockName [
 
 	^name := self ghostIdentityHash asString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 Mock >> setUpNameFromTestContext [
 
 	self ghostBehaviour setUpContextNameFor: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Mock >> stub [
 
 	^behaviour createHelperMockAs: (MockStubTeacher for: self)
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 Mock >> stubDoesNotExpect: anOccurredMessage [
 	
 	^MockDefaultMethods execute: anOccurredMessage on: self

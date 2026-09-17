@@ -1,23 +1,23 @@
-Extension { #name : #GHTMinimalGhost }
+Extension { #name : 'GHTMinimalGhost' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHTMinimalGhost >> asOccurredMessageResult [
 
 	^MockOccurredValueReturn value: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHTMinimalGhost >> asSpecOfArg: argumentNumber of: aMessageSendSpec [
 
 	^SpecOfMessageArgument number: argumentNumber requiredValue: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHTMinimalGhost >> currentMockBehaviour [
 	^MockCurrentBehaviour value
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 GHTMinimalGhost >> stubDoesNotExpect: anOccurredMessage [
 	
 	^GHMetaMessages 

@@ -2,12 +2,13 @@
 I represent failure of SpecOfAsynchMessage when actual message was occurred on wrong process
 "
 Class {
-	#name : #SpecOfWrongMessageProcess,
-	#superclass : #SpecOfWrongMessageSend,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfWrongMessageProcess',
+	#superclass : 'SpecOfWrongMessageSend',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfWrongMessageProcess >> description [
 
 	| desc |

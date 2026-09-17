@@ -13,12 +13,13 @@ Public API and Key Messages
 - arguments
 "
 Class {
-	#name : #SpecOfMessageSend,
-	#superclass : #SpecOfAndConjunction,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageSend',
+	#superclass : 'SpecOfAndConjunction',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessageSend class >> from: aMessageSendTemplateWithSpecs [
 
 	^self new 
@@ -26,12 +27,12 @@ SpecOfMessageSend class >> from: aMessageSendTemplateWithSpecs [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSend >> arguments [
 	^(specs last: (specs size - 2)) collect: [ :each | each requiredValue ] 
 ]
 
-{ #category : #'capturing arguments' }
+{ #category : 'capturing arguments' }
 SpecOfMessageSend >> captureArgumentsFrom: aMessageSend [
 
 	self arguments withIndexDo: [ :argSpec :argIndex | | argValue |
@@ -39,7 +40,7 @@ SpecOfMessageSend >> captureArgumentsFrom: aMessageSend [
 		argSpec captureValue: argValue]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSend >> description [
 	^String streamContents: [ :s |
 		self printReceiverOn: s.
@@ -48,7 +49,7 @@ SpecOfMessageSend >> description [
 	]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSend >> printArgumentsArrayOn: aStream [
 
 	| args |
@@ -65,7 +66,7 @@ SpecOfMessageSend >> printArgumentsArrayOn: aStream [
 	aStream << $}.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSend >> printMessageOn: aStream [
 
 	self selector isSimpleValue 
@@ -75,13 +76,13 @@ SpecOfMessageSend >> printMessageOn: aStream [
 				self printArgumentsArrayOn: aStream ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSend >> printReceiverOn: aStream [
 
 	aStream << self receiver printSimpleValue 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSend >> printSimpleMessageOn: aStream [
 
 	| selector args |
@@ -99,7 +100,7 @@ SpecOfMessageSend >> printSimpleMessageOn: aStream [
 	aStream skip: -1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSend >> readSpecsFrom: aMessageSend [
 
 	specs := OrderedCollection new: 2 + aMessageSend numArgs.
@@ -110,17 +111,17 @@ SpecOfMessageSend >> readSpecsFrom: aMessageSend [
 		specs add: (each asSpecOfArg: i of: self) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSend >> receiver [
 	^specs first requiredValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSend >> receiver: aStateSpec [
 	^specs first requiredValue: aStateSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSend >> selector [
 	^specs second requiredValue
 ]

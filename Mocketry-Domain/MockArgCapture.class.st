@@ -27,35 +27,36 @@ Internal Representation and Key Implementation Points.
 	values:		<OrderedCollection>
 "
 Class {
-	#name : #MockArgCapture,
-	#superclass : #Object,
+	#name : 'MockArgCapture',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'messageSpec',
 		'values'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockArgCapture class >> named: aString [ 
 	^self new 
 		name: aString
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockArgCapture >> asShouldExpressionReceiver [ 
 	self ensureMessageSpec.
 	
 	^MockSingleCapturedValueReceiver from: self
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 MockArgCapture >> asSimpleValue [
 	^self
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 MockArgCapture >> asSpecOfArg: argumentNumber of: aMessageSendSpec [
 
 	messageSpec := aMessageSendSpec.
@@ -63,17 +64,17 @@ MockArgCapture >> asSpecOfArg: argumentNumber of: aMessageSendSpec [
 	^SpecOfMessageArgument number: argumentNumber requiredValue: self
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 MockArgCapture >> asStateSpec [
 	^self
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockArgCapture >> basicMatches: anObject [
 	^true
 ]
 
-{ #category : #'capturing arguments' }
+{ #category : 'capturing arguments' }
 MockArgCapture >> captureValue: anObject [
 
 	anObject isAllowAutoStub ifTrue: [ anObject stub ].
@@ -81,90 +82,90 @@ MockArgCapture >> captureValue: anObject [
 	values add: anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockArgCapture >> ensureMessageSpec [
 	messageSpec ifNil: [ self error: 'Capture is not initialized with messageSpec!' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> fromAllCalls [
 	
 	^MockAllCapturedValuesReceiver from: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> fromCall: callNumber [
 	
 	^MockConcreteCapturedValueReceiver from: self callNumber: callNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> fromFirstCall [
 	^self fromCall: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> fromLastCall [
 	^MockLastCapturedValueReceiver from: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockArgCapture >> initialize [
 	super initialize.
 	
 	values := OrderedCollection new
 ]
 
-{ #category : #specs }
+{ #category : 'specs' }
 MockArgCapture >> isSimpleValue [
 	^true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> messageSpec [
 	^ messageSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> messageSpec: anObject [
 	messageSpec := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> numberOfCalls [
 	^values size
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockArgCapture >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream << $( << name << $)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockArgCapture >> stringForSpecTitle [ 
 
 	^name printString
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockArgCapture >> validate: anObject [
 	
 	^SpecOfValidationResult success
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockArgCapture >> validateNumberOfCalls: callsNumber [
 	| expectedMessageSpec result history |
 	self ensureMessageSpec.
@@ -183,7 +184,7 @@ MockArgCapture >> validateNumberOfCalls: callsNumber [
 	^result
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockArgCapture >> validateSingleValue [ 
 
 	| result |
@@ -196,24 +197,24 @@ MockArgCapture >> validateSingleValue [
 	^result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> valueFromCall: callNumber [
 	
 	^values at: callNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> valueFromLastCall [
 	
 	^values last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> values [
 	^ values
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockArgCapture >> values: anObject [
 	values := anObject
 ]

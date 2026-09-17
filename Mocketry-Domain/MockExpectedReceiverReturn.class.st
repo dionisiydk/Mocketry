@@ -2,12 +2,13 @@
 I represent expected message result which will return receiver of intercepted message
 "
 Class {
-	#name : #MockExpectedReceiverReturn,
-	#superclass : #MockExpectedAction,
-	#category : 'Mocketry-Domain'
+	#name : 'MockExpectedReceiverReturn',
+	#superclass : 'MockExpectedAction',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedReceiverReturn >> executeFor: anOccurredMessage [ 
 	^anOccurredMessage receiver
 ]

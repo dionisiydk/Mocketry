@@ -11,16 +11,17 @@ Internal Representation and Key Implementation Points.
 	wrongMessage:		<SpecOfWrongMessageSend>
 "
 Class {
-	#name : #SpecOfExpectedMessageValidationFailure,
-	#superclass : #SpecOfWrongMessageSend,
+	#name : 'SpecOfExpectedMessageValidationFailure',
+	#superclass : 'SpecOfWrongMessageSend',
 	#instVars : [
 		'occuredMessages',
 		'mostSimilarMessage'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfExpectedMessageValidationFailure class >> spec: aSpecOfExpectedMessage for: actualMessages occuredMessages: occurredMessages mostSimilarMessage: wrongMessageFailure [
 
 	^(self spec: aSpecOfExpectedMessage for: actualMessages )
@@ -28,7 +29,7 @@ SpecOfExpectedMessageValidationFailure class >> spec: aSpecOfExpectedMessage for
 		mostSimilarMessage: wrongMessageFailure
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfExpectedMessageValidationFailure >> description [
 
 	"mostSimilarMessage ifNotNil: [ ^mostSimilarMessage description]."
@@ -38,22 +39,22 @@ SpecOfExpectedMessageValidationFailure >> description [
 	^spec description, ' but it was ', occuredMessages size asString , ' times' 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessageValidationFailure >> mostSimilarMessage [
 	^ mostSimilarMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessageValidationFailure >> mostSimilarMessage: anObject [
 	mostSimilarMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessageValidationFailure >> occuredMessages [
 	^ occuredMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfExpectedMessageValidationFailure >> occuredMessages: anObject [
 	occuredMessages := anObject
 ]

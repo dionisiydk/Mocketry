@@ -5,28 +5,29 @@ My instance can be created by
 	SpecOfMessageReceiver requiredValue: anObjectOrSpec
 "
 Class {
-	#name : #SpecOfMessageReceiver,
-	#superclass : #SpecOfMessagePart,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageReceiver',
+	#superclass : 'SpecOfMessagePart',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageReceiver >> basicMatches: aMessageSend [
 
 	^requiredValue basicMatches: aMessageSend receiver
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageReceiver >> defaultTitle [
 	^'have receiver ' , requiredValue description
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageReceiver >> receiverDescription [
 	^requiredValue description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageReceiver >> requiredValue: anObjectOrSpec [
 
 	requiredValue := anObjectOrSpec isStateSpec 
@@ -34,7 +35,7 @@ SpecOfMessageReceiver >> requiredValue: anObjectOrSpec [
 		ifFalse: [ Identical to: anObjectOrSpec ]
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMessageReceiver >> validate: aMessageSend [
 
 	| result |

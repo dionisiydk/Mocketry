@@ -13,25 +13,26 @@ My subclasses should implement method
 	processMessageSend: anOccurredMessage by: aMockBehaviour
 "
 Class {
-	#name : #MockRole,
-	#superclass : #Object,
+	#name : 'MockRole',
+	#superclass : 'Object',
 	#classInstVars : [
 		'default'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 MockRole class >> default [
 	^default ifNil: [ default := self new ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockRole >> isTeaching [ 
 	^false
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockRole >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	self subclassResponsibility 
 ]

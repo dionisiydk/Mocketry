@@ -18,32 +18,33 @@ Internal Representation and Key Implementation Points.
 			
 "
 Class {
-	#name : #MockCapturedArgReceiver,
-	#superclass : #SpecOfShouldReceiverRoot,
-	#category : #'Mocketry-Domain'
+	#name : 'MockCapturedArgReceiver',
+	#superclass : 'SpecOfShouldReceiverRoot',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockCapturedArgReceiver class >> isAbstract [ 	
 	^self = MockCapturedArgReceiver 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockCapturedArgReceiver >> argCapture [
 	^ value
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockCapturedArgReceiver >> asFutureStateShouldReceiver [
 	^self 
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockCapturedArgReceiver >> createSpecOfValidationSubject [
 	^SpecOfObjectHolder requiredHolder: self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockCapturedArgReceiver >> printSubject: anObject [
 
 	^(super printSubject: anObject) , ' from ', self stringForSpecTitle

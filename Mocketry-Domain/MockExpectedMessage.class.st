@@ -49,34 +49,35 @@ Internal Representation and Key Implementation Points.
 	usageCount:		<Integer>
 "
 Class {
-	#name : #MockExpectedMessage,
-	#superclass : #Object,
+	#name : 'MockExpectedMessage',
+	#superclass : 'Object',
 	#instVars : [
 		'spec',
 		'usageCount',
 		'actions',
 		'conditionsSpec'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedMessage class >> from: aMessageSend [ 
 	^self new
 		spec: (SpecOfExpectedMessage from: aMessageSend)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> actions [
 	^ actions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> actions: anObject [
 	actions := anObject
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockExpectedMessage >> asExpectedMessageSpec [
 
 	| expectedMessage |
@@ -85,7 +86,7 @@ MockExpectedMessage >> asExpectedMessageSpec [
 	^expectedMessage
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedMessage >> executeAs: aMessageSend [
 
 	spec captureArgumentsFrom: aMessageSend.
@@ -95,7 +96,7 @@ MockExpectedMessage >> executeAs: aMessageSend [
 	^actions executeFor: aMessageSend
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockExpectedMessage >> initialize [
 	super initialize.
 	
@@ -104,7 +105,7 @@ MockExpectedMessage >> initialize [
 	conditionsSpec := SpecOfAndConjunction new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockExpectedMessage >> isAbout: aMessageSend [
 
 	(spec matches: {aMessageSend}) ifFalse: [ ^false ].
@@ -112,137 +113,137 @@ MockExpectedMessage >> isAbout: aMessageSend [
 	^spec allowSendsCount: usageCount + 1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockExpectedMessage >> isForLimitedUsage [
 	
 	^spec usage isUnlimited not
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockExpectedMessage >> printOn: aStream [
 	super printOn: aStream.
 	 
 	aStream << $( << spec printMessageSend << $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> restrictUsage [
 	
 	spec restrictUsage
 ]
 
-{ #category : #conditions }
+{ #category : 'conditions' }
 MockExpectedMessage >> shouldBeSentInAnotherProcess [
 	<dontSendToMock>
 	conditionsSpec addSpec: SpecOfAsynchMessage forActiveProcess
 ]
 
-{ #category : #conditions }
+{ #category : 'conditions' }
 MockExpectedMessage >> shouldBeSentInThisProcess [
 	<dontSendToMock>
 	conditionsSpec addSpec: SpecOfAsynchMessage forActiveProcess not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> spec [
 	^ spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> spec: anObject [
 	spec := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> usageCount [
 	^ usageCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedMessage >> usageCount: anObject [
 	usageCount := anObject
 ]
 
-{ #category : #'usage specs' }
+{ #category : 'usage specs' }
 MockExpectedMessage >> use: numberOfTimes [
 
 	spec usage maxCount:  numberOfTimes
 ]
 
-{ #category : #'usage specs' }
+{ #category : 'usage specs' }
 MockExpectedMessage >> useArbitrarily [
 	"It is default usage strategy. But for lenient/strict logic default is useOnce"
 	spec usage beUnlimited
 ]
 
-{ #category : #'usage specs' }
+{ #category : 'usage specs' }
 MockExpectedMessage >> useOnce [
 
 	self use: 1
 ]
 
-{ #category : #'usage specs' }
+{ #category : 'usage specs' }
 MockExpectedMessage >> useTwice [
 
 	self use: 2
 ]
 
-{ #category : #conditions }
+{ #category : 'conditions' }
 MockExpectedMessage >> when: subjectBlock is: aSpecOfObjectState [
 	<dontSendToMock>
 	conditionsSpec addSpec: (SpecOfMessageSendCondition of: subjectBlock by: aSpecOfObjectState)
 ]
 
-{ #category : #conditions }
+{ #category : 'conditions' }
 MockExpectedMessage >> when: subjectBlock satisfy: conditionBlock [
 	<dontSendToMock>
 	self when: subjectBlock is: (Satisfying for: conditionBlock)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> will: anObject [
 	<dontSendToMock>
 	actions add: anObject asMockExpectationAction
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willCallOriginalMethod [
 	<dontSendToMock>
 	self will: MockExpectedOriginalMethodCall new
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willLogMessage [
 	<dontSendToMock>
 	self will: MockExpectedMessageLogging new
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willRaise: anExceptionOrClass [ 
 	<dontSendToMock>
 	self will: (MockExpectedException exception: anExceptionOrClass)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willReturn: anObject [ 
 	<dontSendToMock>
 	self will: (MockExpectedValueReturn value: anObject)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willReturnValueFrom: anArray [ 
 	<dontSendToMock>
 	self will: (MockExpectedValueForForEachCall values: anArray).
 	spec usage maxCount: anArray size
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willReturnYourself [
 	<dontSendToMock>
 	self will: MockExpectedReceiverReturn new
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockExpectedMessage >> willStubRealResult [
 	<dontSendToMock>
 	self will: MockExpectedMethodResultStub new

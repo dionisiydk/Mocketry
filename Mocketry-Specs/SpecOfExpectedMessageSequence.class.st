@@ -5,12 +5,13 @@ I am valid for group of messages only if they occurred in exact order which defi
 My contents are SpecOfExpectedMessage
 "
 Class {
-	#name : #SpecOfExpectedMessageSequence,
-	#superclass : #SpecOfMultipleMessages,
-	#category : #'Mocketry-Specs'
+	#name : 'SpecOfExpectedMessageSequence',
+	#superclass : 'SpecOfMultipleMessages',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedMessageSequence >> basicMatches: occurredMessages [
 
 	| uncheckedMessages result |
@@ -27,7 +28,7 @@ SpecOfExpectedMessageSequence >> basicMatches: occurredMessages [
 	^true
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfExpectedMessageSequence >> validate: occurredMessages [
 
 	| uncheckedMessages result allOccurred validMessages |

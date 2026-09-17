@@ -15,15 +15,16 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #MockValidatedExpectationsTeacher,
-	#superclass : #MockTeacher,
+	#name : 'MockValidatedExpectationsTeacher',
+	#superclass : 'MockTeacher',
 	#instVars : [
 		'expectations'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockValidatedExpectationsTeacher >> convertExpectationsToSpecs [
   
 	^expectations 
@@ -31,24 +32,24 @@ MockValidatedExpectationsTeacher >> convertExpectationsToSpecs [
 		thenCollect: [ :each | each asExpectedMessageSpec]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockValidatedExpectationsTeacher >> expectations [
 	^ expectations
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockValidatedExpectationsTeacher >> expectations: anObject [
 	expectations := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockValidatedExpectationsTeacher >> initialize [
 	super initialize.
 	
 	expectations := OrderedCollection new
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockValidatedExpectationsTeacher >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	| expectation |
 	expectation := MockExpectedMessage from: anOccurredMessage.

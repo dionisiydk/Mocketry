@@ -1,13 +1,14 @@
 Class {
-	#name : #MockTests,
-	#superclass : #MockTestCaseSuperclass,
+	#name : 'MockTests',
+	#superclass : 'MockTestCaseSuperclass',
 	#instVars : [
 		'mock'
 	],
-	#category : 'Mocketry-Domain-Tests'
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 MockTests >> setUp [
 	super setUp.
 	"We maually reset current mock behaviour for the case when process specific variable is managed badly. It is covered by other test cases"
@@ -16,7 +17,7 @@ MockTests >> setUp [
 	mock := Mock new.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MockTests >> tearDown [
 	"We maually reset current mock behaviour for the case when process specific variable is managed badly. It is covered by other test cases"
 	MockCurrentBehaviour value: nil.
@@ -24,7 +25,7 @@ MockTests >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testDoesNotExpectMessage [
 
 	| returnedMock unexpectedMessage mockHash |
@@ -40,7 +41,7 @@ MockTests >> testDoesNotExpectMessage [
 	returnedMock ghostPrintString should equal: 'Result(', mockHash asString, ') of: a Mock(mock) someMessage'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testDoesNotExpectMessageByObject [
 
 	| actual unexpectedMessage |
@@ -51,7 +52,7 @@ MockTests >> testDoesNotExpectMessageByObject [
 	actual should equal: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testFetchingNameFromContextWhenItNotExists [
 	
 	| actual |
@@ -60,7 +61,7 @@ MockTests >> testFetchingNameFromContextWhenItNotExists [
 	actual should be isAllDigits
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testFetchingNameFromInstanceVariableName [
 	| actual | 
 	actual := mock mockName.
@@ -68,7 +69,7 @@ MockTests >> testFetchingNameFromInstanceVariableName [
 	actual should equal: 'mock'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testFetchingNameFromInstanceVariableWhichDefinedInSuperclass [
 	| actual | 
 	actual := mockFromSuperclass mockName.
@@ -76,7 +77,7 @@ MockTests >> testFetchingNameFromInstanceVariableWhichDefinedInSuperclass [
 	actual should equal: 'mockFromSuperclass'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testFetchingNameFromTempVariableName [
 	| actual tempMock | 
 	tempMock := Mock new.
@@ -86,7 +87,7 @@ MockTests >> testFetchingNameFromTempVariableName [
 	actual should equal: 'tempMock'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testGettingBehaviourFirstTime [
 
 	| actual |
@@ -98,7 +99,7 @@ MockTests >> testGettingBehaviourFirstTime [
 	actual where ownerEnvironment should be: CurrentExecutionEnvironment value
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testGettingBehaviourSecondTimeShouldNotChangeIt [
 
 	| actual initialBehaviour |
@@ -111,7 +112,7 @@ MockTests >> testGettingBehaviourSecondTimeShouldNotChangeIt [
 	actual should be: initialBehaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testGettingStub [
 
 	| actual stubBehaviour |
@@ -126,7 +127,7 @@ MockTests >> testGettingStub [
 	stubBehaviour where ownerEnvironment should be: mock ghostBehaviour ownerEnvironment.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testHasBehaviourByDefault [
 
 	| actual |
@@ -136,7 +137,7 @@ MockTests >> testHasBehaviourByDefault [
 	actual where ownerEnvironment should be: CurrentExecutionEnvironment value
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testInstVarMockHasSameBehaviourAsTempMock [
 	| mock2 | 
 	mock2 := Mock new.
@@ -144,7 +145,7 @@ MockTests >> testInstVarMockHasSameBehaviourAsTempMock [
 	mock ghostBehaviour should be: mock2 ghostBehaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testPrintingStringWhenMockWithName [
 	"here we tests how mock will be shown inside tools. 
 	By default mocks under test are created in current test environment. We fork messages under test  to simulate tools default environment"
@@ -158,7 +159,7 @@ MockTests >> testPrintingStringWhenMockWithName [
 	actual should equal: 'a Mock(test mock)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testPrintingStringWhenMockWithoutName [
 	"here we tests how mock will be shown inside tools. 
 	By default mocks under test are created in current test environment. We fork messages under test  to simulate tools default environment"
@@ -172,7 +173,7 @@ MockTests >> testPrintingStringWhenMockWithoutName [
 	actual should equal: 'a Mock(',  mock ghostIdentityHash asString, ')'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testValidationReceivedMessageWhenBehaviourChanged [
 
 	mock := Mock new.
@@ -184,7 +185,7 @@ MockTests >> testValidationReceivedMessageWhenBehaviourChanged [
 	mock should receive someMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockTests >> testValidationReceivedMessageWhenBehaviourChanged2 [
 
 	mock := Mock new.

@@ -13,23 +13,24 @@ Internal Representation and Key Implementation Points.
 	currentValueIndex:		<SmallInteger>
 "
 Class {
-	#name : #MockExpectedValueForForEachCall,
-	#superclass : #MockExpectedAction,
+	#name : 'MockExpectedValueForForEachCall',
+	#superclass : 'MockExpectedAction',
 	#instVars : [
 		'values',
 		'currentValueIndex'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedValueForForEachCall class >> values: anArray [
 
 	^self new 
 		values: anArray
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedValueForForEachCall >> executeFor: anOccurredMessage [
 
 	currentValueIndex ifNil: [ currentValueIndex := 0 ].
@@ -37,12 +38,12 @@ MockExpectedValueForForEachCall >> executeFor: anOccurredMessage [
 	^values at: (currentValueIndex := currentValueIndex + 1)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedValueForForEachCall >> values [
 	^ values
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedValueForForEachCall >> values: anObject [
 	values := anObject
 ]

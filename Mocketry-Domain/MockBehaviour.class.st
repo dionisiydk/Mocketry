@@ -50,8 +50,8 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #MockBehaviour,
-	#superclass : #GHGhostBehaviour,
+	#name : 'MockBehaviour',
+	#superclass : 'GHGhostBehaviour',
 	#instVars : [
 		'ownerEnvironment',
 		'ownerProcess',
@@ -63,16 +63,17 @@ Class {
 		'interactionHistory',
 		'globalStubs'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockBehaviour class >> for: aMockEnvironment [
 	^self new
 		ownerEnvironment: aMockEnvironment 
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockBehaviour >> addExpectation: aMockExpectedMessage [
 	"last added expectation should override previously defined. 
 	For this new expectation is added to start of expectedMessages list. 
@@ -81,7 +82,7 @@ MockBehaviour >> addExpectation: aMockExpectedMessage [
 	expectedMessages addFirst: aMockExpectedMessage 
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockBehaviour >> addExpectation: aMockExpectedMessage asPartOfGroup: expectationsGroup [
 	"Expectations can be defined as separated group of messages. 
 	In that case they should be added in same order as they defined in group.
@@ -92,13 +93,13 @@ MockBehaviour >> addExpectation: aMockExpectedMessage asPartOfGroup: expectation
 		ifNotEmpty: [ expectedMessages add: aMockExpectedMessage after: expectationsGroup last]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> argCaptureNamed: aSymbol [
 
 	^messageArgCaptures at: aSymbol ifAbsentPut: [ MockArgCapture named: aSymbol ]
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockBehaviour >> createHelperMockAs: aMockRole [
 
 	| helperBehaviour mock |
@@ -110,22 +111,22 @@ MockBehaviour >> createHelperMockAs: aMockRole [
 	^mock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> currentMetaLevel [
 	^CurrentExecutionEnvironment value currentMetaLevelForMocks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> expectedMessages [
 	^ expectedMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> expectedMessages: anObject [
 	expectedMessages := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockBehaviour >> initialize [
 	super initialize.
 	interactionHistory := MockInteractionHistory new.
@@ -135,65 +136,65 @@ MockBehaviour >> initialize [
 	self replayMocks.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> interactionHistory [
 	^ interactionHistory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> interactionHistory: anObject [
 	interactionHistory := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockBehaviour >> isInheritableByFork [
 
 	^ownerEnvironment allowsForkedProcessInheritMocks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> mockRole [
 	^ mockRole
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> mockRole: anObject [
 	mockRole := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> occurredMessages [
 	^ interactionHistory occurredMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> ownerEnvironment [
 	^ ownerEnvironment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> ownerEnvironment: anExecutionEnvironment [
 	ownerEnvironment := anExecutionEnvironment.
 	ownerProcess := Processor activeProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> ownerProcess [
 	^ ownerProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> ownerTestCase [
 	^ ownerTestCase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> ownerTestCase: aTestCase [
 	ownerTestCase := aTestCase.
 	testSelector := aTestCase selector
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MockBehaviour >> recoverGlobalStubs [
 
 	globalStubs do: [ :each |
@@ -201,14 +202,14 @@ MockBehaviour >> recoverGlobalStubs [
 	]
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MockBehaviour >> registerObject: anObject [
 
 	interactionHistory recordObject: anObject.
 	(anObject ghostClass inheritsFrom: Class) ifTrue: [ globalStubs add: anObject ]
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockBehaviour >> replayMessageSend: anOccurredMessage [
 	| expected |
 	
@@ -221,12 +222,12 @@ MockBehaviour >> replayMessageSend: anOccurredMessage [
 	^anOccurredMessage extractResultFrom: [expected executeAs: anOccurredMessage].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> replayMocks [
 	mockRole := MockPlayer default
 ]
 
-{ #category : #'message interception' }
+{ #category : 'message interception' }
 MockBehaviour >> send: aMessage to: aMockObject [
 	| occurredMessage |
 	occurredMessage := MockOccurredMessage 
@@ -240,23 +241,23 @@ MockBehaviour >> send: aMessage to: aMockObject [
 	^mockRole processMessageSend: occurredMessage by: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> setUpContextNameFor: aMock [
 
 	ownerEnvironment setUpMockNameFor: aMock inContextOf: ownerProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> teachMocks [
 	mockRole := MockTeacher default
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockBehaviour >> testSelector [
 	^ testSelector
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockBehaviour >> useMockRole: aMockRole while: aBlock [
 
 	| currentRole |

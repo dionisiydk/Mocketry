@@ -11,21 +11,22 @@ Internal Representation and Key Implementation Points.
 	withNegation:		<Boolean>
 "
 Class {
-	#name : #MockValidator,
-	#superclass : #MockHelperRole,
+	#name : 'MockValidator',
+	#superclass : 'MockHelperRole',
 	#instVars : [
 		'shouldExpression'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockValidator class >> forExpression: aShouldExpression [
 	^(self for: aShouldExpression createSpecOfValidationSubject)
 		shouldExpression: aShouldExpression
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockValidator >> anyMessage [
 
 	"This method for documenting purpose. Look at processing method. You will see that this particular selector is substituted by Any. It allows to validate that there was any message to particular object (or any object):
@@ -33,7 +34,7 @@ MockValidator >> anyMessage [
 		Any should receive anyMessage"
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 
 	| spec result |	
@@ -45,12 +46,12 @@ MockValidator >> processTransformedMessageSend: anOccurredMessage by: aMockBehav
 	^MockDetailedMessagesValidation for: shouldExpression on: spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockValidator >> shouldExpression [
 	^ shouldExpression
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockValidator >> shouldExpression: anObject [
 	shouldExpression := anObject
 ]

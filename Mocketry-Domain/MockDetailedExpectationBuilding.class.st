@@ -8,12 +8,13 @@ I am used during group of message sends validation:
 Look at my superclass comment and methods
 "
 Class {
-	#name : #MockDetailedExpectationBuilding,
-	#superclass : #MockOperationWithMessageSpec,
-	#category : 'Mocketry-Domain'
+	#name : 'MockDetailedExpectationBuilding',
+	#superclass : 'MockOperationWithMessageSpec',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #execution }
+{ #category : 'execution' }
 MockDetailedExpectationBuilding >> execute [
 	
 ]

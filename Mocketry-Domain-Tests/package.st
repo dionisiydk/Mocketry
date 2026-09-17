@@ -1,1 +1,1 @@
-Package { #name : #'Mocketry-Domain-Tests' }
+Package { #name : 'Mocketry-Domain-Tests' }

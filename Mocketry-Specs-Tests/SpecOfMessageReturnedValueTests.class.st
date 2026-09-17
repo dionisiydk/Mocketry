@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageReturnedValueTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageReturnedValueTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testFailedValidationWhenDenialApplied [
 
 	| spec message result |
@@ -18,7 +19,7 @@ SpecOfMessageReturnedValueTests >> testFailedValidationWhenDenialApplied [
 	result where description should equal: 'Got #requiredValue from #receiver selector but it should not equal #requiredValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testFailedValidationWhenReturnedValueIsWrong [
 
 	| spec message result |
@@ -32,7 +33,7 @@ SpecOfMessageReturnedValueTests >> testFailedValidationWhenReturnedValueIsWrong 
 	result where description should equal: 'Got #actualValue from #receiver selector but it should equal #requiredValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testMatchesWhenExplicitResult [
 
 	| spec message |
@@ -46,7 +47,7 @@ SpecOfMessageReturnedValueTests >> testMatchesWhenExplicitResult [
 	spec should not be matches: message.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testMatchesWhenRequiredResultIsSpec [
 
 	| spec message |
@@ -60,7 +61,7 @@ SpecOfMessageReturnedValueTests >> testMatchesWhenRequiredResultIsSpec [
 	spec should not be matches: message
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testMatchesWhenSpecWithDenial [
 
 	| spec message |
@@ -75,7 +76,7 @@ SpecOfMessageReturnedValueTests >> testMatchesWhenSpecWithDenial [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageReturnedValueTests >> testSucceedValidation [
 
 	| spec message result |

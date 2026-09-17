@@ -13,15 +13,16 @@ Internal Representation and Key Implementation Points.
 	spec:		<SpecOfExpectedMessage>
 "
 Class {
-	#name : #MockOperationWithMessageSpec,
-	#superclass : #Object,
+	#name : 'MockOperationWithMessageSpec',
+	#superclass : 'Object',
 	#instVars : [
 		'spec'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOperationWithMessageSpec class >> on: anExpectedMessageSpec [
 
 	^self new 
@@ -29,13 +30,13 @@ MockOperationWithMessageSpec class >> on: anExpectedMessageSpec [
 		
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> atLeast: numberOfTimes [
 	spec usage minCount: numberOfTimes.
 	self execute
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> atLeast: minNumberOfTimes atMost: maxNumberOfTimes [
 	spec usage 
 		minCount: minNumberOfTimes;
@@ -43,53 +44,53 @@ MockOperationWithMessageSpec >> atLeast: minNumberOfTimes atMost: maxNumberOfTim
 	self execute
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> atMost: numberOfTimes [
 	spec usage maxCount: numberOfTimes.
 	self execute
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> exactly: numberOfTimes [
 	spec usage exactCount: numberOfTimes.
 	self execute
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MockOperationWithMessageSpec >> execute [
 	self subclassResponsibility 
 ]
 
-{ #category : #'conditions vaildation' }
+{ #category : 'conditions vaildation' }
 MockOperationWithMessageSpec >> inAnotherProcess [
 
 	spec addSpec: SpecOfAsynchMessage forActiveProcess.
 	self execute
 ]
 
-{ #category : #'conditions vaildation' }
+{ #category : 'conditions vaildation' }
 MockOperationWithMessageSpec >> inThisProcess [
 
 	spec addSpec: SpecOfAsynchMessage forActiveProcess not.
 	self execute
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> once [
 	self exactly: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOperationWithMessageSpec >> spec [
 	^ spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOperationWithMessageSpec >> spec: anObject [
 	spec := anObject
 ]
 
-{ #category : #'usage validation' }
+{ #category : 'usage validation' }
 MockOperationWithMessageSpec >> twice [
 	self exactly: 2
 ]

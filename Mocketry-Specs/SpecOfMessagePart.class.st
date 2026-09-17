@@ -7,34 +7,35 @@ Internal Representation and Key Implementation Points.
 	requiredValue:		<SpecOfObjectState>
 "
 Class {
-	#name : #SpecOfMessagePart,
-	#superclass : #SpecOfObjectState,
+	#name : 'SpecOfMessagePart',
+	#superclass : 'SpecOfObjectState',
 	#instVars : [
 		'requiredValue'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessagePart class >> requiredValue: anObjectOrSpec [
 
 	^self new 
 		requiredValue: anObjectOrSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagePart >> invertChildren [
 	super invertChildren.
 	
 	requiredValue invert
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagePart >> requiredValue [
 	^ requiredValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagePart >> requiredValue: anObjectOrSpec [
 	requiredValue := anObjectOrSpec asStateSpec
 ]

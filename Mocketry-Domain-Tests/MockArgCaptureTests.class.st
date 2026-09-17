@@ -1,10 +1,11 @@
 Class {
-	#name : #MockArgCaptureTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Domain-Tests'
+	#name : 'MockArgCaptureTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 MockArgCaptureTests >> prepareCapture [
 	| arg message |
 	
@@ -16,7 +17,7 @@ MockArgCaptureTests >> prepareCapture [
 	^arg
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testApplyingShouldWhenNoMessageSpecDefined [
 
 	| arg |
@@ -25,7 +26,7 @@ MockArgCaptureTests >> testApplyingShouldWhenNoMessageSpecDefined [
 	[arg should] should fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testApplyingWhereExpression [
 
 	| arg |
@@ -37,7 +38,7 @@ MockArgCaptureTests >> testApplyingWhereExpression [
 	arg where x should be: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testApplyingWhereExpressionWhenThereAreMultipleValues [
 
 	| arg |
@@ -49,7 +50,7 @@ MockArgCaptureTests >> testApplyingWhereExpressionWhenThereAreMultipleValues [
 	[arg where x should be: 2] should fail
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testCapturingArguments [
 
 	| arg |
@@ -62,7 +63,7 @@ MockArgCaptureTests >> testCapturingArguments [
 	arg values should equal: #(argValue argValue argValue3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testConvertingToMessageArgumentSpec [
 
 	| arg spec |
@@ -76,7 +77,7 @@ MockArgCaptureTests >> testConvertingToMessageArgumentSpec [
 	arg messageSpec should be: #messageSendSpec
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testFromAllCall [
 
 	| arg shouldReceiver |
@@ -88,7 +89,7 @@ MockArgCaptureTests >> testFromAllCall [
 	self assert: shouldReceiver argCapture == arg
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testFromConcreteCall [
 
 	| arg shouldReceiver |
@@ -101,7 +102,7 @@ MockArgCaptureTests >> testFromConcreteCall [
 	self assert: shouldReceiver argCapture == arg
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testFromFirstCall [
 
 	| arg shouldReceiver |
@@ -114,7 +115,7 @@ MockArgCaptureTests >> testFromFirstCall [
 	self assert: shouldReceiver argCapture == arg
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testFromLastCall [
 
 	| arg shouldReceiver |
@@ -126,7 +127,7 @@ MockArgCaptureTests >> testFromLastCall [
 	self assert: shouldReceiver argCapture == arg
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testGettingByArgClass [
 
 	| arg storedArg |
@@ -140,7 +141,7 @@ MockArgCaptureTests >> testGettingByArgClass [
 	(arg == storedArg) should be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testGettingValueFromGivenCall [
 
 	| arg |
@@ -152,7 +153,7 @@ MockArgCaptureTests >> testGettingValueFromGivenCall [
 	(arg valueFromCall: 2) should be: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testGettingValueFromLastCall [
 
 	| arg |
@@ -164,7 +165,7 @@ MockArgCaptureTests >> testGettingValueFromLastCall [
 	arg valueFromLastCall should be: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testMatchesToAnyObject [
 
 	| arg |
@@ -173,7 +174,7 @@ MockArgCaptureTests >> testMatchesToAnyObject [
 	(arg basicMatches: Any) should be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockArgCaptureTests >> testValidatesAnyObject [
 
 	| arg |

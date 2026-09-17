@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfExpectedMessageSequenceTests,
-	#superclass : #TestCase,
-	#category : #'Mocketry-Specs-Tests'
+	#name : 'SpecOfExpectedMessageSequenceTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenMessageWasNotOccured [
 	
 	| spec messages result |
@@ -25,7 +26,7 @@ SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenMessageWasNotOccur
 	result where description should equal: '#receiver never received selector3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenWrongOrder [
 	
 	| spec messages result |
@@ -48,7 +49,7 @@ SpecOfExpectedMessageSequenceTests >> testFailedValidationWhenWrongOrder [
 	result where description should equal: '#receiver received selector3 in wrong time'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testMatches [
 	
 	| spec messages |
@@ -67,7 +68,7 @@ SpecOfExpectedMessageSequenceTests >> testMatches [
 	spec should be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testMatchesWhenSomeMessageExpectedTwice [
 	
 	| spec messages |
@@ -88,7 +89,7 @@ SpecOfExpectedMessageSequenceTests >> testMatchesWhenSomeMessageExpectedTwice [
 	spec should be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenMessagesAreOccuredInWrongOrder [
 	
 	| spec messages |
@@ -107,7 +108,7 @@ SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenMessagesAreOccuredInWron
 	spec should not be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenSomeMessageWasNotOccured [
 	
 	| spec messages |
@@ -124,7 +125,7 @@ SpecOfExpectedMessageSequenceTests >> testNotMatchesWhenSomeMessageWasNotOccured
 	spec should not be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageSequenceTests >> testSucceedValidation [
 	
 	| spec messages result |

@@ -7,30 +7,31 @@ I am used to implement following should expression:
 I ensure that at least one message was actually sent (at least one value was captured) and in case if it is not true it will be the result of validation.
 "
 Class {
-	#name : #MockLastCapturedValueReceiver,
-	#superclass : #MockCapturedArgReceiver,
-	#category : #'Mocketry-Domain'
+	#name : 'MockLastCapturedValueReceiver',
+	#superclass : 'MockCapturedArgReceiver',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockLastCapturedValueReceiver >> printProperty: aShouldReceiverProperty [
 	^self argCapture stringForSpecTitle, ' ', aShouldReceiverProperty printPath,
 		' from last call'
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockLastCapturedValueReceiver >> stringForSpecTitle [
 
 	^super stringForSpecTitle, ' from last call'
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockLastCapturedValueReceiver >> validate [
 	
 	^self argCapture validateNumberOfCalls: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockLastCapturedValueReceiver >> validationSubject [
 	
 	^self argCapture valueFromLastCall
