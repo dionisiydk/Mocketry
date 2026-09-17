@@ -5,36 +5,37 @@ My instance can be created by
 	SpecOfMessageReceiver requiredValue: anObjectOrSpec
 "
 Class {
-	#name : #SpecOfMessageSelector,
-	#superclass : #SpecOfMessagePart,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageSelector',
+	#superclass : 'SpecOfMessagePart',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageSelector >> basicMatches: aMessageSend [
 
 	^requiredValue basicMatches: aMessageSend selector
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSelector >> defaultTitle [
 	^'have selector ' , self selectorDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageSelector >> requiredValue: anObjectOrSpec [
 	
 	requiredValue := anObjectOrSpec isStateSpec 
 		ifTrue: [ anObjectOrSpec ] ifFalse: [Identical to: anObjectOrSpec]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageSelector >> selectorDescription [
 
 	^requiredValue description
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMessageSelector >> validate: aMessageSend [
 
 	| result |

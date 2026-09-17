@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageSendTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageSendTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendTests >> testCreationFromMessageSend [
 
 	| spec |
@@ -26,7 +27,7 @@ SpecOfMessageSendTests >> testCreationFromMessageSend [
 	spec where specs fourth requiredValue requiredValue should be: #arg2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendTests >> testDescription [
 
 	| spec |
@@ -35,7 +36,7 @@ SpecOfMessageSendTests >> testDescription [
 	spec where description should equal: '#receiver should receive someMessageWith: #someArg'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendTests >> testDescriptionWhenAnySelector [
 
 	| spec |
@@ -44,7 +45,7 @@ SpecOfMessageSendTests >> testDescriptionWhenAnySelector [
 	spec where description should equal: '10 should receive Any'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendTests >> testDescriptionWhenDenialApplied [
 
 	| spec |
@@ -53,7 +54,7 @@ SpecOfMessageSendTests >> testDescriptionWhenDenialApplied [
 	spec where description should equal: '#receiver should not receive someMessageWith: #someArg'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendTests >> testDescriptionWhenReceiverIsExplicitSpec [
 
 	| spec |

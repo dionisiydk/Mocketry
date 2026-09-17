@@ -1,11 +1,11 @@
-Extension { #name : #BlockClosure }
+Extension { #name : 'BlockClosure' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 BlockClosure >> asMockExpectationAction [
 	^MockExpectedPluggableAction basedOn: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 BlockClosure >> runWithMocks [
 
 	| mocks |

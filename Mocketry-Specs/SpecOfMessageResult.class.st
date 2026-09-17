@@ -4,17 +4,18 @@ I specify required result for occurred message send. I am abstract class for dif
 My subclasses should just implement usual method basicMatches: and validation result will be correct
 "
 Class {
-	#name : #SpecOfMessageResult,
-	#superclass : #SpecOfMessagePart,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageResult',
+	#superclass : 'SpecOfMessagePart',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageResult >> printResultDescription [
 	^requiredValue description
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMessageResult >> validationFailureFor: anOccurredMessage [
 
 	^SpecOfWrongMessageResult of: anOccurredMessage spec: self

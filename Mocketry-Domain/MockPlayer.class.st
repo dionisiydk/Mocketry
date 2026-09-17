@@ -9,12 +9,13 @@ I am defined as singleton:
 I am default role for MockBehaviour
 "
 Class {
-	#name : #MockPlayer,
-	#superclass : #MockRole,
-	#category : 'Mocketry-Domain'
+	#name : 'MockPlayer',
+	#superclass : 'MockRole',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockPlayer >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	^aMockBehaviour replayMessageSend: anOccurredMessage
 ]

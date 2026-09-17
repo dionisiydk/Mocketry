@@ -9,27 +9,28 @@ I am used during received message validation:
 Look at my superclass comment and methods
 "
 Class {
-	#name : #MockDetailedMessagesValidation,
-	#superclass : #MockOperationWithMessageSpec,
+	#name : 'MockDetailedMessagesValidation',
+	#superclass : 'MockOperationWithMessageSpec',
 	#instVars : [
 		'shouldExpression'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockDetailedMessagesValidation class >> for: aShouldExpression on: anExpectedMessageSpec [
 	^(self on: anExpectedMessageSpec)
 		shouldExpression: aShouldExpression 
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 MockDetailedMessagesValidation >> execute [
 	
 	^shouldExpression evaluateWith: spec forMockBehaviour: MockCurrentBehaviour value
 ]
 
-{ #category : #'extra validation' }
+{ #category : 'extra validation' }
 MockDetailedMessagesValidation >> inProcessWhich [
 
 	| result lastMessage |
@@ -39,17 +40,17 @@ MockDetailedMessagesValidation >> inProcessWhich [
 	^(MockOccurredMessageProcessProperty of: lastMessage) where
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockDetailedMessagesValidation >> shouldExpression [
 	^ shouldExpression
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockDetailedMessagesValidation >> shouldExpression: anObject [
 	shouldExpression := anObject
 ]
 
-{ #category : #'extra validation' }
+{ #category : 'extra validation' }
 MockDetailedMessagesValidation >> which [
 
 	| result lastMessage |

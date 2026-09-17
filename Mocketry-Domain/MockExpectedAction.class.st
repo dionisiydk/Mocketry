@@ -5,16 +5,17 @@ My subclasses should define method
 	 executeFor: aMockOccurredMessage
 "
 Class {
-	#name : #MockExpectedAction,
-	#superclass : #Object,
-	#category : 'Mocketry-Domain'
+	#name : 'MockExpectedAction',
+	#superclass : 'Object',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockExpectedAction >> asMockExpectationAction [
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedAction >> executeFor: anOccurredMessage [ 
 	self subclassResponsibility
 ]

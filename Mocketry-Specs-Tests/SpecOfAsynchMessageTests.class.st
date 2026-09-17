@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfAsynchMessageTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfAsynchMessageTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfAsynchMessageTests >> testFailedValidationWhenDenialApplied [
 
 	| spec result |
@@ -16,7 +17,7 @@ SpecOfAsynchMessageTests >> testFailedValidationWhenDenialApplied [
 	result where description should equal: '#receiver should receive selector in original process'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfAsynchMessageTests >> testFailedValidationWhenSenderWasWrong [
 
 	| spec result |
@@ -28,7 +29,7 @@ SpecOfAsynchMessageTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: '#receiver should receive selector in another process'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfAsynchMessageTests >> testMatches [
 
 	| spec |
@@ -40,7 +41,7 @@ SpecOfAsynchMessageTests >> testMatches [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfAsynchMessageTests >> testSucceedValidation [
 
 	| spec result |

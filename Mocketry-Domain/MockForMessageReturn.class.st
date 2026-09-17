@@ -12,66 +12,67 @@ Internal Representation and Key Implementation Points.
 	message:		<MockOccurredMessage>
 "
 Class {
-	#name : #MockForMessageReturn,
-	#superclass : #MockHelper,
+	#name : 'MockForMessageReturn',
+	#superclass : 'MockHelper',
 	#instVars : [
 		'message'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockForMessageReturn class >> from: anOccurredMessage [
 	^self withoutName 
 		mockOwnerMessage: anOccurredMessage 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockForMessageReturn class >> from: anOccurredMessage withBehaviour: aGhostBehavior [
 	^self withoutName 
 		mockOwnerMessage: anOccurredMessage;
 		ghostBehaviour: aGhostBehavior
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToFloat: rcvr andCompare: selector [
 
 	^self adaptToFloat: rcvr andSend: selector
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToFloat: rcvr andSend: selector [
 
 	self mockBecome: 0.0.
 	^rcvr perform: selector with: 0.0
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToFraction: rcvr andCompare: selector [
 
 	^self adaptToFraction: rcvr andSend: selector
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToFraction: rcvr andSend: selector [
 
 	^self adaptToInteger: rcvr andSend: selector
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToInteger: rcvr andCompare: selector [
 
 	^self adaptToInteger: rcvr andSend: selector
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToInteger: rcvr andSend: selector [
 
 	self mockBecome: 0.
 	^rcvr perform: selector with: 0
 ]
 
-{ #category : #'arithmetics simulation' }
+{ #category : 'arithmetics simulation' }
 MockForMessageReturn >> adaptToPoint: rcvr andSend: selector [
 
 	| zero |
@@ -80,33 +81,33 @@ MockForMessageReturn >> adaptToPoint: rcvr andSend: selector [
 	^rcvr perform: selector with: zero
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 MockForMessageReturn >> asOccurredMessageResult [
 	^MockOccurredDefaultReturn with: self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockForMessageReturn >> ghostPrintString [
 	
 	^'Result(', self mockName, ') of: ', message printWithoutResult
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MockForMessageReturn >> mockBecome: anObject [
 	(Array with: self)	elementsForwardIdentityTo: (Array with: anObject) copyHash: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockForMessageReturn >> mockOwnerMessage [
 	^message
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockForMessageReturn >> mockOwnerMessage: anOccurredMessage [
 	message := anOccurredMessage 	
 ]
 
-{ #category : #'boolean simulation' }
+{ #category : 'boolean simulation' }
 MockForMessageReturn >> mustBeBoolean [
 	| sender previousPc |
 	

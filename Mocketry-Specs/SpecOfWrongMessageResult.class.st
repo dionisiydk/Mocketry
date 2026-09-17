@@ -2,12 +2,13 @@
 I represent failure of SpecOfMessageResult when actual message result was wrong
 "
 Class {
-	#name : #SpecOfWrongMessageResult,
-	#superclass : #SpecOfWrongMessageSend,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfWrongMessageResult',
+	#superclass : 'SpecOfWrongMessageSend',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfWrongMessageResult >> description [
 
 	^'Got ', subject stringForResultSpec, ' but it ', spec printResultDescription

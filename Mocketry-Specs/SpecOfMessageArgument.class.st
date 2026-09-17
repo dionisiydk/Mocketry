@@ -10,44 +10,45 @@ Internal Representation and Key Implementation Points.
 	argumentNumber:		<Integer>
 "
 Class {
-	#name : #SpecOfMessageArgument,
-	#superclass : #SpecOfMessagePart,
+	#name : 'SpecOfMessageArgument',
+	#superclass : 'SpecOfMessagePart',
 	#instVars : [
 		'argumentNumber'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessageArgument class >> number: anInteger requiredValue: anObjectOrSpec [
 
 	^(self requiredValue: anObjectOrSpec)
 		argumentNumber: anInteger
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageArgument >> absentArgumentDescription [
 
 	^'should have arg ', argumentNumber asString, ' which ', requiredValue description
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageArgument >> argumentDescription [
 
 	^'arg ', argumentNumber asString, ' ', requiredValue description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageArgument >> argumentNumber [
 	^ argumentNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageArgument >> argumentNumber: anObject [
 	argumentNumber := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageArgument >> basicMatches: aMessageSend [
 
 	| arg |
@@ -57,12 +58,12 @@ SpecOfMessageArgument >> basicMatches: aMessageSend [
 	^requiredValue basicMatches: arg
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageArgument >> defaultTitle [
 	^'have arg ', argumentNumber asString, ' which ' , requiredValue description
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMessageArgument >> validate: aMessageSend [
 
 	| result |

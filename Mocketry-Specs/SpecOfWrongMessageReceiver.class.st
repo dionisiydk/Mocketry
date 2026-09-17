@@ -2,12 +2,13 @@
 I represent failure of SpecOfMessageReceiver when actual message receiver was wrong
 "
 Class {
-	#name : #SpecOfWrongMessageReceiver,
-	#superclass : #SpecOfWrongMessageSend,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfWrongMessageReceiver',
+	#superclass : 'SpecOfWrongMessageSend',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfWrongMessageReceiver >> description [
 	^subject printMessage, ' is sent to ', subject receiver stringForSpecValidation
 			, ' but it ', spec receiverDescription

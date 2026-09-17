@@ -7,54 +7,55 @@ Internal Representation and Key Implementation Points.
 	returnedMock:		<MockForMessageReturn>
 "
 Class {
-	#name : #MockOccurredDefaultReturn,
-	#superclass : #MockOccurredMessageResult,
+	#name : 'MockOccurredDefaultReturn',
+	#superclass : 'MockOccurredMessageResult',
 	#instVars : [
 		'returnedMock'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOccurredDefaultReturn class >> with: aMockForMessageReturn [
 	^self new 
 		returnedMock: aMockForMessageReturn 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredDefaultReturn >> isReturnOf: anObjectOrSpec [
 
 	^anObjectOrSpec asStateSpec matches: returnedMock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredDefaultReturn >> isSignalOf: anExceptionOrSpec [
 
 	^false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredDefaultReturn >> printOn: aStream [
 	
 	aStream << 'returned ' << self stringForSpecTitle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredDefaultReturn >> returnedMock [
 	^ returnedMock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredDefaultReturn >> returnedMock: anObject [
 	returnedMock := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredDefaultReturn >> returnedValue [ 
 	^returnedMock
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredDefaultReturn >> stringForSpecTitle [
 	returnedMock isGhost ifFalse: [ ^returnedMock stringForSpecValidation]. "it is possible that mock was converted into normal object like boolean or number due to boolean logic or arithmetic operations which happens with returned mock"
 	

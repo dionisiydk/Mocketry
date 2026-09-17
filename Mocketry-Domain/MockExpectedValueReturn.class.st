@@ -10,30 +10,31 @@ Internal Representation and Key Implementation Points.
 	value:		<Object>
 "
 Class {
-	#name : #MockExpectedValueReturn,
-	#superclass : #MockExpectedAction,
+	#name : 'MockExpectedValueReturn',
+	#superclass : 'MockExpectedAction',
 	#instVars : [
 		'value'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedValueReturn class >> value: anObject [ 
 	^self new value: anObject
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedValueReturn >> executeFor: anOccurredMessage [ 
 	^value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedValueReturn >> value [
 	^value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedValueReturn >> value: anObject [
 	value := anObject
 ]

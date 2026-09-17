@@ -7,21 +7,22 @@ Internal Representation and Key Implementation Points.
 	wrongSender:		<MockOccurredMessage>
 "
 Class {
-	#name : #SpecOfWrongObjectSender,
-	#superclass : #SpecOfWrongMessageSend,
+	#name : 'SpecOfWrongObjectSender',
+	#superclass : 'SpecOfWrongMessageSend',
 	#instVars : [
 		'wrongSender'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfWrongObjectSender class >> spec: aSpecOfExpectedObjectSender for: occurredMessages wrongSender: anOccurredMessage [ 
 	^(self spec: aSpecOfExpectedObjectSender for: occurredMessages)
 		wrongSender: anOccurredMessage 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfWrongObjectSender >> description [
 
 	wrongSender ifNil: [ 
@@ -32,12 +33,12 @@ SpecOfWrongObjectSender >> description [
 		, ' but it should be ', spec printRequiredSender.	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongObjectSender >> wrongSender [
 	^ wrongSender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongObjectSender >> wrongSender: anObject [
 	wrongSender := anObject
 ]

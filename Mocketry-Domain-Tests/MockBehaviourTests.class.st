@@ -1,13 +1,14 @@
 Class {
-	#name : #MockBehaviourTests,
-	#superclass : #TestCase,
+	#name : 'MockBehaviourTests',
+	#superclass : 'TestCase',
 	#instVars : [
 		'behaviour'
 	],
-	#category : 'Mocketry-Domain-Tests'
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 MockBehaviourTests >> setUp [
 	super setUp.
 	
@@ -16,7 +17,7 @@ MockBehaviourTests >> setUp [
 	
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MockBehaviourTests >> tearDown [
 		
 	MockCurrentBehaviour value: nil.	
@@ -24,7 +25,7 @@ MockBehaviourTests >> tearDown [
 	super tearDown
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testChangingPlayerRoleToTeacher [
 
 	behaviour teachMocks.
@@ -34,7 +35,7 @@ MockBehaviourTests >> testChangingPlayerRoleToTeacher [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testChangingTeacherRoleToPlayer [
 
 	behaviour teachMocks.
@@ -46,7 +47,7 @@ MockBehaviourTests >> testChangingTeacherRoleToPlayer [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCreationHelperMock [
 
 	| helperMock helperBehaviour |
@@ -67,7 +68,7 @@ MockBehaviourTests >> testCreationHelperMock [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourCleaning1PrepareGarbage [
 
 	| actual |
@@ -76,7 +77,7 @@ MockBehaviourTests >> testCurrentBehaviourCleaning1PrepareGarbage [
 	actual testSelector should be: testSelector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourCleaning2PreviousTestGarbageRemoved [
 
 	| actual |
@@ -85,7 +86,7 @@ MockBehaviourTests >> testCurrentBehaviourCleaning2PreviousTestGarbageRemoved [
 	actual testSelector should be: testSelector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourCleaning3PrepareWithGarbageCollect [
 
 	| actual |
@@ -95,7 +96,7 @@ MockBehaviourTests >> testCurrentBehaviourCleaning3PrepareWithGarbageCollect [
 	actual testSelector should be: testSelector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourCleaning4PreviousTestGarbageRemoved [
 
 	| actual |
@@ -104,7 +105,7 @@ MockBehaviourTests >> testCurrentBehaviourCleaning4PreviousTestGarbageRemoved [
 	actual testSelector should be: testSelector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourDuringTestWhenNoOneInstalled [
 
 	| actual |
@@ -117,7 +118,7 @@ MockBehaviourTests >> testCurrentBehaviourDuringTestWhenNoOneInstalled [
 	actual where ownerProcess should be: Processor activeProcess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourShouldBeChangedWhenEnvironmentChanged [
 
 	| behaviour2 currentEnv newEnv |
@@ -137,7 +138,7 @@ MockBehaviourTests >> testCurrentBehaviourShouldBeChangedWhenEnvironmentChanged 
 	behaviour2 should not be: behaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourShouldBeChangedWhenTestChangedDuringSingleTestCaseRun [
 
 	| behaviour2 currentEnv |
@@ -156,7 +157,7 @@ MockBehaviourTests >> testCurrentBehaviourShouldBeChangedWhenTestChangedDuringSi
 	behaviour2 should not be: behaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourShouldBeInheritableByForkedProcesses [
 
 	| fromFork currentBehaviour |
@@ -170,7 +171,7 @@ MockBehaviourTests >> testCurrentBehaviourShouldBeInheritableByForkedProcesses [
 	fromFork should be: currentBehaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourShouldNotBeInheritedByForkedProcessFromDefaultExecutionEnvironment [
 
 	| fromFork currentBehaviour |
@@ -184,7 +185,7 @@ MockBehaviourTests >> testCurrentBehaviourShouldNotBeInheritedByForkedProcessFro
 	fromFork should not be: currentBehaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourShouldNotChangeInsideSingleTest [
 
 	| behaviour2  |
@@ -196,7 +197,7 @@ MockBehaviourTests >> testCurrentBehaviourShouldNotChangeInsideSingleTest [
 	behaviour2 should be: behaviour
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentBehaviourWhenDefaultEnvironment [
 
 	| behaviour2 |
@@ -214,7 +215,7 @@ MockBehaviourTests >> testCurrentBehaviourWhenDefaultEnvironment [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentMetaLevelWhenThereIsNoTestForCurrentEnvironment [
 
 	| metaLevel |
@@ -226,7 +227,7 @@ MockBehaviourTests >> testCurrentMetaLevelWhenThereIsNoTestForCurrentEnvironment
 	metaLevel should be: GHMetaLevel standard
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testCurrentMetaLevelWhenThereIsTestForCurrentEnvironment [
 
 	| metaLevel |
@@ -235,7 +236,7 @@ MockBehaviourTests >> testCurrentMetaLevelWhenThereIsTestForCurrentEnvironment [
 	metaLevel should be: GHMetaLevel empty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockBehaviourTests >> testHasPlayerRoleByDefault [
 
 	behaviour where mockRole should be: MockPlayer default 

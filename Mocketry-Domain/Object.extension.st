@@ -1,29 +1,29 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> asOccurredMessageResult [
 
 	^MockOccurredValueReturn value: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> asSpecOfArg: argumentNumber of: aMessageSendSpec [
 
 	^SpecOfMessageArgument number: argumentNumber requiredValue: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> currentMockBehaviour [
 
 	^MockCurrentBehaviour value
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> isAllowAutoStub [
 	^true
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> stub [
 
 	| behaviour mutation |
@@ -39,7 +39,7 @@ Object >> stub [
 	^behaviour createHelperMockAs: (MockStubTeacher for: self)
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Object >> stubDoesNotExpect: anOccurredMessage [
 	
 	^GHMetaMessages 

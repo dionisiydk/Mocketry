@@ -9,18 +9,19 @@ where #argName is name of argument defined by message send.
 	Arg x
 "
 Class {
-	#name : #Arg,
-	#superclass : #Object,
-	#category : 'Mocketry-Domain'
+	#name : 'Arg',
+	#superclass : 'Object',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'captures creation' }
+{ #category : 'captures creation' }
 Arg class >> doesNotUnderstand: aMessage [
 
 	^MockCurrentBehaviour value argCaptureNamed: aMessage selector
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Arg class >> isMetacelloConfig [
 	"Metacello is full of crap. That's why if class wants implement #doesNotImplement (class side) it also should implement this method"
 	^false

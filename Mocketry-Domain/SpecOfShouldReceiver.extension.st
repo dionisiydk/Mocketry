@@ -1,6 +1,6 @@
-Extension { #name : #SpecOfShouldReceiver }
+Extension { #name : 'SpecOfShouldReceiver' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldReceiver >> currentMockBehaviour [
 	^self validationSubject currentMockBehaviour
 ]

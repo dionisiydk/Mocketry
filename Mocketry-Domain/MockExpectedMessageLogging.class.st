@@ -2,12 +2,13 @@
 I represent expected message action which will log received message send into transcript
 "
 Class {
-	#name : #MockExpectedMessageLogging,
-	#superclass : #MockExpectedAction,
-	#category : 'Mocketry-Domain'
+	#name : 'MockExpectedMessageLogging',
+	#superclass : 'MockExpectedAction',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedMessageLogging >> executeFor: anOccurredMessage [ 
 	Transcript show: anOccurredMessage printString; cr.
 	^anOccurredMessage receiver

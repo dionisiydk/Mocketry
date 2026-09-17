@@ -3,12 +3,13 @@ I represent expected message result which will execute original method of stubbe
 So the result of my execution will be also stubbed and will record all message sends
 "
 Class {
-	#name : #MockExpectedMethodResultStub,
-	#superclass : #MockExpectedOriginalMethodCall,
-	#category : #'Mocketry-Domain'
+	#name : 'MockExpectedMethodResultStub',
+	#superclass : 'MockExpectedOriginalMethodCall',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedMethodResultStub >> executeFor: anOccurredMessage [
 	| realMethodResult |
 	realMethodResult := super executeFor: anOccurredMessage.

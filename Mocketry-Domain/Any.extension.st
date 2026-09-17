@@ -1,26 +1,26 @@
-Extension { #name : #Any }
+Extension { #name : 'Any' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Any class >> asSpecOfArg: argumentNumber of: aMessageSendSpec [
 
 	^SpecOfMessageArgument number: argumentNumber requiredValue: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Any class >> captureValue: anObject [
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Any class >> inTest [ 
 	^MockInvolvedObjectsShouldReceiver from: self
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Any class >> isAllowAutoStub [
 	^false
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Any class >> stub [
 	^MockCurrentBehaviour value createHelperMockAs: (MockStubTeacher for: self)
 ]

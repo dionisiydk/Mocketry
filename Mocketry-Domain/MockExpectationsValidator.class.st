@@ -24,16 +24,17 @@ Internal Representation and Key Implementation Points.
 	verifiedBlock:		<BlockClosure>
 "
 Class {
-	#name : #MockExpectationsValidator,
-	#superclass : #Object,
+	#name : 'MockExpectationsValidator',
+	#superclass : 'Object',
 	#instVars : [
 		'interactionSpec',
 		'shouldExpression'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectationsValidator class >> for: aShouldExpression by: aMultipleMessagesSpec [
 
 	^self new 
@@ -41,17 +42,17 @@ MockExpectationsValidator class >> for: aShouldExpression by: aMultipleMessagesS
 		interactionSpec: aMultipleMessagesSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectationsValidator >> interactionSpec [
 	^ interactionSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectationsValidator >> interactionSpec: anObject [
 	interactionSpec := anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockExpectationsValidator >> satisfy: blockWithExpectations [
 
 	| teacher |
@@ -63,12 +64,12 @@ MockExpectationsValidator >> satisfy: blockWithExpectations [
 	^shouldExpression evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectationsValidator >> shouldExpression [
 	^ shouldExpression
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectationsValidator >> shouldExpression: anObject [
 	shouldExpression := anObject
 ]

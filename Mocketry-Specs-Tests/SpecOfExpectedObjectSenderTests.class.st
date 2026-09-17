@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfExpectedObjectSenderTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfExpectedObjectSenderTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testDescription [
 	
 	| spec |
@@ -14,7 +15,7 @@ SpecOfExpectedObjectSenderTests >> testDescription [
 	spec where description should equal: '#object should be returned from #receiver selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testFailedValidationWhenNobodyReturnedObjectAndRequiredSenderWasNotOccurred [
 	
 	| spec message result |
@@ -30,7 +31,7 @@ SpecOfExpectedObjectSenderTests >> testFailedValidationWhenNobodyReturnedObjectA
 	result where description should equal: '#object was not returned by anybody but it should be #receiver selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testFailedValidationWhenRequiredSenderRaisedErrorAndNobodyReturnedGivenObject [
 	
 	| spec message result |
@@ -46,7 +47,7 @@ SpecOfExpectedObjectSenderTests >> testFailedValidationWhenRequiredSenderRaisedE
 	result where description should equal: '#object was not returned by anybody but it should be #receiver selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testFailedValidationWhenRequiredSenderReturnedAnotherObjectAndNobodyReturnedGivenObject [
 	
 	| spec message result |
@@ -62,7 +63,7 @@ SpecOfExpectedObjectSenderTests >> testFailedValidationWhenRequiredSenderReturne
 	result where description should equal: '#object was not returned by anybody but it should be #receiver selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testFailedValidationWhenSenderWasWrong [
 	
 	| spec message result |
@@ -78,7 +79,7 @@ SpecOfExpectedObjectSenderTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: '#object was returned from #receiver2 selector but it should be #receiver selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testMatches [
 	
 	| spec message |
@@ -94,7 +95,7 @@ SpecOfExpectedObjectSenderTests >> testMatches [
 	spec should not be matches: {message}.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testMatchesMultipleSenders [
 	
 	| spec expectedSenderMessage anotherSenderMessage |
@@ -109,7 +110,7 @@ SpecOfExpectedObjectSenderTests >> testMatchesMultipleSenders [
 	spec should be matches: {anotherSenderMessage. expectedSenderMessage}
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testMatchesWhenDenialApplied [
 	
 	| spec message |
@@ -126,7 +127,7 @@ SpecOfExpectedObjectSenderTests >> testMatchesWhenDenialApplied [
 	spec should be matches: {message}.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testSucceedValidation [
 	
 	| spec message result |
@@ -142,7 +143,7 @@ SpecOfExpectedObjectSenderTests >> testSucceedValidation [
 	result requiredOccurredMessages should equal: {message}.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedObjectSenderTests >> testSucceedValidationOfMultipleSenders [
 	
 	| spec result expectedSenderMessage anotherSenderMessage |

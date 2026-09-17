@@ -2,12 +2,13 @@
 I specify required returned value from occurred message send. 
 "
 Class {
-	#name : #SpecOfMessageReturnedValue,
-	#superclass : #SpecOfMessageResult,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageReturnedValue',
+	#superclass : 'SpecOfMessageResult',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageReturnedValue >> basicMatches: anOccurredMessage [
 
 	^(anOccurredMessage hasReturnedValueLike: requiredValue) ~= denial

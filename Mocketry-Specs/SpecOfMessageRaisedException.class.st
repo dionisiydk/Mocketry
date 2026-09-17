@@ -2,12 +2,13 @@
 I specify required exception which should be raised from occurred message send. 
 "
 Class {
-	#name : #SpecOfMessageRaisedException,
-	#superclass : #SpecOfMessageResult,
-	#category : 'Mocketry-Specs'
+	#name : 'SpecOfMessageRaisedException',
+	#superclass : 'SpecOfMessageResult',
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageRaisedException >> basicMatches: anOccurredMessage [
 
 	^(anOccurredMessage hasRaisedExceptionLike: requiredValue) ~= denial

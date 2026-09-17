@@ -1,10 +1,11 @@
 Class {
-	#name : #MockOccurredMessageTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Domain-Tests'
+	#name : 'MockOccurredMessageTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testExtractingRaisedExceptionResultFromBlock [
 
 	| message error |
@@ -16,7 +17,7 @@ MockOccurredMessageTests >> testExtractingRaisedExceptionResultFromBlock [
 	message where result exception should be: error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testExtractingRaisedExceptionResultWhenHaltRaised [
 
 	| message error |
@@ -28,7 +29,7 @@ MockOccurredMessageTests >> testExtractingRaisedExceptionResultWhenHaltRaised [
 	message where result should be: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testExtractingReturnedValueResultFromBlock [
 
 	| message actual |
@@ -41,7 +42,7 @@ MockOccurredMessageTests >> testExtractingReturnedValueResultFromBlock [
 	actual should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testHasProcessByDefault [
 
 	| message |
@@ -50,7 +51,7 @@ MockOccurredMessageTests >> testHasProcessByDefault [
 	message where process should be: Processor activeProcess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testNotEqualToAnotherMessageWithSameParameters [
 
 	| message anotherMessage |
@@ -61,7 +62,7 @@ MockOccurredMessageTests >> testNotEqualToAnotherMessageWithSameParameters [
 	(message = anotherMessage) should be: false description: 'Occurred messages cant be equal!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrinting [
 
 	| message |
@@ -70,7 +71,7 @@ MockOccurredMessageTests >> testPrinting [
 	message printString should equal: '#receiver messageWith: #arg1 and: #arg2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenArgumentIsMock [
 
 	| message |
@@ -79,7 +80,7 @@ MockOccurredMessageTests >> testPrintingWhenArgumentIsMock [
 	message printString should equal: '#receiver messageWith: a Mock(testMock)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenDefaultMockReturn [
 
 	| message |
@@ -89,7 +90,7 @@ MockOccurredMessageTests >> testPrintingWhenDefaultMockReturn [
 	message printString should be beginsWith: '#receiver selector returned default mock'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenDefaultReturnedMockWasConvertedToBoolean [
 
 	| message |
@@ -99,7 +100,7 @@ MockOccurredMessageTests >> testPrintingWhenDefaultReturnedMockWasConvertedToBoo
 	message printString should be beginsWith: '#receiver selector returned true'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenRaisedExceptionResultExists [
 
 	| message |
@@ -109,7 +110,7 @@ MockOccurredMessageTests >> testPrintingWhenRaisedExceptionResultExists [
 	message printString should equal: '#receiver messageWith: #arg1 and: #arg2 raised Error: test error'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenReceiverIsMock [
 
 	| message |
@@ -118,7 +119,7 @@ MockOccurredMessageTests >> testPrintingWhenReceiverIsMock [
 	message printString should equal: 'a Mock(testMock) messageWith: #arg1 and: #arg2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenReturnedMockResultExists [
 
 	| message |
@@ -128,7 +129,7 @@ MockOccurredMessageTests >> testPrintingWhenReturnedMockResultExists [
 	message printString should equal: '#receiver messageWith: #arg1 and: #arg2 returned a Mock(testMock)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testPrintingWhenReturnedValueResultExists [
 
 	| message |
@@ -138,7 +139,7 @@ MockOccurredMessageTests >> testPrintingWhenReturnedValueResultExists [
 	message printString should equal: '#receiver messageWith: #arg1 and: #arg2 returned #result'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsMock [
 
 	| message mock returnedMock |
@@ -152,7 +153,7 @@ MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsMock [
 	returnedMock should beInstanceOf: MockForMessageReturn
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsNormalObject [
 
 	| message actual |
@@ -165,7 +166,7 @@ MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsNormalObject 
 	message where result value should be: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsRealObjectStub [
 
 	| message actual rect |
@@ -181,7 +182,7 @@ MockOccurredMessageTests >> testSetUpUnexpectedResultWhenReceiverIsRealObjectStu
 	message where result value should be: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockOccurredMessageTests >> testWasReturnValueWhichSatisfiedSpec [
 
 	| message error |

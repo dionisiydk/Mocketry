@@ -1,6 +1,6 @@
-Extension { #name : #SpecOfShouldExpression }
+Extension { #name : 'SpecOfShouldExpression' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> beDone [
 	| interactionSpec |
 	interactionSpec := SpecOfMultipleMessages new.
@@ -12,7 +12,7 @@ SpecOfShouldExpression >> beDone [
 	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> beDoneInOrder [
 
 	| interactionSpec |
@@ -25,7 +25,7 @@ SpecOfShouldExpression >> beDoneInOrder [
 	^self evaluateWith: interactionSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 
 	| interactionSpec expectedSender senderSpec |
@@ -42,14 +42,14 @@ SpecOfShouldExpression >> beReturnedFrom: aBlockWithMessageSpec [
 	^self evaluateWith: senderSpec forMockBehaviour: MockCurrentBehaviour value
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> evaluateWith: anOccurredMessagesSpec forMockBehaviour: aMockBehaviour [
 
 	receiver := SpecOfShouldReceiverRoot from: aMockBehaviour interactionHistory.
 	^self evaluateWith: (SpecOfInteractionHistory with: anOccurredMessagesSpec)
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> expect [
 	
 	| teacher |
@@ -58,20 +58,20 @@ SpecOfShouldExpression >> expect [
 	^teacher
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> lenient [
 	
 	^MockExpectationsValidator for: self by: SpecOfMultipleMessages new
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> receive [
 
 	^receiver currentMockBehaviour 
 		createHelperMockAs: (MockValidator forExpression: self)
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 SpecOfShouldExpression >> strictly [
 	
 	^MockExpectationsValidator for: self by: SpecOfExpectedMessageSequence new

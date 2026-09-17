@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMessageSendConditionTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfMessageSendConditionTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testFailedValidationWhenSenderWasWrong [
 
 	| flag spec result |
@@ -18,7 +19,7 @@ SpecOfMessageSendConditionTests >> testFailedValidationWhenSenderWasWrong [
 	result where subject should be: #wrong
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testFailedValidationWithMessageArgs [
 
 	| spec result |
@@ -29,7 +30,7 @@ SpecOfMessageSendConditionTests >> testFailedValidationWithMessageArgs [
 	result should be isFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testMatches [
 
 	| flag spec |
@@ -43,7 +44,7 @@ SpecOfMessageSendConditionTests >> testMatches [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testSucceedValidation [
 
 	| flag spec result |
@@ -55,7 +56,7 @@ SpecOfMessageSendConditionTests >> testSucceedValidation [
 	result should be isSuccess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testSucceedValidationWithMessageArgs [
 
 	| spec result |
@@ -66,7 +67,7 @@ SpecOfMessageSendConditionTests >> testSucceedValidationWithMessageArgs [
 	result should be isSuccess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testValidationWhenDenialApplied [
 
 	| flag spec result |
@@ -78,7 +79,7 @@ SpecOfMessageSendConditionTests >> testValidationWhenDenialApplied [
 	result should be isSuccess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMessageSendConditionTests >> testValidationWithImplicitConditionSpec [
 
 	| spec result flag |

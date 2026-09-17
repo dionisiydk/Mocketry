@@ -17,22 +17,23 @@ Internal Representation and Key Implementation Points.
 	minCount:		<SmallInteger>
 "
 Class {
-	#name : #SpecOfMessageUsage,
-	#superclass : #Object,
+	#name : 'SpecOfMessageUsage',
+	#superclass : 'Object',
 	#instVars : [
 		'minCount',
 		'maxCount'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> allowMessageSends: messagesCount [ 
 
 	^self allowMessageSends: messagesCount withNegatedLogic: false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> allowMessageSends: messagesCount withNegatedLogic: denial [
 
 	(messagesCount = 0 & (minCount = 0) & denial) ifTrue: [ ^true ].
@@ -40,78 +41,78 @@ SpecOfMessageUsage >> allowMessageSends: messagesCount withNegatedLogic: denial 
 	^(messagesCount between: minCount and: maxCount) ~= denial
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> beStrict [
 
 	maxCount := minCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> beUnlimited [
 	maxCount := Float infinity 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> exactCount: anInteger [ 
 	minCount := anInteger.
 	maxCount := anInteger
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> hasMeaningfulRestrictions [
 	^self isMinCountSpecified or: [ self isMaxCountSpecified ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SpecOfMessageUsage >> initialize [
 	super initialize.
 	minCount := 1.
 	self beUnlimited 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> isMaxCountSpecified [
 	^maxCount ~= Float infinity
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> isMinCountSpecified [
 	^minCount > 1
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMessageUsage >> isUnlimited [
 	^self isMaxCountSpecified not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> maxCount [
 	^ maxCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> maxCount: anObject [
 	maxCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> minCount [
 	^ minCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessageUsage >> minCount: anObject [
 	minCount := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageUsage >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream << $( << self printRestrictions << $)
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfMessageUsage >> printRestrictions [
 
 	| result |

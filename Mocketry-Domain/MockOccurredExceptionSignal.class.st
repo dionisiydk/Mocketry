@@ -7,49 +7,50 @@ Internal Representation and Key Implementation Points.
 	exception:		<Exception>
 "
 Class {
-	#name : #MockOccurredExceptionSignal,
-	#superclass : #MockOccurredMessageResult,
+	#name : 'MockOccurredExceptionSignal',
+	#superclass : 'MockOccurredMessageResult',
 	#instVars : [
 		'exception'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOccurredExceptionSignal class >> exception: anException [
 	^self new 
 		exception: anException
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredExceptionSignal >> exception [
 	^ exception
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredExceptionSignal >> exception: anObject [
 	exception := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredExceptionSignal >> isReturnOf: anObjectOrSpec [
 
 	^false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredExceptionSignal >> isSignalOf: anExceptionOrSpec [
 
 	^anExceptionOrSpec asStateSpec matches: exception
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredExceptionSignal >> printOn: aStream [
 	
 	aStream << 'raised '; print: exception
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredExceptionSignal >> stringForSpecValidation [
 	
 	^'raised ', exception stringForSpecValidation 

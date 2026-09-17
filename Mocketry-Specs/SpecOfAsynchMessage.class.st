@@ -7,37 +7,38 @@ Internal Representation and Key Implementation Points.
 	originalProcess:		<Process>
 "
 Class {
-	#name : #SpecOfAsynchMessage,
-	#superclass : #SpecOfObjectState,
+	#name : 'SpecOfAsynchMessage',
+	#superclass : 'SpecOfObjectState',
 	#instVars : [
 		'originalProcess'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfAsynchMessage class >> forActiveProcess [
 	^self new 
 		originalProcess: Processor activeProcess
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfAsynchMessage >> basicMatches: anOccurredMessage [
 	
 	^anOccurredMessage process ~= originalProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfAsynchMessage >> originalProcess [
 	^ originalProcess
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfAsynchMessage >> originalProcess: anObject [
 	originalProcess := anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfAsynchMessage >> validationFailureFor: anOccuredMessage [
 
 	^SpecOfWrongMessageProcess spec: self for: anOccuredMessage 

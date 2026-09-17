@@ -10,23 +10,24 @@ To implement it I reuse another should receiver MockConcreteCapturedValueReceive
 I ensure that at least one message was actually sent (at least one value was captured) and in case if it is not true it will be the result of validation.
 "
 Class {
-	#name : #MockAllCapturedValuesReceiver,
-	#superclass : #MockCapturedArgReceiver,
-	#category : #'Mocketry-Domain'
+	#name : 'MockAllCapturedValuesReceiver',
+	#superclass : 'MockCapturedArgReceiver',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockAllCapturedValuesReceiver >> includes: anObject [
 	^self validationSubject includes: anObject
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockAllCapturedValuesReceiver >> validate [
 	
 	^self argCapture validateNumberOfCalls: 1
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockAllCapturedValuesReceiver >> validateWith: aSpecOfObjectState [
 	| result |
 	result := self validate.
@@ -38,7 +39,7 @@ MockAllCapturedValuesReceiver >> validateWith: aSpecOfObjectState [
 	^result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockAllCapturedValuesReceiver >> validationSubject [
 	^self argCapture values
 ]

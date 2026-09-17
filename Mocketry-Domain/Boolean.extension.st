@@ -1,11 +1,11 @@
-Extension { #name : #Boolean }
+Extension { #name : 'Boolean' }
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Boolean >> isAllowAutoStub [
 	^false
 ]
 
-{ #category : #'*Mocketry-Domain' }
+{ #category : '*Mocketry-Domain' }
 Boolean >> stub [
 	"you should not stub true or false. it crash anything"
 	self shouldNotImplement 

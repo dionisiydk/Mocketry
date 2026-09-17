@@ -40,21 +40,22 @@ Internal Representation and Key Implementation Points.
 	expectedBehaviourSpec:		<SpecOfOccurredMessages>
 "
 Class {
-	#name : #SpecOfInteractionHistory,
-	#superclass : #SpecOfObjectState,
+	#name : 'SpecOfInteractionHistory',
+	#superclass : 'SpecOfObjectState',
 	#instVars : [
 		'expectedBehaviourSpec'
 	],
-	#category : #'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #error }
+{ #category : 'error' }
 SpecOfInteractionHistory class >> with: anOccurredMessagesSpec [
 	^self new 
 		expectedBehaviourSpec: anOccurredMessagesSpec 
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfInteractionHistory >> basicMatches: anInteractionHistory [
 	| concreteObjectInteraction |
 	concreteObjectInteraction := expectedBehaviourSpec 
@@ -63,23 +64,23 @@ SpecOfInteractionHistory >> basicMatches: anInteractionHistory [
 	^concreteObjectInteraction matches: anInteractionHistory occurredMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfInteractionHistory >> expectedBehaviourSpec [
 	^ expectedBehaviourSpec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfInteractionHistory >> expectedBehaviourSpec: anObject [
 	expectedBehaviourSpec := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfInteractionHistory >> invertChildren [
 	super invertChildren.
 	expectedBehaviourSpec invert
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfInteractionHistory >> validate: anInteractionHistory [
 	| concreteObjectInteraction |
 	concreteObjectInteraction := expectedBehaviourSpec 

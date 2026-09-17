@@ -13,30 +13,31 @@ Internal Representation and Key Implementation Points.
 	block:		<BlockClosure>
 "
 Class {
-	#name : #MockExpectedPluggableAction,
-	#superclass : #MockExpectedAction,
+	#name : 'MockExpectedPluggableAction',
+	#superclass : 'MockExpectedAction',
 	#instVars : [
 		'block'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedPluggableAction class >> basedOn: aBlockContext [ 
 	^self new block: aBlockContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedPluggableAction >> block [
 	^block
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedPluggableAction >> block: anObject [
 	block := anObject
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedPluggableAction >> executeFor: anOccurredMessage [ 
 	^block valueWithEnoughArguments: anOccurredMessage arguments
 ]

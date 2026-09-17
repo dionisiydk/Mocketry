@@ -22,16 +22,17 @@ Internal Representation and Key Implementation Points.
 	occurredMessages:		<OrderedCollection<MockOccurredMessage>>
 "
 Class {
-	#name : #MockInteractionHistory,
-	#superclass : #Object,
+	#name : 'MockInteractionHistory',
+	#superclass : 'Object',
 	#instVars : [
 		'involvedObjects',
 		'occurredMessages'
 	],
-	#category : #'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockInteractionHistory class >> withAll: occurredMessages [
 	^self new 
 		occurredMessages: occurredMessages;
@@ -39,56 +40,56 @@ MockInteractionHistory class >> withAll: occurredMessages [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockInteractionHistory >> collectInvolvedObjects [
 
 	involvedObjects := occurredMessages collect: [ :each | each receiver ] as: IdentitySet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> firstMessage [
 	^occurredMessages first
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MockInteractionHistory >> initialize [ 	
 
 	involvedObjects := OrderedCollection new.
 	occurredMessages := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> involvedObjects [
 	^ involvedObjects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> involvedObjects: anObject [
 	involvedObjects := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> lastMessage [
 	^occurredMessages last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> occurredMessages [
 	^ occurredMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockInteractionHistory >> occurredMessages: anObject [
 	occurredMessages := anObject
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MockInteractionHistory >> recordMessage: anOccurredMessage [
 
 	occurredMessages add: anOccurredMessage 
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 MockInteractionHistory >> recordObject: anObject [
 
 	involvedObjects add: anObject

@@ -3,35 +3,36 @@ I am a special hook to TestExecutionEnvironment to clean current mock behaviour 
 I play role of forked process during test. So TestExecutionEnvironment terminats me at the end of tests and I perform all required cleaning
 "
 Class {
-	#name : #MockCleaningProcessHook,
-	#superclass : #Object,
+	#name : 'MockCleaningProcessHook',
+	#superclass : 'Object',
 	#classInstVars : [
 		'instance'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockCleaningProcessHook class >> instance [
 	^instance ifNil: [ instance := MockCleaningProcessHook new]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockCleaningProcessHook >> isSuspended [
 	^false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockCleaningProcessHook >> isTerminated [
 	^MockCurrentBehaviour value isNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockCleaningProcessHook >> priority [
 	^Processor activePriority
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 MockCleaningProcessHook >> terminate [
 	MockCurrentBehaviour value: nil
 ]

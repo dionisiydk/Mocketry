@@ -7,54 +7,55 @@ Internal Representation and Key Implementation Points.
 	value:		<Object>
 "
 Class {
-	#name : #MockOccurredValueReturn,
-	#superclass : #MockOccurredMessageResult,
+	#name : 'MockOccurredValueReturn',
+	#superclass : 'MockOccurredMessageResult',
 	#instVars : [
 		'value'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockOccurredValueReturn class >> value: anObject [
 	^self new 
 		value: anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredValueReturn >> isReturnOf: anObjectOrSpec [
 
 	^anObjectOrSpec asStateSpec matches: value
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredValueReturn >> isSignalOf: anExceptionOrSpec [
 
 	^false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredValueReturn >> printOn: aStream [
 	
 	aStream << 'returned ' << value stringForSpecTitle
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockOccurredValueReturn >> returnedValue [ 
 	^value
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 MockOccurredValueReturn >> stringForSpecValidation [
 	^value stringForSpecValidation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredValueReturn >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockOccurredValueReturn >> value: anObject [
 	value := anObject
 ]

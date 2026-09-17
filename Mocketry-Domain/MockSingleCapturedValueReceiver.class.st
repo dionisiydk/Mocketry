@@ -7,17 +7,18 @@ I am used to implement simplest form of should expression with capture:
 I ensure that there was only message send. If there was no messages it will be the validation result. But if there were more than one message it will be general error considering that it is programmer error because it is his responsibility to choose explicitly the captured value for validation.
 "
 Class {
-	#name : #MockSingleCapturedValueReceiver,
-	#superclass : #MockCapturedArgReceiver,
-	#category : #'Mocketry-Domain'
+	#name : 'MockSingleCapturedValueReceiver',
+	#superclass : 'MockCapturedArgReceiver',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #validation }
+{ #category : 'validation' }
 MockSingleCapturedValueReceiver >> validate [
 	^self argCapture validateSingleValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockSingleCapturedValueReceiver >> validationSubject [
 	
 	^self argCapture valueFromCall: 1

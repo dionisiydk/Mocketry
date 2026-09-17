@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfInteractionHistoryTests,
-	#superclass : #TestCase,
-	#category : #'Mocketry-Specs-Tests'
+	#name : 'SpecOfInteractionHistoryTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfInteractionHistoryTests >> testFailedValidation [
 	
 	|  result spec history |
@@ -22,7 +23,7 @@ SpecOfInteractionHistoryTests >> testFailedValidation [
 	result where description should equal: '#receiver never received selector3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfInteractionHistoryTests >> testMatches [
 	
 	| spec history |
@@ -39,7 +40,7 @@ SpecOfInteractionHistoryTests >> testMatches [
 	self assert: (spec matches: history)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfInteractionHistoryTests >> testSucceedValidation [
 	
 	|  result spec history |
@@ -60,7 +61,7 @@ SpecOfInteractionHistoryTests >> testSucceedValidation [
 	result where occurredMessages should equal: {history lastMessage}
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfInteractionHistoryTests >> testSucceedValidationWithNegation [
 	
 	|  result spec history |

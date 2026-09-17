@@ -5,27 +5,28 @@ I don't care on messages sends order
 My contents are SpecOfExpectedMessage
 "
 Class {
-	#name : #SpecOfMultipleMessages,
-	#superclass : #SpecOfOccurredMessages,
+	#name : 'SpecOfMultipleMessages',
+	#superclass : 'SpecOfOccurredMessages',
 	#instVars : [
 		'expectedMessages'
 	],
-	#category : #'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> addExpectedMessage: aSpecOfExpectedMessage [
 	
 	expectedMessages add: aSpecOfExpectedMessage 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> addExpectedMessages: newExpectedMessages [
 	
 	expectedMessages addAll: newExpectedMessages
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 SpecOfMultipleMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteractionHistory [
 
 	| result interactionSpec |
@@ -40,14 +41,14 @@ SpecOfMultipleMessages >> asInteractionSpecBetweenConcreteObjectsOf: anInteracti
 	^result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMultipleMessages >> basicMatches: occurredMessages [
 
 	^expectedMessages allSatisfy: [ :each | 
 		each matches: occurredMessages ]
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 SpecOfMultipleMessages >> copy [
 	| copy |
 	copy := super copy.
@@ -55,41 +56,41 @@ SpecOfMultipleMessages >> copy [
 	^copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> expectedMessages [
 	^ expectedMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> expectedMessages: anObject [
 	expectedMessages := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SpecOfMultipleMessages >> initialize [
 	super initialize.
 	
 	expectedMessages := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> invertChildren [
 
 	expectedMessages do: [ :each | each invert ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SpecOfMultipleMessages >> isEmpty [
 	^expectedMessages isEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMultipleMessages >> populateMultipleMessagesSpec: aMultipleMessagesSpec [
 
 	aMultipleMessagesSpec addExpectedMessages: expectedMessages
 ]
 
-{ #category : #validation }
+{ #category : 'validation' }
 SpecOfMultipleMessages >> validate: occurredMessages [
 
 	| uncheckedMessages failedSpecs result |

@@ -9,16 +9,17 @@ Internal Representation and Key Implementation Points.
 	wrongMessage:		<SpecOfExpectedMessage>
 "
 Class {
-	#name : #SpecOfWrongMessagesOrder,
-	#superclass : #SpecOfWrongMessageSend,
+	#name : 'SpecOfWrongMessagesOrder',
+	#superclass : 'SpecOfWrongMessageSend',
 	#instVars : [
 		'wrongMessage',
 		'validMessages'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfWrongMessagesOrder class >> of: occurredMessages spec: anOrderedInteractionSpec validMessages: validExpectedMessages wrongMessage: anExpectedMessageSpec [
 
 	^(self spec: anOrderedInteractionSpec for: occurredMessages)
@@ -26,14 +27,14 @@ SpecOfWrongMessagesOrder class >> of: occurredMessages spec: anOrderedInteractio
 		validMessages: validExpectedMessages
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfWrongMessagesOrder class >> of: occurredMessages spec: anOrderedInteractionSpec wrongMessage: anExpectedMessageSpec [
 
 	^(self spec: anOrderedInteractionSpec for: occurredMessages)
 		wrongMessage: anExpectedMessageSpec 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 SpecOfWrongMessagesOrder >> description [
  
 	| send |
@@ -46,22 +47,22 @@ SpecOfWrongMessagesOrder >> description [
 	]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongMessagesOrder >> validMessages [
 	^ validMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongMessagesOrder >> validMessages: anObject [
 	validMessages := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongMessagesOrder >> wrongMessage [
 	^ wrongMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfWrongMessagesOrder >> wrongMessage: anObject [
 	wrongMessage := anObject
 ]

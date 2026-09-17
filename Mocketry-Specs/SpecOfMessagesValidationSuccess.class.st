@@ -9,49 +9,50 @@ Internal Representation and Key Implementation Points.
 	occurredMessages:		<Collection of <MockOccurredMessage>>
 "
 Class {
-	#name : #SpecOfMessagesValidationSuccess,
-	#superclass : #SpecOfValidationSuccess,
+	#name : 'SpecOfMessagesValidationSuccess',
+	#superclass : 'SpecOfValidationSuccess',
 	#instVars : [
 		'occurredMessages',
 		'minMessagesCount'
 	],
-	#category : 'Mocketry-Specs'
+	#category : 'Mocketry-Specs',
+	#package : 'Mocketry-Specs'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessagesValidationSuccess class >> occurredMessages: messages [
 	^self new 
 		occurredMessages: messages
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SpecOfMessagesValidationSuccess class >> occurredMessages: messages minCount: aNumber [
 	^self new 
 		occurredMessages: messages;
 		minMessagesCount: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagesValidationSuccess >> minMessagesCount [
 	^ minMessagesCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagesValidationSuccess >> minMessagesCount: anObject [
 	minMessagesCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagesValidationSuccess >> occurredMessages [
 	^ occurredMessages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagesValidationSuccess >> occurredMessages: anObject [
 	occurredMessages := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SpecOfMessagesValidationSuccess >> requiredOccurredMessages [
 	^occurredMessages first: minMessagesCount 
 ]

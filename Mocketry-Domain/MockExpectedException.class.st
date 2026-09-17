@@ -12,30 +12,31 @@ Internal Representation and Key Implementation Points.
 	exception:		<Exception>
 "
 Class {
-	#name : #MockExpectedException,
-	#superclass : #MockExpectedAction,
+	#name : 'MockExpectedException',
+	#superclass : 'MockExpectedAction',
 	#instVars : [
 		'exception'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockExpectedException class >> exception: anExceptionClass [ 
 	^self new exception: anExceptionClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedException >> exception [
 	^ exception
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockExpectedException >> exception: anObject [
 	exception := anObject
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockExpectedException >> executeFor: anOccurredMessage [ 
 	exception signal
 ]

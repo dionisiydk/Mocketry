@@ -10,32 +10,33 @@ Internal Representation and Key Implementation Points.
 	object:		<Object>
 "
 Class {
-	#name : #MockHelperRole,
-	#superclass : #MockRole,
+	#name : 'MockHelperRole',
+	#superclass : 'MockRole',
 	#instVars : [
 		'object'
 	],
-	#category : 'Mocketry-Domain'
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 MockHelperRole class >> for: anObject [
 
 	^self new
 		object: anObject	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockHelperRole >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockHelperRole >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockHelperRole >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 
 	anOccurredMessage receiver: object.
@@ -44,7 +45,7 @@ MockHelperRole >> processMessageSend: anOccurredMessage by: aMockBehaviour [
 	^self processTransformedMessageSend: anOccurredMessage by: aMockBehaviour
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockHelperRole >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 
 	self subclassResponsibility 

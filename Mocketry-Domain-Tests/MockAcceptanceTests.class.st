@@ -1,25 +1,26 @@
 Class {
-	#name : #MockAcceptanceTests,
-	#superclass : #TestCase,
+	#name : 'MockAcceptanceTests',
+	#superclass : 'TestCase',
 	#instVars : [
 		'mock'
 	],
-	#category : 'Mocketry-Domain-Tests'
+	#category : 'Mocketry-Domain-Tests',
+	#package : 'Mocketry-Domain-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 MockAcceptanceTests >> createTestCaseToCheckMocksCleaning [
 
 	^self class selector: #methodForTestWhichCheckThatMockCleaningAfterEachTestIsWorking 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MockAcceptanceTests >> createTestCaseWithHaltToCheckMocksCleaning [
 
 	^self class selector: #methodForTestWithHaltWhichCheckThatMockCleaningWorks 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> methodForTestWhichCheckThatMockCleaningAfterEachTestIsWorking [
 
 	mock := Mock new.
@@ -31,7 +32,7 @@ MockAcceptanceTests >> methodForTestWhichCheckThatMockCleaningAfterEachTestIsWor
 	mock someMessage should be: #firstTestResult
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> methodForTestWithHaltWhichCheckThatMockCleaningWorks [
 
 	mock := Mock new.
@@ -45,14 +46,14 @@ MockAcceptanceTests >> methodForTestWithHaltWhichCheckThatMockCleaningWorks [
 	mock someMessage should be: #firstTestResult
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 MockAcceptanceTests >> setUp [
 	super setUp.
 	
 	mock := Mock new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testAsyncMessageExpectation [
 
 	| actual |
@@ -66,7 +67,7 @@ MockAcceptanceTests >> testAsyncMessageExpectation [
 	actual should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationByAnySpecReceiver [
 
 	| mock2 |
@@ -78,7 +79,7 @@ MockAcceptanceTests >> testBuildingExpectationByAnySpecReceiver [
 	mock2 someMessage should be: #result.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationBySpecReceiver [
 
 	| mock2 |
@@ -90,7 +91,7 @@ MockAcceptanceTests >> testBuildingExpectationBySpecReceiver [
 	mock2 someMessage should be: #result.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationForAnyMessageSend [
 
 	mock stub anyMessage willReturn: #result.
@@ -99,7 +100,7 @@ MockAcceptanceTests >> testBuildingExpectationForAnyMessageSend [
 	mock someMessage2 should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationForAnyMocks [
 
 	| mock2 |
@@ -111,7 +112,7 @@ MockAcceptanceTests >> testBuildingExpectationForAnyMocks [
 	mock2 someMessage should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationForMocksReturnedFromMessages [
 
 	MockForMessageReturn stub extraMessage willReturn: #result.
@@ -120,7 +121,7 @@ MockAcceptanceTests >> testBuildingExpectationForMocksReturnedFromMessages [
 	mock someMessage2 extraMessage should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationWithoutStubShouldAlwaysFail [
 
 	[mock someMessage willReturn: #result]
@@ -133,7 +134,7 @@ MockAcceptanceTests >> testBuildingExpectationWithoutStubShouldAlwaysFail [
 		should fail.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testBuildingExpectationsByBlock [
 
 	| mock2 |
@@ -146,7 +147,7 @@ MockAcceptanceTests >> testBuildingExpectationsByBlock [
 	mock2 someMessage2 should be: #result2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgument [
 
 	| error |
@@ -159,7 +160,7 @@ MockAcceptanceTests >> testCapturingArgument [
 	error where messageText should equal: 'Got #argValue from #argName but it should be #wrongValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentAndValidatingWithWhere [
 
 	| error |
@@ -172,7 +173,7 @@ MockAcceptanceTests >> testCapturingArgumentAndValidatingWithWhere [
 	error where messageText should equal: 'Got 10 from #argName x but it should be -1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromAllCalls [
 
 	| error |
@@ -186,7 +187,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalls [
 	error where messageText should equal: 'Got #argValue2 from #argName from 2 call but it should be #argValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
 
 	| error |
@@ -196,7 +197,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCallsWhenNothingWasSent [
 	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesReceivedGivenMessage [
 
 	| error mock2 mock3 |
@@ -214,7 +215,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesRe
 	error where messageText should equal: 'a Mock(mock2) never received someMessage2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesWasReturnedFromGivenMessage [
 
 	| error stream |
@@ -230,7 +231,7 @@ MockAcceptanceTests >> testCapturingArgumentFromAllCalsAndValidatingThatValuesWa
 	error where messageText should equal: '#argValue1 was returned from a ReadStream next but it should be a ReadStream peek'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromFirstCall [
 
 	| error |
@@ -244,7 +245,7 @@ MockAcceptanceTests >> testCapturingArgumentFromFirstCall [
 	error where messageText should equal: 'Got #argValue from #argName from 1 call but it should be #wrongValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromFirstCallAndValidatingWithWhere [
 
 	| error |
@@ -258,7 +259,7 @@ MockAcceptanceTests >> testCapturingArgumentFromFirstCallAndValidatingWithWhere 
 	error where messageText should equal: 'Got $e from #argName last from 1 call but it should be #wrongValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromLastCall [
 
 	| error |
@@ -272,7 +273,7 @@ MockAcceptanceTests >> testCapturingArgumentFromLastCall [
 	error where messageText should equal: 'Got #argValue2 from #argName from last call but it should be #wrongValue'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromLastCallAndValidatingWithWhere [
 
 	| error |
@@ -286,7 +287,7 @@ MockAcceptanceTests >> testCapturingArgumentFromLastCallAndValidatingWithWhere [
 	error where messageText should equal: 'Got true from #argName x even from last call but it should be false'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromLastCallWhenNothingWasSent [
 
 	| error |
@@ -296,7 +297,7 @@ MockAcceptanceTests >> testCapturingArgumentFromLastCallWhenNothingWasSent [
 	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentFromSecondCall [
 
 	mock stub someMessageWith: Arg argName.
@@ -308,7 +309,7 @@ MockAcceptanceTests >> testCapturingArgumentFromSecondCall [
 	(Arg argName fromCall: 2) should be: #argValue2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentWhichMessageWasNotOccurred [
 
 	| error |
@@ -318,7 +319,7 @@ MockAcceptanceTests >> testCapturingArgumentWhichMessageWasNotOccurred [
 	error where messageText should equal: 'a Mock(mock) never received someMessageWith: #argName'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 
 	| rect |
@@ -333,7 +334,7 @@ MockAcceptanceTests >> testCapturingArgumentWillStubIt [
 	Arg rectangle where corner x should be: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingFutureArgument [
 
 	mock stub someMessageWith: Arg argName.
@@ -343,7 +344,7 @@ MockAcceptanceTests >> testCapturingFutureArgument [
 	Arg argName should takeAWhile to be: #argValue
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation [
 
 	| array |
@@ -356,7 +357,7 @@ MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation [
 	Arg argName where first should takeAWhile to be: #expected
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation2 [
 
 	| array |
@@ -369,7 +370,7 @@ MockAcceptanceTests >> testCapturingFutureArgumentWithWhereValidation2 [
 	Arg argName where first should takeAWhile to be: #expected
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne [
 
 	| error |
@@ -382,7 +383,7 @@ MockAcceptanceTests >> testCapturingManyArgumentValuesButValidatingAsASingleOne 
 	error where messageText should includeSubstring: 'multiple args were captured'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testChoosingPreferredExpectedMessageByArgs [
 
 	(mock stub someMessageWith: 2) willReturn: #resultFor2.
@@ -392,7 +393,7 @@ MockAcceptanceTests >> testChoosingPreferredExpectedMessageByArgs [
 	(mock someMessageWith: 2) should be: #resultFor2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCleaningMocksAfterTestWithHaltAborted [
 
 	| suite result |
@@ -407,7 +408,7 @@ MockAcceptanceTests >> testCleaningMocksAfterTestWithHaltAborted [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCleaningMocksAfterTestWithHaltResumed [
 
 	| suite result |
@@ -423,7 +424,7 @@ MockAcceptanceTests >> testCleaningMocksAfterTestWithHaltResumed [
 	result should be hasPassed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testCleaningMocksAfterTests [
 
 	| suite result |
@@ -437,7 +438,7 @@ MockAcceptanceTests >> testCleaningMocksAfterTests [
 	result should be hasPassed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testExpectationWithConditionVerificationAndFollowingReturn [
 
 	| flag |
@@ -451,7 +452,7 @@ MockAcceptanceTests >> testExpectationWithConditionVerificationAndFollowingRetur
 	mock someMessage should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testExpectationWithConditionVerificationByBlock [
 
 	| flag |
@@ -463,7 +464,7 @@ MockAcceptanceTests >> testExpectationWithConditionVerificationByBlock [
 	mock someMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testExpectationWithConditionVerificationBySpec [
 
 	| flag |
@@ -475,7 +476,7 @@ MockAcceptanceTests >> testExpectationWithConditionVerificationBySpec [
 	mock someMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLastAddedExpectationIsMostPreferredThanOthers [
 
 	(mock stub someMessageWith: Any) willReturn: #defaultResult.
@@ -485,7 +486,7 @@ MockAcceptanceTests >> testLastAddedExpectationIsMostPreferredThanOthers [
 	(mock someMessageWith: 2) should be: #defaultResult.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectations [
 
 	| mock2 |
@@ -499,7 +500,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectations [
 	mock2 someMessage2 willReturn: #result2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsShouldReplayExpectationsInDefinedOrder [
 
 	mock stub someMessage willReturn: #result0.
@@ -513,7 +514,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsShouldReplayExpec
 	mock someMessage should be: #result0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsShouldSetUpUsageOnceSpecByDefault [
 
 	mock stub someMessage willReturn: #result0.
@@ -527,7 +528,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsShouldSetUpUsageO
 	mock someMessage should be: #result0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenArbitrarilyUsageDefinedAndItMessageNotHappen [
 
 	[mock someMessage should be: #result. ]
@@ -536,7 +537,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenArbitrarilyUs
 	mock someMessage2 willReturn: #result2; useArbitrarily]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenMoreMessagesWasOccurred [
 
 	| mock2 |
@@ -550,7 +551,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenMoreMessagesW
 	mock2 someMessage2 willReturn: #result2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenSomeExpectationWasNotOccurred [
 
 	| mock2 |
@@ -564,7 +565,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenSomeExpectati
 	] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenTheyOccurredInDifferentOrder [
 
 	| mock2 |
@@ -577,7 +578,7 @@ MockAcceptanceTests >> testLenientValidationOfBuiltExpectationsWhenTheyOccurredI
 	mock2 someMessage2 willReturn: #result2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfFalseExpression [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -587,7 +588,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfFalseExpression
 	result should be: #ifFalseBranch
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfFalseIfTrueExpression [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -598,7 +599,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfFalseIfTrueExpr
 	returnedMock should be: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfTrueExpression [
 	| returnedMock result ifTrueExecuted |	
 	returnedMock := mock someMessage.
@@ -609,7 +610,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfTrueExpression 
 	ifTrueExecuted should not be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfTrueIfFalseExpression [
 	| returnedMock result |	
 	returnedMock := mock someMessage. 
@@ -620,7 +621,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateFalseInIfTrueIfFalseExpr
 	returnedMock should be: false
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFloatArithmetics [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -630,7 +631,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFloatArithmetics [
 	returnedMock should equal: 0.0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFloatComparison [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -640,7 +641,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFloatComparison [
 	returnedMock should equal: 0.0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFractionArithmetics [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -650,7 +651,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFractionArithmetic
 	returnedMock should equal: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFractionComparison [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -660,7 +661,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInFractionComparison
 	returnedMock should equal: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInIntegerArithmetics [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -670,7 +671,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInIntegerArithmetics
 	returnedMock should equal: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInIntegerComparison [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -680,7 +681,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInIntegerComparison 
 	returnedMock should equal: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInPointArithmetics [
 	| returnedMock result |	
 	returnedMock := mock someMessage.
@@ -690,7 +691,7 @@ MockAcceptanceTests >> testMockFromMessageShouldSimulateZeroInPointArithmetics [
 	returnedMock should equal: 0@0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testReturnFromMessageSeveralTimes [
 
 	| actual actual2 |
@@ -703,7 +704,7 @@ MockAcceptanceTests >> testReturnFromMessageSeveralTimes [
 	actual2 should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testReturnFromMessageSeveralTimesWhenForEachTimeThereIsSpecificExpectation [
 
 	mock stub someMessage willReturn: #initialResult.
@@ -716,7 +717,7 @@ MockAcceptanceTests >> testReturnFromMessageSeveralTimesWhenForEachTimeThereIsSp
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testReturnNewMockFromUnexpectedMessage [
 
 	| actual mockHash |	
@@ -727,7 +728,7 @@ MockAcceptanceTests >> testReturnNewMockFromUnexpectedMessage [
 	actual ghostPrintString should equal: 'Result(', mockHash asString, ') of: a Mock(mock) someMessage'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testRunningBlockWithMocks [
 	
 	[:mockA :mockB | 
@@ -742,7 +743,7 @@ MockAcceptanceTests >> testRunningBlockWithMocks [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectations [
 
 	| mock2 |
@@ -756,7 +757,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectations [
 	mock2 someMessage2 willReturn: #result2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsShouldReplayExpectationsInDefinedOrder [
 
 	mock stub someMessage willReturn: #result0.
@@ -770,7 +771,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsShouldReplayExpect
 	mock someMessage should be: #result0 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsShouldSetUpUsageOnceSpecByDefault [
 
 	mock stub someMessage willReturn: #result0.
@@ -784,7 +785,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsShouldSetUpUsageOn
 	mock someMessage should be: #result0 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenArbitrarilyUsageDefinedAndItMessageNotHappen [
 
 	[mock someMessage should be: #result. ]
@@ -793,7 +794,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenArbitrarilyUsa
 	mock someMessage2 willReturn: #result2; useArbitrarily]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenArbitrarilyUsageDefinedAndItMessageWasInWrongTime [
 
 	[mock someMessage2 should be: #result2.
@@ -803,7 +804,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenArbitrarilyUsa
 	mock someMessage2 willReturn: #result2; useArbitrarily]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenMoreMessagesWereOccurred [
 
 	| mock2 |
@@ -817,7 +818,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenMoreMessagesWe
 	mock2 someMessage2 willReturn: #result2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenSomeExpectationWasNotOccurred [
 
 	| mock2 |
@@ -831,7 +832,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenSomeExpectatio
 	] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenTheyOccurredInDifferentOrder [
 
 	| mock2 |
@@ -846,7 +847,7 @@ MockAcceptanceTests >> testStrictValidationOfBuiltExpectationsWhenTheyOccurredIn
 	] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingGlobalClass [
 	
 	[
@@ -858,7 +859,7 @@ MockAcceptanceTests >> testStubbingGlobalClass [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingRealObject [
 
 	| rect |
@@ -870,7 +871,7 @@ MockAcceptanceTests >> testStubbingRealObject [
 	rect origin should equal: 0@0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingRealObjectAndCopy [
 
 	| rect copy |
@@ -883,7 +884,7 @@ MockAcceptanceTests >> testStubbingRealObjectAndCopy [
 	copy origin should equal: rect origin
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingRealObjectSelfSend [
 
 	| rect |
@@ -894,7 +895,7 @@ MockAcceptanceTests >> testStubbingRealObjectSelfSend [
 	rect area should be: 3000
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingRealObjectShouldRespectPerform [
 
 	| rect actual |
@@ -906,7 +907,7 @@ MockAcceptanceTests >> testStubbingRealObjectShouldRespectPerform [
 	actual should equal: 100
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testStubbingRealObjectShouldReturnRealClass [
 
 	| object actual |
@@ -920,7 +921,7 @@ MockAcceptanceTests >> testStubbingRealObjectShouldReturnRealClass [
 	object should beKindOf: Point.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testSyncMessageExpectation [
 
 	| raised |
@@ -934,7 +935,7 @@ MockAcceptanceTests >> testSyncMessageExpectation [
 	raised should be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUnexpectedCopyMessageToMock [
 
 	| actual |			
@@ -945,7 +946,7 @@ MockAcceptanceTests >> testUnexpectedCopyMessageToMock [
 	actual mockOwnerMessage selector should be: #copy
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUnexpectedMessageDefinedOnObject [
 
 	| actual |	
@@ -956,7 +957,7 @@ MockAcceptanceTests >> testUnexpectedMessageDefinedOnObject [
 	actual value should be: #value
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUnexpectedMessageDefinedOnObjectWhichDefaultMethodFailed [
 
 	| actual |	
@@ -967,7 +968,7 @@ MockAcceptanceTests >> testUnexpectedMessageDefinedOnObjectWhichDefaultMethodFai
 	MockCurrentBehaviour value occurredMessages should haveSize: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUnexpectedShallowCopyMessageToMock [
 
 	| actual |			
@@ -978,7 +979,7 @@ MockAcceptanceTests >> testUnexpectedShallowCopyMessageToMock [
 	actual mockOwnerMessage selector should be: #shallowCopy
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUsingExpectationAnyTimes [
 	"It is default usage strategy. But for lenient/strict logic default is useOnce"
 	mock stub someMessage willReturn: #default.
@@ -990,7 +991,7 @@ MockAcceptanceTests >> testUsingExpectationAnyTimes [
 	mock someMessage should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUsingExpectationAnyTimesShouldNotCorruptOtherExpectations [
 	"It is default usage strategy. But for lenient/strict logic default is useOnce"
 
@@ -1001,7 +1002,7 @@ MockAcceptanceTests >> testUsingExpectationAnyTimesShouldNotCorruptOtherExpectat
 	mock someMessage should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUsingExpectationOnce [
 
 	mock stub someMessage willReturn: #default.
@@ -1012,7 +1013,7 @@ MockAcceptanceTests >> testUsingExpectationOnce [
 	mock someMessage should be: #default.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUsingExpectationThreeTimes [
 
 	mock stub someMessage willReturn: #default.
@@ -1026,7 +1027,7 @@ MockAcceptanceTests >> testUsingExpectationThreeTimes [
 	mock someMessage should be: #default.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testUsingExpectationTwice [
 
 	mock stub someMessage willReturn: #default.
@@ -1039,7 +1040,7 @@ MockAcceptanceTests >> testUsingExpectationTwice [
 	mock someMessage should be: #default.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationAutomockReceivedMessage [
 
 	| autoMock |
@@ -1052,7 +1053,7 @@ MockAcceptanceTests >> testValidationAutomockReceivedMessage [
 	autoMock should receive someMessage2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationFutureMessageSend [
 
 	[mock someMessage] fork.
@@ -1060,7 +1061,7 @@ MockAcceptanceTests >> testValidationFutureMessageSend [
 	mock should takeAWhile to receive someMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationFutureMessageSendWhichShouldBeSentTwice [
 
 	mock someMessage.
@@ -1069,7 +1070,7 @@ MockAcceptanceTests >> testValidationFutureMessageSendWhichShouldBeSentTwice [
 	mock should takeAWhile to receive someMessage twice
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationInvolvedObjectsState [
 
 	| array1 array2 error |
@@ -1084,7 +1085,7 @@ MockAcceptanceTests >> testValidationInvolvedObjectsState [
 	error where messageText should equal: 'Got #(#expectedItem #missingItem2) but it should include #missingItem'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationInvolvedObjectsStateWhenNobodyWasInvolved [
 
 	| error involvedMock |
@@ -1094,7 +1095,7 @@ MockAcceptanceTests >> testValidationInvolvedObjectsStateWhenNobodyWasInvolved [
 	error where messageText should equal: 'No object involved in test which should be an instance of Array'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess [
 
 	[mock someMessage] fork.
@@ -1104,7 +1105,7 @@ MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInForkedProcess 
 	[mock should receive someMessage inThisProcess] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInThisProcess [
 
 	mock someMessage.
@@ -1114,7 +1115,7 @@ MockAcceptanceTests >> testValidationMessageProcessWhenItOccuredInThisProcess [
 	[mock should receive someMessage inAnotherProcess] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByAtLeast [
 		
 	mock someMessage.
@@ -1127,7 +1128,7 @@ MockAcceptanceTests >> testValidationMessagesCountByAtLeast [
 	mock should receive someMessage atLeast: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByAtLeastAtMost [
 
 	mock someMessage.
@@ -1141,7 +1142,7 @@ MockAcceptanceTests >> testValidationMessagesCountByAtLeastAtMost [
 	[mock should receive someMessage atLeast: 2 atMost: 3] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByAtMost [
 
 	mock someMessage.
@@ -1152,7 +1153,7 @@ MockAcceptanceTests >> testValidationMessagesCountByAtMost [
 	[mock should receive someMessage atMost: 1] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByExactly [
 		
 	mock someMessage.
@@ -1163,7 +1164,7 @@ MockAcceptanceTests >> testValidationMessagesCountByExactly [
 	[mock should receive someMessage exactly: 3] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByOnce [
 
 	mock someMessage.
@@ -1175,7 +1176,7 @@ MockAcceptanceTests >> testValidationMessagesCountByOnce [
 	[mock should receive someMessage once] should raise: SpecOfFailed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountByTwice [
 
 	mock someMessage.
@@ -1187,7 +1188,7 @@ MockAcceptanceTests >> testValidationMessagesCountByTwice [
 	[mock should receive someMessage twice] should raise: SpecOfFailed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationMessagesCountForNegatedSendSpec [
 
 	| error |
@@ -1198,7 +1199,7 @@ MockAcceptanceTests >> testValidationMessagesCountForNegatedSendSpec [
 	error where message selector should be: #twice
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfExpectedMessageSequence [
 
 	mock someMessage.
@@ -1210,7 +1211,7 @@ MockAcceptanceTests >> testValidationOfExpectedMessageSequence [
 	[[mock someMessage2. mock someMessage] should beDoneInOrder] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
@@ -1223,7 +1224,7 @@ MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessageSho
 	[[mock someMessage2 twice. mock someMessage3] should beDoneInOrder] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessagesShouldHappenAtDifferentTime [
 
 	mock someMessage.
@@ -1236,7 +1237,7 @@ MockAcceptanceTests >> testValidationOfExpectedMessageSequenceWhenSameMessagesSh
 	[[mock someMessage2. mock someMessage. mock someMessage] should beDoneInOrder] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfFutureExpectedMessageSequence [
 
 	mock someMessage.
@@ -1245,7 +1246,7 @@ MockAcceptanceTests >> testValidationOfFutureExpectedMessageSequence [
 	[mock someMessage. mock someMessage2] should takeAWhile to beDoneInOrder
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfFutureMultipleMessageSends [
 
 	[mock someMessage.
@@ -1254,7 +1255,7 @@ MockAcceptanceTests >> testValidationOfFutureMultipleMessageSends [
 	[mock someMessage2. mock someMessage] should takeAWhile to beDone
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfMultipleMessageSends [
 
 	mock someMessage.
@@ -1266,7 +1267,7 @@ MockAcceptanceTests >> testValidationOfMultipleMessageSends [
 	[[mock someMessage. mock unhappenedMessage] should beDone] should raise: SpecOfFailed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfMultipleMessageSendsWhenSameMessageShouldHappenTwice [
 
 	mock someMessage.
@@ -1276,7 +1277,7 @@ MockAcceptanceTests >> testValidationOfMultipleMessageSendsWhenSameMessageShould
 	[mock someMessage twice. mock someMessage2] should beDone
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationOfMultipleMessageSendsWithUsageSpecs [
 	
 	mock someMessage.
@@ -1289,7 +1290,7 @@ MockAcceptanceTests >> testValidationOfMultipleMessageSendsWithUsageSpecs [
 	[[mock someMessage2. mock someMessage once] should beDone] should raise: SpecOfFailed.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationProcessWhereMessageWasSent [
 
 	| process |
@@ -1301,7 +1302,7 @@ MockAcceptanceTests >> testValidationProcessWhereMessageWasSent [
 	mock should receive someMessage inProcessWhich priority should equal: Processor activePriority + 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationReceivedMessageWhenItWasHappened [
 
 	mock someMessage.
@@ -1309,7 +1310,7 @@ MockAcceptanceTests >> testValidationReceivedMessageWhenItWasHappened [
 	mock should receive someMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationReceivedMessageWhenItWasNotHappened [
 
 	mock someMessage.
@@ -1318,14 +1319,14 @@ MockAcceptanceTests >> testValidationReceivedMessageWhenItWasNotHappened [
 	[mock should receive unexpectedMessage] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationReceivedMessageWhenNoMessagesWasHappens [
 	
 	mock should not receive someMessage.
 	[mock should receive someMessage] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationReturnedValueOfRealObjectStub [
 
 	| rect |
@@ -1337,7 +1338,7 @@ MockAcceptanceTests >> testValidationReturnedValueOfRealObjectStub [
 	rect should receive area which should equal: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatAnyMessageWasSentToAnyMock [
 
 	[Any inTest should receive anyMessage] should raise: SpecOfFailed.
@@ -1347,7 +1348,7 @@ MockAcceptanceTests >> testValidationThatAnyMessageWasSentToAnyMock [
 	Any inTest should receive anyMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatMessageWasNotSent [
 	
 	mock someMessage2.
@@ -1359,7 +1360,7 @@ MockAcceptanceTests >> testValidationThatMessageWasNotSent [
 	[mock should not receive someMessage] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatMockReceivedAnyMessage [
 
 	[mock should receive anyMessage] should raise: SpecOfFailed.
@@ -1369,7 +1370,7 @@ MockAcceptanceTests >> testValidationThatMockReceivedAnyMessage [
 	mock should receive anyMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatMockReceivedAnyMessageWhenHappenedMessageHadArguments [
 	 
 	[mock should receive anyMessage] should raise: SpecOfFailed.
@@ -1379,7 +1380,7 @@ MockAcceptanceTests >> testValidationThatMockReceivedAnyMessageWhenHappenedMessa
 	mock should receive anyMessage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatObjectIsResultOfDeepMessageSendWhichWasAlsoReturnedFromSender [
 
 	| result rect |
@@ -1392,7 +1393,7 @@ MockAcceptanceTests >> testValidationThatObjectIsResultOfDeepMessageSendWhichWas
 	result should beReturnedFrom: [rect right].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatObjectIsResultOfFutureMessageSend [
 
 	| array |
@@ -1404,7 +1405,7 @@ MockAcceptanceTests >> testValidationThatObjectIsResultOfFutureMessageSend [
 	mock should takeAWhile to beReturnedFrom: [array first]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatObjectIsResultOfParticularMessageSend [
 
 	| result |
@@ -1414,7 +1415,7 @@ MockAcceptanceTests >> testValidationThatObjectIsResultOfParticularMessageSend [
 	result should not beReturnedFrom: [mock someMessage2].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatObjectPropertyIsResultOfParticularMessageSend [
 
 	| result ownerObject |
@@ -1426,7 +1427,7 @@ MockAcceptanceTests >> testValidationThatObjectPropertyIsResultOfParticularMessa
 	ownerObject where first should not beReturnedFrom: [mock someMessage2]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatParticularMessageWasSentToAllMocks [
 
 	| mock2 |
@@ -1440,7 +1441,7 @@ MockAcceptanceTests >> testValidationThatParticularMessageWasSentToAllMocks [
 	Any inTest should receive someMessage	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatParticularMessageWasSentToSetOfObjectsDefinedBySpec [
 
 	| mock2 |
@@ -1456,13 +1457,13 @@ MockAcceptanceTests >> testValidationThatParticularMessageWasSentToSetOfObjectsD
 	(Instance of: Mock) inTest should receive someMessage	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatParticularMessageWasSentToSetOfObjectsWhenNoSuchObjectsExist [
 
 	[(Instance of: Rectangle) should receive someMessage] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatRealObjectMessageWasNotSent [
 	
 	| rect |
@@ -1476,7 +1477,7 @@ MockAcceptanceTests >> testValidationThatRealObjectMessageWasNotSent [
 	[rect should not receive width] should raise: SpecOfFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatStubbedRealObjectReceivedExpectedMessage [
 
 	| rect |
@@ -1489,7 +1490,7 @@ MockAcceptanceTests >> testValidationThatStubbedRealObjectReceivedExpectedMessag
 	rect should receive area
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testValidationThatStubbedRealObjectReceivedUnexpectedMessage [
 
 	| rect |	
@@ -1502,7 +1503,7 @@ MockAcceptanceTests >> testValidationThatStubbedRealObjectReceivedUnexpectedMess
 	rect should receive area
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillCallOriginalMethodFromMessageOfRealObjectStub [
 
 	| actual rect executed |
@@ -1515,7 +1516,7 @@ MockAcceptanceTests >> testWillCallOriginalMethodFromMessageOfRealObjectStub [
 	executed should be: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillExecuteSeveralActionsOnSingleMessageSend [
 
 	| actual firstBlockDone secondBlockDone |
@@ -1528,7 +1529,7 @@ MockAcceptanceTests >> testWillExecuteSeveralActionsOnSingleMessageSend [
 	secondBlockDone should be: true.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillLogMessage [
 
 	(mock stub someMessageWith: Any) willLogMessage; willReturn: #result.
@@ -1537,7 +1538,7 @@ MockAcceptanceTests >> testWillLogMessage [
 	(mock someMessageWith: #arg2) should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillRaiseErrorFromMessage [
 
 	| error |
@@ -1547,7 +1548,7 @@ MockAcceptanceTests >> testWillRaiseErrorFromMessage [
 	[mock someMessage] should raise: error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillReturnArgsBlockValueFromMessage [
 
 	| actual |
@@ -1558,7 +1559,7 @@ MockAcceptanceTests >> testWillReturnArgsBlockValueFromMessage [
 	actual should be: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillReturnExplicitValueFromMessage [
 
 	| actual |
@@ -1569,7 +1570,7 @@ MockAcceptanceTests >> testWillReturnExplicitValueFromMessage [
 	actual should be: #result
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillReturnNewMockWhenNoActionDefinedForExpectation [
 
 	| actual |	
@@ -1580,7 +1581,7 @@ MockAcceptanceTests >> testWillReturnNewMockWhenNoActionDefinedForExpectation [
 	actual should beInstanceOf: MockForMessageReturn
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillReturnNextValueFromArrayForEachCall [
 
 	mock stub someMessage willReturnValueFrom: #(result1 result2).
@@ -1591,7 +1592,7 @@ MockAcceptanceTests >> testWillReturnNextValueFromArrayForEachCall [
 	mock someMessage should beInstanceOf: MockForMessageReturn
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillReturnReceiverFromMessage [
 
 	| actual |
@@ -1602,7 +1603,7 @@ MockAcceptanceTests >> testWillReturnReceiverFromMessage [
 	actual should be: mock
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 MockAcceptanceTests >> testWillStubRealResult [
 
 	| actual rect |

@@ -5,12 +5,13 @@ I am used during stub teaching:
 	mock stub someMessage willReturn: 3
 "
 Class {
-	#name : #MockStubTeacher,
-	#superclass : #MockHelperRole,
-	#category : 'Mocketry-Domain'
+	#name : 'MockStubTeacher',
+	#superclass : 'MockHelperRole',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockStubTeacher >> anyMessage [
 
 	"This method for documenting purpose. Look at processing method. You will see that this particular selector is substituted by Any. It allows to build expectation for any message to receiver object (or any object):
@@ -18,12 +19,12 @@ MockStubTeacher >> anyMessage [
 		Any stub anyMessage willReturn: 10 "
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockStubTeacher >> isTeaching [
 	^true
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 MockStubTeacher >> processTransformedMessageSend: anOccurredMessage by: aMockBehaviour [
 	
 	| expectation |

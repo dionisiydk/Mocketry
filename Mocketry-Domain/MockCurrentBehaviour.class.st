@@ -6,22 +6,23 @@ I detect current test case by another process variable  CurrentExecutionEnvironm
 I ensure that my value will be same only during single test execution
 "
 Class {
-	#name : #MockCurrentBehaviour,
-	#superclass : #ProcessLocalVariable,
-	#category : 'Mocketry-Domain'
+	#name : 'MockCurrentBehaviour',
+	#superclass : 'ProcessLocalVariable',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MockCurrentBehaviour class >> isInheritable [ 
 	^true
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 MockCurrentBehaviour class >> useMockRole: aMockRole while: aBlock [
 	self value useMockRole: aMockRole while: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 MockCurrentBehaviour >> installValue: aMockBehaviour intoForked: newProcess from: ownerProcess [
 	
 	aMockBehaviour isInheritableByFork ifFalse: [ ^self ].
@@ -29,7 +30,7 @@ MockCurrentBehaviour >> installValue: aMockBehaviour intoForked: newProcess from
 	newProcess psValueAt: index put: aMockBehaviour
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockCurrentBehaviour >> value [
 
 	| currentBehaviour currentEnv |
@@ -44,7 +45,7 @@ MockCurrentBehaviour >> value [
 	^currentBehaviour
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MockCurrentBehaviour >> value: anObject [
 
 	| currentBehaviour |

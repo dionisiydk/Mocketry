@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfMultipleMessagesTests,
-	#superclass : #TestCase,
-	#category : #'Mocketry-Specs-Tests'
+	#name : 'SpecOfMultipleMessagesTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMultipleMessagesTests >> testFailedValidationWhenSenderWasWrong [
 	
 	| spec messages result |
@@ -25,7 +26,7 @@ SpecOfMultipleMessagesTests >> testFailedValidationWhenSenderWasWrong [
 	result where description should equal: '#receiver never received selector3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMultipleMessagesTests >> testMatches [
 	
 	| spec messages |
@@ -44,7 +45,7 @@ SpecOfMultipleMessagesTests >> testMatches [
 	spec should be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMultipleMessagesTests >> testMatchesWhenSomeMessageExpectedTwiceTime [
 	
 	| spec messages |
@@ -64,7 +65,7 @@ SpecOfMultipleMessagesTests >> testMatchesWhenSomeMessageExpectedTwiceTime [
 	spec should be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMultipleMessagesTests >> testNotMatches [
 	
 	| spec messages |
@@ -81,7 +82,7 @@ SpecOfMultipleMessagesTests >> testNotMatches [
 	spec should not be matches: messages
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfMultipleMessagesTests >> testSucceedValidation [
 	
 	| spec messages result |

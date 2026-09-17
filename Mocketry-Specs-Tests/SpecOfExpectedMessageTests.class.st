@@ -1,10 +1,11 @@
 Class {
-	#name : #SpecOfExpectedMessageTests,
-	#superclass : #TestCase,
-	#category : 'Mocketry-Specs-Tests'
+	#name : 'SpecOfExpectedMessageTests',
+	#superclass : 'TestCase',
+	#category : 'Mocketry-Specs-Tests',
+	#package : 'Mocketry-Specs-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testDescription [
 
 	| spec |
@@ -13,7 +14,7 @@ SpecOfExpectedMessageTests >> testDescription [
 	spec where description should equal: '#receiver should receive someMessageWith: #someArg'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testDescriptionWhenDenialApplied [
 
 	| spec |
@@ -22,7 +23,7 @@ SpecOfExpectedMessageTests >> testDescriptionWhenDenialApplied [
 	spec where description should equal: '#receiver should not receive someMessageWith: #someArg'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testDescriptionWhenMessageShouldBeSentMoreThanOneTime [
 
 	| spec |
@@ -32,7 +33,7 @@ SpecOfExpectedMessageTests >> testDescriptionWhenMessageShouldBeSentMoreThanOneT
 	spec where description should equal: '#receiver should receive someMessageWith: #someArg at least 2 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenDenialApplied [
 
 	| spec interaction result |
@@ -47,7 +48,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenDenialApplied [
 	result where description should equal: '#receiver should not receive selector but it was 1 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenDenialAppliedAndUsageHasMeaningfulRestrictions [
 
 	| spec interaction result |
@@ -65,7 +66,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenDenialAppliedAndUsageHasMe
 	result where description should equal: '#receiver should not receive selector at least 2 times but it was 3 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverNotReceivedAnyMessage [
 
 	| spec interaction result |
@@ -80,7 +81,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverNotReceive
 	result where description should equal: '#receiver never received selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWrongArgument [
 
 	| spec interaction result |
@@ -96,7 +97,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWr
 	result where mostSimilarMessage description should equal: '#receiver received selectorWith: #wrongArg but arg 1 should equal #expectedArg'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWrongSelector [
 
 	| spec interaction result |
@@ -112,7 +113,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenExpectedReceiverReceivedWr
 	result where mostSimilarMessage description should equal: '#receiver received wrongSelector but it should be #selector'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testFailedValidationWhenMessageWasNotOccurredExpectedTimes [
 
 	| spec interaction result |
@@ -128,7 +129,7 @@ SpecOfExpectedMessageTests >> testFailedValidationWhenMessageWasNotOccurredExpec
 	result where description should equal: '#receiver should receive selector at least 2 times but it was 1 times'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testMatchesInteractionWhenDenialApplied [
 
 	| spec interaction |
@@ -140,7 +141,7 @@ SpecOfExpectedMessageTests >> testMatchesInteractionWhenDenialApplied [
 	spec should not be matches: interaction
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testMatchesInteractionWhichContainsMessageRequiredTimes [
 
 	| spec interaction |
@@ -154,7 +155,7 @@ SpecOfExpectedMessageTests >> testMatchesInteractionWhichContainsMessageRequired
 	spec should be matches: interaction
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testMatchesInteractionWhichContainsRequiredMessage [
 
 	| spec interaction |
@@ -166,7 +167,7 @@ SpecOfExpectedMessageTests >> testMatchesInteractionWhichContainsRequiredMessage
 	spec should be matches: interaction
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testNotMatchesInteractionWhichNotContainsMessageRequiredTimes [
 
 	| spec interaction |
@@ -179,7 +180,7 @@ SpecOfExpectedMessageTests >> testNotMatchesInteractionWhichNotContainsMessageRe
 	spec should not be matches: interaction
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testNotMatchesInteractionWhichNotContainsRequiredMessage [
 
 	| spec interaction |
@@ -190,7 +191,7 @@ SpecOfExpectedMessageTests >> testNotMatchesInteractionWhichNotContainsRequiredM
 	spec should not be matches: interaction
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testSucceedValidation [
 
 	| spec interaction result |
@@ -204,7 +205,7 @@ SpecOfExpectedMessageTests >> testSucceedValidation [
 	result should be isSuccess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageCountIsOne [
 
 	| spec interaction result |
@@ -220,7 +221,7 @@ SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageC
 	result requiredOccurredMessages should be isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageCountIsZero [
 
 	| spec interaction result |
@@ -235,7 +236,7 @@ SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndMinUsageC
 	result should be isSuccess
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 SpecOfExpectedMessageTests >> testSucceedValidationWhenDenialAppliedAndNoMessagesWasHappened [
 
 	| spec interaction result |

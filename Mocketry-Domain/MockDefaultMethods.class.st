@@ -17,12 +17,13 @@ To address this problem my instance side methods are used as actual default meth
 Users can disable particular default method by implementing it on me with error (using ""self disableDefaultMethod""). Then it will lead to case #1) where new default mock will be returned. Default mock always provide information where it was produced
 "
 Class {
-	#name : #MockDefaultMethods,
-	#superclass : #Object,
-	#category : 'Mocketry-Domain'
+	#name : 'MockDefaultMethods',
+	#superclass : 'Object',
+	#category : 'Mocketry-Domain',
+	#package : 'Mocketry-Domain'
 }
 
-{ #category : #execution }
+{ #category : 'execution' }
 MockDefaultMethods class >> execute: anOccurredMessage on: aMock [
 	"look at class comment for explanation"
 	| defaultMethod |
@@ -37,17 +38,17 @@ MockDefaultMethods class >> execute: anOccurredMessage on: aMock [
 	^MockForMessageReturn from: anOccurredMessage withBehaviour: aMock ghostBehaviour
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MockDefaultMethods >> copy [
 	self disableDefaultMethod
 ]
 
-{ #category : #'error signalling' }
+{ #category : 'error signalling' }
 MockDefaultMethods >> disableDefaultMethod [
 	self error: 'Sender method should not be used as default for mocks'
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 MockDefaultMethods >> shallowCopy [
 	self disableDefaultMethod
 ]
